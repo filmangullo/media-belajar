@@ -112,7 +112,7 @@
 	<script src="{{ URL::asset('web/js/owl.carousel.min.js') }}"></script>
 	<script src="{{ URL::asset('web/js/owl-carousel-thumb.min.js') }}"></script>
 	<script src="{{ URL::asset('web/js/jquery.sticky.js') }}"></script>
-	<script src="{{ URL::asset('web/js/jquery.nice-select.min.js'} }}"></script>
+	<script src="{{ URL::asset('web/js/jquery.nice-select.min.js') }}"></script>
 	<script src="{{ URL::asset('web/js/parallax.min.js') }}"></script>
 	<script src="{{ URL::asset('web/js/waypoints.min.js') }}"></script>
 	<script src="{{ URL::asset('web/js/wow.min.js') }}"></script>
