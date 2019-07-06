@@ -19,8 +19,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'admin'], function() {
-  Route::get('/login', 'AuthAdmin\LoginController@showLoginForm')->name('admin.login');
-  Route::post('/login', 'AuthAdmin\LoginController@login')->name('admin.login.submit');
-  Route::get('/', 'AdminController@index')->name('admin.home');
-});
+//Route::get('/courses', 'CoursesController@index')->name('home');
+
+Route::resource('courses', 'CoursesController')->names([
+    'index' => 'index.courses'
+]);
+
+Route::resource('about', 'AboutController')->names([
+    'index' => 'index.about'
+]);
