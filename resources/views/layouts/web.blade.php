@@ -5,7 +5,7 @@
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="{{ URL::asset('web/img/fav.png') }}">
+	<link rel="shortcut icon" href="{{ URL::asset('webs/img/fav.png') }}">
 	<!-- Author Meta -->
 	<meta name="author" content="codepixer">
 	<!-- Meta Description -->
@@ -27,14 +27,14 @@
 			CSS
 			============================================= -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/themify-icons/0.1.2/css/themify-icons.css">
-	<link rel="stylesheet" href="{{ URL::asset('web/css/linearicons.css') }}">
-	<link rel="stylesheet" href="{{ URL::asset('web/css/font-awesome.min.css') }}">
-	<link rel="stylesheet" href="{{ URL::asset('web/css/bootstrap.css') }}">
-	<link rel="stylesheet" href="{{ URL::asset('web/css/magnific-popup.css') }}">
-	<link rel="stylesheet" href="{{ URL::asset('web/css/nice-select.css') }}">
-	<link rel="stylesheet" href="{{ URL::asset('web/css/animate.min.css') }}">
-	<link rel="stylesheet" href="{{ URL::asset('web/css/owl.carousel.css') }}">
-	<link rel="stylesheet" href="{{ URL::asset('web/css/main.css') }}">
+	<link rel="stylesheet" href="{{ URL::asset('webs/css/linearicons.css') }}">
+	<link rel="stylesheet" href="{{ URL::asset('webs/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" href="{{ URL::asset('webs/css/bootstrap.css') }}">
+	<link rel="stylesheet" href="{{ URL::asset('webs/css/magnific-popup.css') }}">
+	<link rel="stylesheet" href="{{ URL::asset('webs/css/nice-select.css') }}">
+	<link rel="stylesheet" href="{{ URL::asset('webs/css/animate.min.css') }}">
+	<link rel="stylesheet" href="{{ URL::asset('webs/css/owl.carousel.css') }}">
+	<link rel="stylesheet" href="{{ URL::asset('webs/css/main.css') }}">
 </head>
 
 <body>
@@ -44,7 +44,7 @@
 		<div class="container">
 			<div class="row align-items-center justify-content-between d-flex">
                 <div id="logo">
-					<a href="/"><img src="{{ URL::asset('web/img/logo.png') }}" alt="" title="" /></a>
+					<a href="/"><img src="{{ URL::asset('webs/img/logo.png') }}" alt="" title="" /></a>
 				</div>
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
@@ -80,11 +80,11 @@
 			</div>
 		</div>
 		<div class="rocket-img">
-			<img src="{{ URL::asset('web/img/rocket.png') }}" alt="">
+			<img src="{{ URL::asset('webs/img/rocket.png') }}" alt="">
 		</div>
 	</section>
 	<!-- End Banner Area -->
-    
+
     <!-- Start Content Area -->
         @yield('content')
 	<!-- End Content Area -->
@@ -99,26 +99,26 @@
 	</div>
 	<!-- ####################### End Scroll to Top Area ####################### -->
 
-	<script src="{{ URL::asset('web/js/vendor/jquery-2.2.4.min.js') }}"></script>
+	<script src="{{ URL::asset('webs/js/vendor/jquery-2.2.4.min.js') }}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 	 crossorigin="anonymous"></script>
-	<script src="{{ URL::asset('web/js/vendor/bootstrap.min.js') }}"></script>
+	<script src="{{ URL::asset('webs/js/vendor/bootstrap.min.js') }}"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-	<script src="{{ URL::asset('web/js/easing.min.js') }}"></script>
-	<script src="{{ URL::asset('web/js/hoverIntent.js') }}"></script>
-	<script src="{{ URL::asset('web/js/superfish.min.js') }}"></script>
-	<script src="{{ URL::asset('web/js/jquery.ajaxchimp.min.js') }}"></script>
-	<script src="{{ URL::asset('web/js/jquery.magnific-popup.min.js') }}"></script>
-	<script src="{{ URL::asset('web/js/owl.carousel.min.js') }}"></script>
-	<script src="{{ URL::asset('web/js/owl-carousel-thumb.min.js') }}"></script>
-	<script src="{{ URL::asset('web/js/jquery.sticky.js') }}"></script>
-	<script src="{{ URL::asset('web/js/jquery.nice-select.min.js') }}"></script>
-	<script src="{{ URL::asset('web/js/parallax.min.js') }}"></script>
-	<script src="{{ URL::asset('web/js/waypoints.min.js') }}"></script>
-	<script src="{{ URL::asset('web/js/wow.min.js') }}"></script>
-	<script src="{{ URL::asset('web/js/jquery.counterup.min.js') }}"></script>
-	<script src="{{ URL::asset('web/js/mail-script.js') }}"></script>
-	<script src="{{ URL::asset('web/js/main.js') }}"></script>
+	<script src="{{ URL::asset('webs/js/easing.min.js') }}"></script>
+	<script src="{{ URL::asset('webs/js/hoverIntent.js') }}"></script>
+	<script src="{{ URL::asset('webs/js/superfish.min.js') }}"></script>
+	<script src="{{ URL::asset('webs/js/jquery.ajaxchimp.min.js') }}"></script>
+	<script src="{{ URL::asset('webs/js/jquery.magnific-popup.min.js') }}"></script>
+	<script src="{{ URL::asset('webs/js/owl.carousel.min.js') }}"></script>
+	<script src="{{ URL::asset('webs/js/owl-carousel-thumb.min.js') }}"></script>
+	<script src="{{ URL::asset('webs/js/jquery.sticky.js') }}"></script>
+	<script src="{{ URL::asset('webs/js/jquery.nice-select.min.js') }}"></script>
+	<script src="{{ URL::asset('webs/js/parallax.min.js') }}"></script>
+	<script src="{{ URL::asset('webs/js/waypoints.min.js') }}"></script>
+	<script src="{{ URL::asset('webs/js/wow.min.js') }}"></script>
+	<script src="{{ URL::asset('webs/js/jquery.counterup.min.js') }}"></script>
+	<script src="{{ URL::asset('webs/js/mail-script.js') }}"></script>
+	<script src="{{ URL::asset('webs/js/main.js') }}"></script>
 </body>
 
 </html>
