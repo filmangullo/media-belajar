@@ -4,17 +4,18 @@ namespace App\Http\Controllers\AdminControllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Instansi;
 
 class InstansiController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Create a new controller instance.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware('auth:admin');
     }
 
     /**
@@ -24,7 +25,7 @@ class InstansiController extends Controller
      */
     public function create()
     {
-        //
+        return view('admins.instansi_create');
     }
 
     /**
@@ -35,7 +36,13 @@ class InstansiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store = new Instansi();
+
+        $store->nama = $request->nama;
+        $store->alamat = $request->alamat;
+        $store->save();
+
+        return redirect()->route('admin.home');
     }
 
     /**

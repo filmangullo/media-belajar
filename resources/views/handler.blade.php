@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Anda Belum diterima sebagai Aktor Silahkan Menunggu / Hubungi Instansi yang bersangkutan!
                 </div>
             </div>
         </div>

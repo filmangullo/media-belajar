@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminControllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Instansi;
 
 class AdminController extends Controller
 {
@@ -24,6 +25,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admins.dashboard');
+        $instansis = Instansi::all();
+        return view('admins.dashboard', [
+            'instansis' => $instansis
+        ]);
     }
 }

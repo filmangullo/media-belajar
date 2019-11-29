@@ -13,3 +13,10 @@
 Route::get('/login', 'AuthAdmin\LoginController@showLoginForm')->name('admin.login');
 Route::post('/login', 'AuthAdmin\LoginController@login')->name('admin.login.submit');
 Route::get('/', 'AdminController@index')->name('admin.home');
+
+// Instansi Route
+Route::prefix('instansi')->group(function () {
+    Route::get('/create', 'InstansiController@create')->name('adm.instansi.create');
+    Route::post('/store', 'InstansiController@store')->name('adm.instansi.store');
+});
+

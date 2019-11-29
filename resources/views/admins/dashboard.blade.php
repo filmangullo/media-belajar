@@ -11,7 +11,17 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Instansi</h6>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-10">
+                            <h6 class="m-0 font-weight-bold text-primary">Data Instansi</h6>
+                    </div>
+                    <div class="col-md-2">
+                            <a href="{{ route('adm.instansi.create') }}" type="button" class="btn btn-success btn-sm btn-block">New Instansi</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -35,13 +45,15 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Customer Support</td>
-                            <td>New York</td>
-                            <td>27</td>
-                            <td>2011/01/25</td>
-                        </tr>
+                        @foreach ($instansis as $key => $item)
+                            <tr>
+                                <td>{{ $key+1 }}</td>
+                                <td>{{ $item->nama }}</td>
+                                <td>{!! str_limit ($item->alamat, 30, ' ...') !!}</td>
+                                <td>27</td>
+                                <td>2011/01/25</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
