@@ -4,8 +4,8 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Dasboard</h1>
-    <p class="mb-4">Data Ini bertujuan untuk melihat berapa banyak Kelas yang online yang dibuka dalam setiap instansi.
+    <h1 class="h3 mb-2 text-gray-800">Data Kelas Online pada Instansi {{ $instansis->nama }}</h1>
+    <p class="mb-4">Data Ini bertujuan untuk melihat berapa banyak Kelas yang online yang dibuka instansi {{ $instansis->nama }}.
     </p>
 
     <!-- DataTales Example -->
@@ -14,10 +14,10 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-10">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Instansi</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data Kelas Mata Pelajaran</h6>
                     </div>
                     <div class="col-md-2">
-                            <a href="{{ route('adm.instansi.create') }}" type="button" class="btn btn-success btn-sm btn-block">New Instansi</a>
+                            <a href="{{ route('adm.kelasmatapelajaran.create', $instansis->id) }}" type="button" class="btn btn-success btn-sm btn-block">New Kelas</a>
                     </div>
                 </div>
             </div>
@@ -30,27 +30,27 @@
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
-                            <th>Alamat</th>
-                            <th>Total Kelas</th>
-                            <th>Kelas Aktif</th>
+                            <th>Keterangan</th>
+                            <th>Enroll Key</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
-                            <th>Alamat</th>
-                            <th>Total Kelas</th>
-                            <th>Kelas Aktif</th>
+                            <th>Keterangan</th>
+                            <th>Enroll Key</th>
+                            <th>Status</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($instansis as $key => $item)
+                        @foreach ($kelasMataPelajarans as $key => $item)
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td><a href="{{ route('adm.kelasmatapelajaran.index', $item->id) }}">{{ $item->nama }}</a></td>
-                                <td>{!! str_limit ($item->alamat, 30, ' ...') !!}</td>
-                                <td>27</td>
+                                <td>{!! str_limit ($item->keterangan, 30, ' ...') !!}</td>
+                                <td>{{ $item->enroll_key}}</td>
                                 <td>2011/01/25</td>
                             </tr>
                         @endforeach

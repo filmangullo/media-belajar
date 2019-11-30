@@ -18,6 +18,8 @@ class CreateKelasMataPelajaransTable extends Migration
             $table->unsignedBigInteger('instansi_id');
             $table->string('nama');
             $table->text('keterangan');
+            $table->text('enroll_key');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->softDeletes();
 

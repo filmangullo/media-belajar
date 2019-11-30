@@ -20,3 +20,9 @@ Route::prefix('instansi')->group(function () {
     Route::post('/store', 'InstansiController@store')->name('adm.instansi.store');
 });
 
+// Kelas / Mata Pelajaran Per Instansi
+Route::prefix('kelas-mata-pelajaran')->group(function () {
+    Route::get('/index/{id}', 'KelasMataPelajaranController@index')->name('adm.kelasmatapelajaran.index');
+    Route::get('/create/{id}', 'KelasMataPelajaranController@create')->name('adm.kelasmatapelajaran.create');
+    Route::post('/store', 'KelasMataPelajaranController@store')->name('adm.kelasmatapelajaran.store');
+});
