@@ -42,7 +42,7 @@ menu-active
                 <div class="col-lg-4 col-md-6">
                     <div class="feature-item">
                         <i class="fa fa-book"></i>
-                        <h4>{{ $item->nama }}</h4>
+                        <h4><a href="{{ route('show.courses', $item->id) }}">{{ $item->nama }}</a></h4>
                         <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay=".1s">
                             <p>
                                 {{ $item->keterangan }}.

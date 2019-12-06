@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\KelasMataPelajaran;
+use App\Participant;
+use Illuminate\Support\Facades\Auth;
 
 class CoursesController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,9 +36,12 @@ class CoursesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function enrollCreate($id)
     {
-        //
+        return view('webs.courses_enroll', [
+            'parameterKey' => $id,
+            'data'         => KelasMataPelajaran::findOrFail($id)
+        ]);
     }
 
     /**
@@ -36,9 +50,20 @@ class CoursesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function enrollStore(Request $request)
     {
-        //
+        $kelas = KelasMataPelajaran::findOrFail($request->id_pelajaran);
+        if ($request->enroll_key == $kelas->enroll_key) {
+            $siswa = new Participant();
+
+            $siswa->kelas_mata_pelajarans_id = $request->id_pelajaran;
+            $siswa->user_id                  = Auth::user()->id;
+            if($siswa->save()) {
+                return redirect()->route('show.courses',$request->id_pelajaran );
+            }
+        } else {
+            return redirect()->back()->withInput();
+        }
     }
 
     /**
@@ -49,7 +74,20 @@ class CoursesController extends Controller
      */
     public function show($id)
     {
-        //
+        $cek = Participant::where('kelas_mata_pelajarans_id', $id)
+                            ->where('user_id', Auth::user()->id )
+                            ->count();
+
+        if (!$cek == true) {
+            return redirect()->route('enroll.courses', ['parameterKey' => $id ]);
+        } else if (!$cek == false) {
+            $kelas = KelasMataPelajaran::where('id', $id)
+                                        ->first();
+            return view ('webs.courses_show', [
+                'kelas' => $kelas
+            ]);
+        }
+
     }
 
     /**

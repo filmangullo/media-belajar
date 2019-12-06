@@ -66,6 +66,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="/admin">
                     <i class="fas fa-fw fa-chalkboard-teacher"></i>
+                    <span>User</span></a>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">
+                    <i class="fas fa-fw fa-chalkboard-teacher"></i>
                     <span>Pengajar</span></a>
             </li>
 
