@@ -66,6 +66,7 @@ class KelasMataPelajaranController extends Controller
         $store->nama = $request->nama;
         $store->keterangan = $request->keterangan;
         $store->enroll_key = $request->enroll_key;
+        $store->type = $request->type;
         $store->is_active = true;
         $store->save();
 

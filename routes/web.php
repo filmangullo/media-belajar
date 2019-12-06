@@ -28,3 +28,7 @@ Route::resource('courses', 'CoursesController')->names([
 Route::resource('about', 'AboutController')->names([
     'index' => 'index.about'
 ]);
+
+Route::resource('contact', 'ContactController')->names([
+    'index' => 'index.contact'
+]);

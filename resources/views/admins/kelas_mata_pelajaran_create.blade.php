@@ -29,6 +29,13 @@
                             <label for="exampleInputPassword1">Enroll Key</label>
                             <input type="text" name="enroll_key" class="form-control" placeholder="Input Enroll Key untuk user masuk">
                         </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Type</label>
+                            <select name="type" class="form-control">
+                                <option value="Private">Private</option>
+                                <option value="Public">Public</option>
+                            </select>
+                        </div>
                         <div class="form-check text-center">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>

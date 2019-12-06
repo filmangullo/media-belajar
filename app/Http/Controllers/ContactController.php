@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\KelasMataPelajaran;
 
-class CoursesController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +13,7 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        $query = KelasMataPelajaran::all();
-        return view ('webs.courses', [
-            'kelas' => $query
-        ]);
+        return view ('webs.contact');
     }
 
     /**

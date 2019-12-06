@@ -51,7 +51,7 @@
                         <li><a href="/">Home</a></li>
                         <li class="@yield('courses')"><a href="courses">Courses</a></li>
 						<li class="@yield('about')"><a href="about">About</a></li>
-						<li class="@yield('contact')"><a href="contact.html">Contact</a></li>
+						<li class="@yield('contact')"><a href="{{ route('index.contact') }}">Contact</a></li>
                     @if (Route::has('login'))
                         @auth
                         <li> <a href="{{ url('/home') }}">Home</a></li>
