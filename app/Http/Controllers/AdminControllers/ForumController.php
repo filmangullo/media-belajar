@@ -38,9 +38,13 @@ class ForumController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $kelasMataPelajarans = KelasMataPelajaran::where('id', $id)
+                                ->first();
+        return view('admins.forum_create', [
+            'kelasMataPelajarans' => $kelasMataPelajarans
+        ]);
     }
 
     /**

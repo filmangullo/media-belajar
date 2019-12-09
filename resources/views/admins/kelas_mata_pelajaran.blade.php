@@ -48,7 +48,7 @@
                         @foreach ($kelasMataPelajarans as $key => $item)
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td><a href="{{ route('adm.kelasmatapelajaran.index', $item->id) }}">{{ $item->nama }}</a></td>
+                                <td><a href="{{ route('adm.forum.index', $item->id) }}">{{ $item->nama }}</a></td>
                                 <td>{!! str_limit ($item->keterangan, 30, ' ...') !!}</td>
                                 <td>{{ $item->enroll_key}}</td>
                                 <td>2011/01/25</td>
