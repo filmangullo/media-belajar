@@ -12,4 +12,9 @@ class KelasMataPelajaran extends Model
      * @var string
      */
     protected $table = 'kelas_mata_pelajarans';
+
+    public function instansis()
+    {
+        return $this->belongsTo('App\Instansi', 'instansi_id', 'id');
+    }
 }

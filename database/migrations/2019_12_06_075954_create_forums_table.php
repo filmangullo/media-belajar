@@ -15,7 +15,14 @@ class CreateForumsTable extends Migration
     {
         Schema::create('forums', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('kelas_mata_pelajarans_id');
+            $table->string('nama');
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('kelas_mata_pelajarans_id')
+                  ->references('id')->on('kelas_mata_pelajarans')
+                  ->onDelete('cascade');
         });
     }
 

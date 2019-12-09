@@ -26,3 +26,10 @@ Route::prefix('kelas-mata-pelajaran')->group(function () {
     Route::get('/create/{id}', 'KelasMataPelajaranController@create')->name('adm.kelasmatapelajaran.create');
     Route::post('/store', 'KelasMataPelajaranController@store')->name('adm.kelasmatapelajaran.store');
 });
+
+// Forum Per Kelas / Mata Pelajaran Per Instansi
+Route::prefix('forum-on-kelas-mata-pelajaran')->group(function () {
+    Route::get('/index/{id}', 'ForumController@index')->name('adm.forum.index');
+    Route::get('/create/{id}', 'ForumController@create')->name('adm.forum.create');
+    Route::post('/store', 'ForumController@store')->name('adm.forum.store');
+});

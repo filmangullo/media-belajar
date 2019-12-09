@@ -12,4 +12,9 @@ class Instansi extends Model
      * @var string
      */
     protected $table = 'instansis';
+
+    public function kelasMataPelajarans()
+    {
+        return $this->hasMany('App\KelasMataPelajaran', 'instansi_id', 'id');
+    }
 }
