@@ -131,6 +131,15 @@ class CoursesController extends Controller
 
     ////////////////////////////////////////////////////////////////// FORUM CONTROLLER
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showForum($id) {
+        return view('webs.courses_forum');
+    }
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

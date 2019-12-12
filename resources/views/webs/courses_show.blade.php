@@ -48,7 +48,7 @@ menu-active
                             <ul class="courses-list">
                                 @foreach ($forum as $item)
                                 <li>
-                                    <a class="wow fadeInLeft" href="courses.html" data-wow-duration="1s"
+                                    <a class="wow fadeInLeft" href="{{ route('showForum.courses', $item->id)}}" data-wow-duration="1s"
                                         data-wow-delay=".1s">
                                         <i class="fa fa-book"></i> {{ $item->nama }}
                                     </a>

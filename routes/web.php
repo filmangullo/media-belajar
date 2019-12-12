@@ -28,6 +28,7 @@ Route::resource('courses', 'CoursesController')->names([
 Route::get('/courses/enroll/{id}', 'CoursesController@enrollCreate')->name('enroll.courses')->middleware('auth');
 Route::post('/courses/enroll-store', 'CoursesController@enrollStore')->name('enrollStore.courses')->middleware('auth');
 
+Route::get('/courses/show-forum/{id}', 'CoursesController@showForum')->name('showForum.courses')->middleware('auth');
 Route::get('/courses/create-forum/{id}', 'CoursesController@createForum')->name('createForum.courses')->middleware('auth');
 Route::post('/courses/store-forum/{id}', 'CoursesController@storeForum')->name('storeForum.courses')->middleware('auth');
 
