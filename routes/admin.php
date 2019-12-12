@@ -33,3 +33,19 @@ Route::prefix('forum-on-kelas-mata-pelajaran')->group(function () {
     Route::get('/create/{id}', 'ForumController@create')->name('adm.forum.create');
     Route::post('/store', 'ForumController@store')->name('adm.forum.store');
 });
+
+
+
+// User Control
+Route::prefix('user')->group(function () {
+    Route::get('/index', 'UserController@index')->name('adm.user.index');
+    Route::get('/edit/{id}', 'UserController@edit')->name('adm.user.edit');
+    Route::post('/update/{id}', 'UserController@update')->name('adm.user.update');
+});
+
+// User Control
+Route::prefix('pelajar')->group(function () {
+    Route::get('/index', 'PelajarController@index')->name('adm.pelajar.index');
+    Route::get('/edit/{id}', 'PelajarController@edit')->name('adm.pelajar.edit');
+    Route::post('/update/{id}', 'PelajarController@update')->name('adm.pelajar.update');
+});

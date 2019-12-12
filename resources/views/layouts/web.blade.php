@@ -49,7 +49,7 @@
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
                         <li><a href="/">Home</a></li>
-                        <li class="@yield('courses')"><a href="courses">Courses</a></li>
+                        <li class="@yield('courses')"><a href="{{ route('index.courses') }}">Courses</a></li>
 						<li class="@yield('about')"><a href="about">About</a></li>
 						<li class="@yield('contact')"><a href="{{ route('index.contact') }}">Contact</a></li>
                     @if (Route::has('login'))

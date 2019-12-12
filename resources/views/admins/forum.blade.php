@@ -45,7 +45,7 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        {{-- @foreach ($kelasMataPelajarans as $key => $item)
+                        @foreach ($forum as $key => $item)
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td><a href="{{ route('adm.forum.index', $item->id) }}">{{ $item->nama }}</a></td>
@@ -53,7 +53,7 @@
                                 <td>{{ $item->enroll_key}}</td>
                                 <td>2011/01/25</td>
                             </tr>
-                        @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
             </div>

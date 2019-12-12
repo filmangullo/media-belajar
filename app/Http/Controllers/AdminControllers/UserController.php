@@ -4,11 +4,9 @@ namespace App\Http\Controllers\AdminControllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Instansi;
-use App\KelasMataPelajaran;
-use App\Forum;
+use App\User;
 
-class ForumController extends Controller
+class UserController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,15 +23,13 @@ class ForumController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $kelasMataPelajarans = KelasMataPelajaran::where('id', $id)
-                                ->first();
-        $forum = Forum::where('kelas_mata_pelajarans_id', $id)
-                      ->get();
-        return view('admins.forum', [
-            'kelasMataPelajarans' => $kelasMataPelajarans,
-            'forum'               => $forum
+        $user = User::where('role', '!=', 'pelajar')
+                    ->where('role', '!=', 'pengajar')
+                    ->get();
+        return view('admins.user', [
+            'user' => $user
         ]);
     }
 
@@ -42,13 +38,9 @@ class ForumController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        $kelasMataPelajarans = KelasMataPelajaran::where('id', $id)
-                                ->first();
-        return view('admins.forum_create', [
-            'kelasMataPelajarans' => $kelasMataPelajarans
-        ]);
+        //
     }
 
     /**
@@ -59,13 +51,7 @@ class ForumController extends Controller
      */
     public function store(Request $request)
     {
-        $store = new Forum;
-        $store->kelas_mata_pelajarans_id = $request->kelas_mata_pelajarans_id;
-        $store->nama = $request->nama;
-        if($store->save()) {
-            return redirect()->route('adm.forum.index',  $store->kelas_mata_pelajarans_id );
-        }
-
+        //
     }
 
     /**

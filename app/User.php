@@ -9,6 +9,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+    public const ROLE_USER = 'user';
+    public const ROLE_PENGAJAR = 'pengajar';
+    public const ROLE_PELAJAR = 'pelajar';
 
     /**
      * The attributes that are mass assignable.

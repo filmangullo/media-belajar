@@ -64,7 +64,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="/admin">
+                <a class="nav-link" href="{{ route('adm.user.index') }}">
                     <i class="fas fa-fw fa-chalkboard-teacher"></i>
                     <span>User</span></a>
             </li>
@@ -78,7 +78,7 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="/admin">
+                <a class="nav-link" href="{{ route('adm.pelajar.index') }}">
                     <i class="fas fa-fw fa-user-graduate"></i>
                     <span>Pelajar</span></a>
             </li>

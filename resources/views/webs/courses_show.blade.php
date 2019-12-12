@@ -43,48 +43,14 @@ menu-active
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <ul class="courses-list">
+                                @foreach ($forum as $item)
                                 <li>
                                     <a class="wow fadeInLeft" href="courses.html" data-wow-duration="1s"
                                         data-wow-delay=".1s">
-                                        <i class="fa fa-book"></i> Development
+                                        <i class="fa fa-book"></i> {{ $item->nama }}
                                     </a>
                                 </li>
-                                <li>
-                                    <a class="wow fadeInLeft" href="courses.html" data-wow-duration="1s"
-                                        data-wow-delay=".3s">
-                                        <i class="fa fa-book"></i> IT & Software
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="wow fadeInLeft" href="courses.html" data-wow-duration="1s"
-                                        data-wow-delay=".5s">
-                                        <i class="fa fa-book"></i> Photography
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="wow fadeInLeft" href="courses.html" data-wow-duration="1s"
-                                        data-wow-delay=".7s">
-                                        <i class="fa fa-book"></i> Language
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="wow fadeInLeft" href="courses.html" data-wow-duration="1s"
-                                        data-wow-delay=".9s">
-                                        <i class="fa fa-book"></i> Life Science
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="wow fadeInLeft" href="courses.html" data-wow-duration="1s"
-                                        data-wow-delay="1.1s">
-                                        <i class="fa fa-book"></i> Business
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="wow fadeInLeft" href="courses.html" data-wow-duration="1s"
-                                        data-wow-delay="1.3s">
-                                        <i class="fa fa-book"></i> Socoal Science
-                                    </a>
-                                </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

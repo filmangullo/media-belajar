@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\KelasMataPelajaran;
 use App\Participant;
 use Illuminate\Support\Facades\Auth;
+use App\Forum;
 
 class CoursesController extends Controller
 {
@@ -83,8 +84,12 @@ class CoursesController extends Controller
         } else if (!$cek == false) {
             $kelas = KelasMataPelajaran::where('id', $id)
                                         ->first();
+            $forum = Forum::where('kelas_mata_pelajarans_id', $kelas->id)
+                          ->get();
+
             return view ('webs.courses_show', [
-                'kelas' => $kelas
+                'kelas' => $kelas,
+                'forum' => $forum
             ]);
         }
 
