@@ -43,7 +43,14 @@ Route::prefix('user')->group(function () {
     Route::post('/update/{id}', 'UserController@update')->name('adm.user.update');
 });
 
-// User Control
+// Pengajar Control
+Route::prefix('pengajar')->group(function () {
+    Route::get('/index', 'PengajarController@index')->name('adm.pengajar.index');
+    Route::get('/edit/{id}', 'PengajarController@edit')->name('adm.pengajar.edit');
+    Route::post('/update/{id}', 'PengajarController@update')->name('adm.pengajar.update');
+});
+
+// Pelajar Control
 Route::prefix('pelajar')->group(function () {
     Route::get('/index', 'PelajarController@index')->name('adm.pelajar.index');
     Route::get('/edit/{id}', 'PelajarController@edit')->name('adm.pelajar.edit');

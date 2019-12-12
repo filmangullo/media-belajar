@@ -73,7 +73,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('admins.user_edit', [
+            'user'  => $user
+        ]);
     }
 
     /**
@@ -85,7 +89,15 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = User::findOrFail($id);
+
+        $update->name = $request->name;
+        $update->email = $request->email;
+        $update->role = $request->role;
+
+        if($update->save()) {
+            return redirect()->route('adm.user.index');
+        }
     }
 
     /**

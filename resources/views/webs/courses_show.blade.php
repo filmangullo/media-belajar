@@ -36,7 +36,10 @@ menu-active
                        {{ $kelas->keterangan }}
                     </p>
                 </div>
-                <a href="courses.html" class="primary-btn white">Forum Baru</a>
+                @if (auth::user()->role == 'pengajar')
+                    <a href="{{ route('createForum.courses', $kelas->id)}}" class="primary-btn white">Forum Baru</a>
+                @endif
+
             </div>
             <div class="offset-lg-1 col-lg-6">
                 <div class="courses-right">

@@ -71,7 +71,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="/admin">
+                <a class="nav-link" href="{{ route('adm.pengajar.index') }}">
                     <i class="fas fa-fw fa-chalkboard-teacher"></i>
                     <span>Pengajar</span></a>
             </li>

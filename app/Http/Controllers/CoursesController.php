@@ -128,4 +128,16 @@ class CoursesController extends Controller
     {
         //
     }
+
+    ////////////////////////////////////////////////////////////////// FORUM CONTROLLER
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createForum($id) {
+        return view('webs.courses_forum_create');
+    }
+
+
 }

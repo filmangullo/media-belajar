@@ -50,14 +50,14 @@
                                 <td>{{ $item->role }}</td>
                                 <td>
                                     <a href="#" class="btn btn-info btn-circle btn-sm">
-                                        <i class="fas fa-info-circle"></i>
-                                      </a>
-                                      <a href="#" class="btn btn-warning btn-circle btn-sm">
-                                        <i class="fas fa-exclamation-triangle"></i>
-                                      </a>
-                                      <a href="#" class="btn btn-danger btn-circle btn-sm">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('adm.user.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-danger btn-circle btn-sm">
                                         <i class="fas fa-trash"></i>
-                                      </a>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach

@@ -28,6 +28,8 @@ Route::resource('courses', 'CoursesController')->names([
 Route::get('/courses/enroll/{id}', 'CoursesController@enrollCreate')->name('enroll.courses')->middleware('auth');
 Route::post('/courses/enroll-store', 'CoursesController@enrollStore')->name('enrollStore.courses')->middleware('auth');
 
+Route::get('/courses/create-forum/{id}', 'CoursesController@createForum')->name('createForum.courses')->middleware('auth');
+
 Route::resource('about', 'AboutController')->names([
     'index' => 'index.about'
 ]);

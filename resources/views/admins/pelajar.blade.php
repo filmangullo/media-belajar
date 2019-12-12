@@ -4,8 +4,8 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Dasboard</h1>
-    <p class="mb-4">Data Ini bertujuan untuk melihat berapa banyak Kelas yang online yang dibuka dalam setiap instansi.
+    <h1 class="h3 mb-2 text-gray-800">Pelajar</h1>
+    <p class="mb-4">Data Ini bertujuan untuk melihat berapa banyak Siswa/Pelajar yang tedaftar.
     </p>
 
     <!-- DataTales Example -->
@@ -14,7 +14,7 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-10">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Instansi</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data Pelajar</h6>
                     </div>
                 </div>
             </div>
@@ -50,14 +50,14 @@
                                 <td>{{ $item->role }}</td>
                                 <td>
                                     <a href="#" class="btn btn-info btn-circle btn-sm">
-                                        <i class="fas fa-info-circle"></i>
-                                      </a>
-                                      <a href="#" class="btn btn-warning btn-circle btn-sm">
-                                        <i class="fas fa-exclamation-triangle"></i>
-                                      </a>
-                                      <a href="#" class="btn btn-danger btn-circle btn-sm">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-warning btn-circle btn-sm">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-danger btn-circle btn-sm">
                                         <i class="fas fa-trash"></i>
-                                      </a>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
