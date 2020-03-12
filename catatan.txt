@@ -1,0 +1,2 @@
+Kelas Forum -> ada batasan siswa
+            -> batasan bisa di update.
