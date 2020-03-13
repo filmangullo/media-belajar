@@ -27,7 +27,7 @@ class CoursesController extends Controller
     public function index()
     {
         $query = KelasMataPelajaran::all();
-        return view ('webs.courses', [
+        return view ('webs.courses.courses', [
             'kelas' => $query
         ]);
     }
@@ -87,7 +87,7 @@ class CoursesController extends Controller
             $forum = Forum::where('kelas_mata_pelajarans_id', $kelas->id)
                           ->get();
 
-            return view ('webs.courses_show', [
+            return view ('webs.forum.forum', [
                 'kelas' => $kelas,
                 'forum' => $forum
             ]);
@@ -128,42 +128,4 @@ class CoursesController extends Controller
     {
         //
     }
-
-    ////////////////////////////////////////////////////////////////// FORUM CONTROLLER
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function showForum($id) {
-        return view('webs.courses_forum');
-    }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function createForum($id) {
-        return view('webs.courses_forum_create', [
-            'id'    => $id
-        ]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function storeForum(Request $request, $id) {
-        $store = new Forum;
-        $store->kelas_mata_pelajarans_id = $id;
-        $store->nama = $request->nama;
-        if($store->save()) {
-            return redirect()->route('show.courses',  $id );
-        }
-    }
-
-
 }

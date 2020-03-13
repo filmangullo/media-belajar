@@ -29,10 +29,9 @@ menu-active
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="section-title text-center">
-                    <h1>Features That Make Us Hero</h1>
+                    <h1>Kelas / Forum</h1>
                     <p>
-                        If you are looking at blank cassettes on the web, you may be very confused at the difference in price. You may see some for
-                        as low as $.17 each.
+                        Selamat mengikuti forum pada kelas pembelajaran, semoga anda sukses dalam forum yang disediakan
                     </p>
                 </div>
             </div>

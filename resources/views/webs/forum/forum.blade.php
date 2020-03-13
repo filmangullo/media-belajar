@@ -37,6 +37,7 @@ menu-active
                     </p>
                 </div>
                 @if (auth::user()->role == 'pengajar')
+                
                     <a href="{{ route('createForum.courses', $kelas->id)}}" class="primary-btn white">Forum Baru</a>
                 @endif
 
@@ -48,7 +49,7 @@ menu-active
                             <ul class="courses-list">
                                 @foreach ($forum as $item)
                                 <li>
-                                    <a class="wow fadeInLeft" href="{{ route('showForum.courses', $item->id)}}" data-wow-duration="1s"
+                                    <a class="wow fadeInLeft" href="{{ route('index.pertemuan', $item->id) }}" data-wow-duration="1s"
                                         data-wow-delay=".1s">
                                         <i class="fa fa-book"></i> {{ $item->nama }}
                                     </a>

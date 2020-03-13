@@ -21,16 +21,24 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::get('/courses', 'CoursesController@index')->name('home');
 
-Route::resource('courses', 'CoursesController')->names([
-    'index' => 'index.courses',
-    'show' => 'show.courses',
-])->middleware('auth');
-Route::get('/courses/enroll/{id}', 'CoursesController@enrollCreate')->name('enroll.courses')->middleware('auth');
-Route::post('/courses/enroll-store', 'CoursesController@enrollStore')->name('enrollStore.courses')->middleware('auth');
+Route::prefix('courses')->middleware('auth')->group(function () {
+    Route::get('/', 'CoursesController@index')->name('index.courses');
+    Route::get('/{id}/show', 'CoursesController@show')->name('show.courses');
+    Route::get('/{id}/enroll', 'CoursesController@enrollCreate')->name('enroll.courses');
+    Route::post('/enroll-store', 'CoursesController@enrollStore')->name('enrollStore.courses');
+});
 
-Route::get('/courses/show-forum/{id}', 'CoursesController@showForum')->name('showForum.courses')->middleware('auth');
-Route::get('/courses/create-forum/{id}', 'CoursesController@createForum')->name('createForum.courses')->middleware('auth');
-Route::post('/courses/store-forum/{id}', 'CoursesController@storeForum')->name('storeForum.courses')->middleware('auth');
+Route::prefix('courses-forum')->middleware('auth')->group(function () {
+    Route::get('/{id}', 'ForumController@index')->name('showForum.courses');
+    Route::get('/{id}/create', 'ForumController@create')->name('createForum.courses');
+    Route::post('/{id}/store', 'ForumController@store')->name('storeForum.courses');
+});
+
+Route::prefix('courses-forum-pertemuan')->middleware('auth')->group(function () {
+    Route::get('/{id}', 'PertemuanController@index')->name('index.pertemuan');
+
+});
+
 
 Route::resource('about', 'AboutController')->names([
     'index' => 'index.about'
