@@ -18,4 +18,9 @@ class KelasMataPelajaran extends Model
     {
         return $this->belongsTo('App\Instansi', 'instansi_id', 'id');
     }
+
+    public function forums()
+    {
+        return $this->hasMany('App\Forum', 'forum_id', 'id');
+    }
 }

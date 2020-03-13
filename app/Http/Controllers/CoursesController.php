@@ -39,7 +39,7 @@ class CoursesController extends Controller
      */
     public function enrollCreate($id)
     {
-        return view('webs.courses_enroll', [
+        return view('webs.courses.enroll', [
             'parameterKey' => $id,
             'data'         => KelasMataPelajaran::findOrFail($id)
         ]);

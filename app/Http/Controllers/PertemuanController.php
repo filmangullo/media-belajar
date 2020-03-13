@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Forum;
+use App\ForumDeskripsi;
 
 class PertemuanController extends Controller
 {
@@ -13,7 +15,15 @@ class PertemuanController extends Controller
      */
     public function index($id)
     {
-        return view('webs.pertemuan.pertemuan');
+        $forum = Forum::where('id', $id)
+                      ->first();
+
+        $deskripsi = ForumDeskripsi::where('forum_id', $id)
+                      ->get();
+        return view('webs.pertemuan.pertemuan', [
+            'forum' => $forum,
+            'deskripsi' => $deskripsi
+        ]);
     }
 
     /**

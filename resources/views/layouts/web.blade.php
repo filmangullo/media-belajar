@@ -35,6 +35,7 @@
 	<link rel="stylesheet" href="{{ URL::asset('webs/css/animate.min.css') }}">
 	<link rel="stylesheet" href="{{ URL::asset('webs/css/owl.carousel.css') }}">
 	<link rel="stylesheet" href="{{ URL::asset('webs/css/main.css') }}">
+	@yield('style')
 </head>
 
 <body>
@@ -49,9 +50,9 @@
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
                         <li><a href="/">Home</a></li>
-                        <li class="@yield('courses')"><a href="{{ route('courses.index') }}">Courses</a></li>
-						<li class="@yield('about')"><a href="about">About</a></li>
-						<li class="@yield('contact')"><a href="{{ route('index.contact') }}">Contact</a></li>
+                        <li class="@yield('courses')"><a href="{{ route('index.courses') }}">Courses</a></li>
+												<li class="@yield('about')"><a href="about">About</a></li>
+												<li class="@yield('contact')"><a href="{{ route('index.contact') }}">Contact</a></li>
                     @if (Route::has('login'))
                         @auth
                         <li class="nav-item dropdown">
@@ -135,6 +136,7 @@
 	<script src="{{ URL::asset('webs/js/jquery.counterup.min.js') }}"></script>
 	<script src="{{ URL::asset('webs/js/mail-script.js') }}"></script>
 	<script src="{{ URL::asset('webs/js/main.js') }}"></script>
+	@yield('script')
 </body>
 
 </html>

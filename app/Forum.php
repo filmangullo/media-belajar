@@ -12,4 +12,9 @@ class Forum extends Model
      * @var string
      */
     protected $table = 'forums';
+
+    public function kelasmatapelajarans()
+    {
+        return $this->belongsTo('App\KelasMataPelajaran', 'kelas_mata_pelajarans_id', 'id');
+    }
 }

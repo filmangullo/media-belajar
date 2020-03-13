@@ -36,7 +36,11 @@ Route::prefix('courses-forum')->middleware('auth')->group(function () {
 
 Route::prefix('courses-forum-pertemuan')->middleware('auth')->group(function () {
     Route::get('/{id}', 'PertemuanController@index')->name('index.pertemuan');
+});
 
+Route::prefix('courses-forum-pertemuan-description')->middleware('auth')->group(function () {
+    Route::get('/{id}/create', 'DeskripsiController@create')->name('create.deskripsi');
+    Route::post('/{id}/store', 'DeskripsiController@store')->name('store.deskripsi');
 });
 
 

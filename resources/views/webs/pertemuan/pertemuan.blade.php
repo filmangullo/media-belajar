@@ -6,13 +6,40 @@ menu-active
 
 @endsection
 
+@section('style')
+<style>
+	h1,h2,p,a{
+		font-family: sans-serif;
+		font-weight: normal;
+	}
+
+	.jam-digital-malasngoding {
+		overflow: hidden;
+		width: 340px;
+		margin: 20px auto;
+		border: 5px solid #efefef;
+	}
+	.kotak{
+		float: left;
+		width: 110px;
+		height: 80px;
+		background-color: #189fff;
+	}
+	.jam-digital-malasngoding p {
+		color: #fff;
+		font-size: 36px;
+		text-align: center;
+		margin-top: 30px;
+	}
+</style>
+@endsection
+
 @section('header')
 
 <h1 class="text-white">
-    Courses
+    {{ $forum->kelasMataPelajarans['nama'] }}
 </h1>
-<p>In the history of modern astronomy, there is probably no one greater leap forward than the building and launch of
-    the space telescope.</p>
+<p>{{ $forum->kelasMataPelajarans['keterangan'] }}</p>
 <div class="link-nav">
     <span class="box">
         <a href="/">Home </a>
@@ -27,9 +54,33 @@ menu-active
 <div class="whole-wrap">
     <div class="container">
         <div class="section-top-border">
+          <div class="jam-digital-malasngoding">
+          	<div class="kotak">
+          		<p id="jam"></p>
+          	</div>
+          	<div class="kotak">
+          		<p id="menit"></p>
+          	</div>
+          	<div class="kotak">
+          		<p id="detik"></p>
+          	</div>
+          </div>
+          @if (auth::user()->role == 'pengajar')
+          <div class="row mb-20">
+            <div class="col-md-4">
+              	<a href="javascript:void(0);" data-href="{{ route('create.deskripsi', $forum->id) }}" class="primary-btn btn-block text-center openPopup">Tambah Deskripsi</a>
+          </div>
+          @endif
+          </div>
             <div class="row">
                 <div class="col-lg-8 col-md-8">
-                    <h3 class="mb-30">Form Element</h3>
+									<h4 class="mb-10">Deskripsi / Quotes</h4>
+									<div class="wow fadeIn" data-wow-duration="1s">
+										@foreach ($deskripsi as $key => $value)
+												<p>{{ $value->deskripsi }}</p>
+									  @endforeach
+									</div>
+                    <h4 class="mb-30">Forum Diskusi</h4>
                     <form action="#">
                         <div class="mt-10">
                             <textarea class="single-textarea" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'"
@@ -86,4 +137,31 @@ menu-active
             </div>
         </div>
         <!-- End Align Area -->
+        @include('layouts.modal')
+@endsection
+
+@section('script')
+<script>
+	window.setTimeout("waktu()", 1000);
+
+	function waktu() {
+		var waktu = new Date();
+		setTimeout("waktu()", 1000);
+		document.getElementById("jam").innerHTML = waktu.getHours();
+		document.getElementById("menit").innerHTML = waktu.getMinutes();
+		document.getElementById("detik").innerHTML = waktu.getSeconds();
+	}
+</script>
+<script>
+    $(document).ready(function () {
+        $('.openPopup').on('click', function () {
+            var dataURL = $(this).attr('data-href');
+            $('.modal-dialog').load(dataURL, function () {
+                $('#myModal').modal({
+                    show: true
+                });
+            });
+        });
+    });
+</script>
 @endsection
