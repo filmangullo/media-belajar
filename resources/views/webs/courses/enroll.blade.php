@@ -26,6 +26,7 @@ menu-active
 	<!-- Start contact-page Area -->
 	<section class="contact-page-area section-gap">
 		<div class="container">
+      @include('layouts.alert')
 			<div class="row">
 				<div class="col-lg-5 d-flex flex-column address-wrap">
 					<div class="single-contact-address d-flex flex-row">

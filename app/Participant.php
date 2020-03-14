@@ -12,4 +12,9 @@ class Participant extends Model
      * @var string
      */
     protected $table = 'participants';
+
+    public function users()
+    {
+        return $this->belongsTo('App\User', 'user_id', 'id');
+    }
 }

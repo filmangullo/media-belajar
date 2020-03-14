@@ -23,6 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('courses')->middleware('auth')->group(function () {
     Route::get('/', 'CoursesController@index')->name('index.courses');
+    Route::get('/create', 'CoursesController@create')->name('create.courses');
+    Route::post('/store', 'CoursesController@store')->name('store.courses');
     Route::get('/{id}/show', 'CoursesController@show')->name('show.courses');
     Route::get('/{id}/enroll', 'CoursesController@enrollCreate')->name('enroll.courses');
     Route::post('/enroll-store', 'CoursesController@enrollStore')->name('enrollStore.courses');
@@ -43,6 +45,15 @@ Route::prefix('courses-forum-pertemuan-description')->middleware('auth')->group(
     Route::post('/{id}/store', 'DeskripsiController@store')->name('store.deskripsi');
 });
 
+Route::prefix('courses-forum-pertemuan-diskusi')->middleware('auth')->group(function () {
+    Route::get('/{id}/create', 'ForumDiskusiController@create')->name('create.diskusi');
+    Route::post('/{id}/store', 'ForumDiskusiController@store')->name('store.diskusi');
+});
+
+Route::prefix('courses-forum-pertemuan-diskusi-comment')->middleware('auth')->group(function () {
+    Route::get('/{id}/create', 'DiskusiCommentController@create')->name('create.diskusicomment');
+    Route::post('/{id}/store', 'DiskusiCommentController@store')->name('store.diskusicomment');
+});
 
 Route::resource('about', 'AboutController')->names([
     'index' => 'index.about'

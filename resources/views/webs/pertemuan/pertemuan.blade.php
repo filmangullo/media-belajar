@@ -80,56 +80,80 @@ menu-active
 												<p>{{ $value->deskripsi }}</p>
 									  @endforeach
 									</div>
-                    <h4 class="mb-30">Forum Diskusi</h4>
-                    <form action="#">
+										<div class="comments-area">
+											<h4 class="mb-30">Forum Diskusi</h4>
+
+											<!--List Diskusi -->
+											@foreach ($diskusi as $key => $value)
+											<div class="comment-list">
+												<div class="single-comment justify-content-between d-flex">
+													<div class="user justify-content-between d-flex">
+														<div class="thumb">
+															<img src="{{asset($value->users['role'].'.png')}}" alt="" width="40">
+														</div>
+														<div class="desc">
+															<h5><a href="#">{{ $value->users['name'] }}</a></h5>
+															<p class="date">{{ date_format($value->created_at, "F d, Y" ) }} at {{ date_format($value->created_at, "H:i:s" ) }} </p>
+															<p class="comment">
+																{{ $value->diskusi }}
+																{{ $value->id }}
+															</p>
+														</div>
+													</div>
+													<div class="reply-btn">
+														<a href="javascript:void(0);" data-href="{{ route('create.diskusicomment', $value->id) }}" class="btn-reply text-uppercase openPopup">Comment</a>
+													</div>
+												</div>
+											</div>
+											<!-- List Coment Diskusi -->
+											@foreach ($comments as $key => $comment)
+												@if($value->id == $comment->forum_diskusi_id)
+												<div class="comment-list left-padding">
+													<div class="single-comment justify-content-between d-flex">
+														<div class="user justify-content-between d-flex">
+															<div class="thumb">
+																<img src="{{asset($comment->users['role'].'.png')}}" alt="" width="40">
+															</div>
+															<div class="desc">
+																<h5><a href="#">{{ $comment->users['name'] }}</a></h5>
+																<p class="date">{{ date_format($comment->created_at, "F d, Y" ) }} at {{ date_format($comment->created_at, "H:i:s" ) }}</p>
+																<p class="comment">
+																	{{ $comment->comment }}
+																</p>
+															</div>
+														</div>
+													</div>
+												</div>
+												@endif
+											@endforeach
+											<!-- End List Comment Diskusi -->
+											@endforeach
+											<!-- End List Diskusi -->
+
+										</div>
+                    <form action="{{ route('store.diskusi', $forum->id) }}" method="post">
+											{{ csrf_field() }}
                         <div class="mt-10">
-                            <textarea class="single-textarea" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'"
+                            <textarea class="single-textarea" name="diskusi" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'"
                              required></textarea>
                         </div>
-                        <div class="mt-10">
-                            <input type="text" name="first_name" placeholder="Secondary color" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Secondary color'"
-                             required class="single-input-secondary">
-                        </div>
+												<div class="button-group-area mt-40 text-left">
+													<button type="submit" class="genric-btn primary circle arrow">Submite<span class="lnr lnr-location"></span></button>
+												</div>
                     </form>
                 </div>
                 <div class="col-lg-3 col-md-4 mt-sm-30">
                             <div class="single-element-widget mt-30 ">
                                 <h3 class="mb-30 ">Participant</h3>
+																@foreach ($participant as $key => $value)
                                 <div class="switch-wrap d-flex justify-content-between ">
-                                    <p>01. Sample Checkbox</p>
+                                    <p>{{$key+1}}. {{ $value->users['name'] }}</p>
                                     <div class="primary-checkbox ">
-                                        <input type="checkbox " id="default-checkbox ">
-                                        <label for="default-checkbox "></label>
+																			{!! $value->users['role'] == 'pengajar' ? '<span class="lnr lnr-briefcase"></span>' : '<span class="lnr lnr-graduation-hat"></span>' !!} 
+
                                     </div>
                                 </div>
-                                <div class="switch-wrap d-flex justify-content-between ">
-                                    <p>02. Primary Color Checkbox</p>
-                                    <div class="primary-checkbox ">
-                                        <input type="checkbox " id="primary-checkbox " checked>
-                                        <label for="primary-checkbox "></label>
-                                    </div>
-                                </div>
-                                <div class="switch-wrap d-flex justify-content-between ">
-                                    <p>03. Confirm Color Checkbox</p>
-                                    <div class="confirm-checkbox ">
-                                        <input type="checkbox " id="confirm-checkbox ">
-                                        <label for="confirm-checkbox "></label>
-                                    </div>
-                                </div>
-                                <div class="switch-wrap d-flex justify-content-between ">
-                                    <p>04. Disabled Checkbox</p>
-                                    <div class="disabled-checkbox ">
-                                        <input type="checkbox " id="disabled-checkbox " disabled>
-                                        <label for="disabled-checkbox "></label>
-                                    </div>
-                                </div>
-                                <div class="switch-wrap d-flex justify-content-between ">
-                                    <p>05. Disabled Checkbox active</p>
-                                    <div class="disabled-checkbox ">
-                                        <input type="checkbox " id="disabled-checkbox-active " checked disabled>
-                                        <label for="disabled-checkbox-active "></label>
-                                    </div>
-                                </div>
+																@endforeach
                             </div>
                         </div>
                     </div>

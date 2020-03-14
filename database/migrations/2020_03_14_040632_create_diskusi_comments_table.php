@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateForumDiskusisTable extends Migration
+class CreateDiskusiCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,21 @@ class CreateForumDiskusisTable extends Migration
      */
     public function up()
     {
-        Schema::create('forum_diskusis', function (Blueprint $table) {
+        Schema::create('diskusi_comments', function (Blueprint $table) {
           $table->bigIncrements('id');
           $table->unsignedBigInteger('forum_id');
+          $table->unsignedBigInteger('forum_diskusi_id');
           $table->unsignedBigInteger('user_id');
-          $table->text('diskusi');
+          $table->text('comment');
           $table->timestamps();
           $table->softDeletes();
 
           $table->foreign('forum_id')
                 ->references('id')->on('forums')
+                ->onDelete('cascade');
+
+          $table->foreign('forum_diskusi_id')
+                ->references('id')->on('forum_diskusis')
                 ->onDelete('cascade');
 
           $table->foreign('user_id')
@@ -38,6 +43,6 @@ class CreateForumDiskusisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('forum_diskusis');
+        Schema::dropIfExists('duskusi_comments');
     }
 }

@@ -39,4 +39,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function participants()
+    {
+        return $this->hasMany('App\Participant', 'user_id', 'id');
+    }
+
+    public function forumDiskusis()
+    {
+        return $this->hasMany('App\ForumDiskusi', 'user_id', 'id');
+    }
+
+    public function diskusiComments()
+    {
+        return $this->hasMany('App\DiskusiComments', 'user_id', 'id');
+    }
 }

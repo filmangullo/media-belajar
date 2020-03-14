@@ -3,11 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Participant;
 use App\Forum;
 use App\ForumDeskripsi;
+use App\ForumDiskusi;
+use App\DiskusiComment;
+
 
 class PertemuanController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,11 +32,23 @@ class PertemuanController extends Controller
         $forum = Forum::where('id', $id)
                       ->first();
 
+        $participant = Participant::where('kelas_mata_pelajarans_id', $forum->kelasmatapelajarans['id'])
+                                  ->get();
+
         $deskripsi = ForumDeskripsi::where('forum_id', $id)
                       ->get();
+
+        $diskusi = ForumDiskusi::where('forum_id', $id)
+                      ->get();
+
+        $comments = DiskusiComment::where('forum_id', $id)
+                      ->get();
         return view('webs.pertemuan.pertemuan', [
-            'forum' => $forum,
-            'deskripsi' => $deskripsi
+            'participant' => $participant,
+            'forum'       => $forum,
+            'deskripsi'   => $deskripsi,
+            'diskusi'     => $diskusi,
+            'comments'    => $comments
         ]);
     }
 

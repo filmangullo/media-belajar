@@ -33,7 +33,13 @@ menu-active
                     <p>
                         Selamat mengikuti forum pada kelas pembelajaran, semoga anda sukses dalam forum yang disediakan
                     </p>
+                    <div class="button-group-area mt-10 text-center">
+              				@if(Auth::user()->role == 'pengajar')
+              				<a href="{{ route('create.courses')}}" class="genric-btn primary circle arrow">Tambah Kelas Baru<span class="lnr lnr-database"></span></a>
+                      @endif
+              			</div>
                 </div>
+
             </div>
         </div>
         <div class="feature-inner row">

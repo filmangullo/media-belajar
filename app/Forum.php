@@ -17,4 +17,14 @@ class Forum extends Model
     {
         return $this->belongsTo('App\KelasMataPelajaran', 'kelas_mata_pelajarans_id', 'id');
     }
+
+    public function forumDiskusis()
+    {
+        return $this->hasMany('App\ForumDiskusi', 'forum_id', 'id');
+    }
+
+    public function diskusiComments()
+    {
+        return $this->hasMany('App\DiskusiComment', 'forum_id', 'id');
+    }
 }
