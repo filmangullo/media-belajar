@@ -50,6 +50,8 @@ Route::prefix('courses-forum-pertemuan-description')->middleware('auth')->group(
 Route::prefix('courses-forum-pertemuan-diskusi')->middleware('auth')->group(function () {
     Route::get('/{id}/create', 'ForumDiskusiController@create')->name('create.diskusi');
     Route::post('/{id}/store', 'ForumDiskusiController@store')->name('store.diskusi');
+    Route::get('/{id}/edit', 'ForumDiskusiController@edit')->name('edit.diskusi');
+    Route::post('/{id}/update', 'ForumDiskusiController@update')->name('update.diskusi');
 });
 
 Route::prefix('courses-forum-pertemuan-diskusi-comment')->middleware('auth')->group(function () {

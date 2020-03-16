@@ -39,6 +39,7 @@ class PertemuanController extends Controller
                       ->get();
 
         $diskusi = ForumDiskusi::where('forum_id', $id)
+                      ->orderBy('id')
                       ->get();
 
         $comments = DiskusiComment::where('forum_id', $id)
