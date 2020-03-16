@@ -45,8 +45,21 @@ menu-active
         <div class="feature-inner row">
             @foreach ($kelas as $item)
                 <div class="col-lg-4 col-md-6">
+                  @if ( Auth::user()->id == $item->user_id )
+                    <form action="{{ route('destroy.courses', $item->id )}}" method="post">
+                        <input class="genric-btn danger-border float-right" type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this item?');" />
+                        @method('delete')
+                        @csrf
+                    </form>
+                  @else
+                    <a href="#" class="genric-btn disable float-right" >Delete</a>
+                  @endif
+
+
                     <div class="feature-item">
-                        <i class="fa fa-book"></i>
+                        <p>
+                          <i class="fa fa-book"></i>&nbsp;{{ $item->users['name'] }}
+                        </p>
                         <h4><a href="{{ route('show.courses', $item->id) }}">{{ $item->nama }}</a></h4>
                         <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay=".1s">
                             <p>

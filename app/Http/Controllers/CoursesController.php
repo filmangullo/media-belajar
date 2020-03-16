@@ -56,13 +56,13 @@ class CoursesController extends Controller
     {
         $store = new KelasMataPelajaran();
 
-
         $store->instansi_id = $request->instansi;
-        $store->nama = $request->nama;
-        $store->keterangan = $request->keterangan;
-        $store->enroll_key = $request->enroll_key;
-        $store->type = $request->type;
-        $store->is_active = true;
+        $store->user_id     = Auth::user()->id;
+        $store->nama        = $request->nama;
+        $store->keterangan  = $request->keterangan;
+        $store->enroll_key  = $request->enroll_key;
+        $store->type        = $request->type;
+        $store->is_active   = true;
         if($store->save()) {
           $siswa = new Participant();
 
@@ -73,6 +73,43 @@ class CoursesController extends Controller
             return redirect()->route('show.courses', $store->id);
           }
         }
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $query = KelasMataPelajaran::findorFail($id)->delete();
+
+        return redirect()->route('index.courses')
+                         ->with('delete','Anda telah berhasil menghapus Data');
     }
 
     /**
@@ -140,39 +177,5 @@ class CoursesController extends Controller
             ]);
         }
 
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

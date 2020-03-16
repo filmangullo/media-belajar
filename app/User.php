@@ -45,6 +45,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Participant', 'user_id', 'id');
     }
 
+    public function kelasMataPelajarans()
+    {
+        return $this->belongsTo('App\KelasMataPelajaran', 'user_id', 'id');
+    }
+
     public function forumDiskusis()
     {
         return $this->hasMany('App\ForumDiskusi', 'user_id', 'id');

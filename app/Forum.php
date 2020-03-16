@@ -3,15 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Forum extends Model
 {
+    use SoftDeletes;
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'forums';
+    protected $dates = ['deleted_at'];
 
     public function kelasmatapelajarans()
     {

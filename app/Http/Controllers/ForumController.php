@@ -114,6 +114,11 @@ class ForumController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $query = Forum::findorFail($id);
+      $kelas_id = $query->kelas_mata_pelajarans_id;
+      $query->delete();
+
+      return redirect()->route('show.courses', $kelas_id)
+                       ->with('delete','Anda telah berhasil menghapus Data');
     }
 }

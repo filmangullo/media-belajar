@@ -37,7 +37,7 @@ menu-active
                     </p>
                 </div>
                 @if (auth::user()->role == 'pengajar')
-                
+
                     <a href="{{ route('createForum.courses', $kelas->id)}}" class="primary-btn white">Forum Baru</a>
                 @endif
 

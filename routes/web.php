@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('/')->group(function () {
+    Route::get('', 'WelcomeController@index')->name('index.welcome');
 });
 
 Auth::routes();
@@ -26,6 +26,7 @@ Route::prefix('courses')->middleware('auth')->group(function () {
     Route::get('/create', 'CoursesController@create')->name('create.courses');
     Route::post('/store', 'CoursesController@store')->name('store.courses');
     Route::get('/{id}/show', 'CoursesController@show')->name('show.courses');
+    Route::delete('/{id}/destroy', 'CoursesController@destroy')->name('destroy.courses');
     Route::get('/{id}/enroll', 'CoursesController@enrollCreate')->name('enroll.courses');
     Route::post('/enroll-store', 'CoursesController@enrollStore')->name('enrollStore.courses');
 });
@@ -34,6 +35,7 @@ Route::prefix('courses-forum')->middleware('auth')->group(function () {
     Route::get('/{id}', 'ForumController@index')->name('showForum.courses');
     Route::get('/{id}/create', 'ForumController@create')->name('createForum.courses');
     Route::post('/{id}/store', 'ForumController@store')->name('storeForum.courses');
+    Route::delete('/{id}/destroy', 'ForumController@destroy')->name('destroyForum.courses');
 });
 
 Route::prefix('courses-forum-pertemuan')->middleware('auth')->group(function () {

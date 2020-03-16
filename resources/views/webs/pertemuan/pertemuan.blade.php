@@ -69,9 +69,22 @@ menu-active
           <div class="row mb-20">
             <div class="col-md-4">
               	<a href="javascript:void(0);" data-href="{{ route('create.deskripsi', $forum->id) }}" class="primary-btn btn-block text-center openPopup">Tambah Deskripsi</a>
-          </div>
+          	</div>
+					</div>
+					<div class="row mb-20">
+            <div class="col-md-2 offset-md-8">
+								<a href="#" class="genric-btn info btn-block text-center">Edit</a>
+          	</div>
+						<div class="col-md-2">
+								<form action="{{ route('destroyForum.courses', $forum->id )}}" method="post">
+										<input class="genric-btn danger btn-block text-center" type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this item?');" />
+										@method('delete')
+										@csrf
+								</form>
+          	</div>
+					</div>
           @endif
-          </div>
+
             <div class="row">
                 <div class="col-lg-8 col-md-8">
 									<h4 class="mb-10">Deskripsi / Quotes</h4>
@@ -149,7 +162,7 @@ menu-active
                                 <div class="switch-wrap d-flex justify-content-between ">
                                     <p>{{$key+1}}. {{ $value->users['name'] }}</p>
                                     <div class="primary-checkbox ">
-																			{!! $value->users['role'] == 'pengajar' ? '<span class="lnr lnr-briefcase"></span>' : '<span class="lnr lnr-graduation-hat"></span>' !!} 
+																			{!! $value->users['role'] == 'pengajar' ? '<span class="lnr lnr-briefcase"></span>' : '<span class="lnr lnr-graduation-hat"></span>' !!}
 
                                     </div>
                                 </div>
