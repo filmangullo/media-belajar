@@ -77,6 +77,10 @@ menu-active
                     <a href="javascript:void(0);" data-href="{{ route('create.deskripsi', $forum->id) }}"
                         class="primary-btn btn-block text-center openPopup">Tambah Deskripsi</a>
                 </div>
+                <div class="col-md-4">
+                    <a href="{{ route('index.kuispanel', $forum->id) }}"
+                        class="primary-btn btn-block text-center ">Kuis Panel</a>
+                </div>
             </div>
             <div class="row mb-20">
                 <div class="col-md-2 offset-md-8">

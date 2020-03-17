@@ -30,4 +30,9 @@ class Forum extends Model
     {
         return $this->hasMany('App\DiskusiComment', 'forum_id', 'id');
     }
+
+    public function kuiss()
+    {
+        return $this->hasMany('App\ForumKuis', 'forum_id', 'id');
+    }
 }

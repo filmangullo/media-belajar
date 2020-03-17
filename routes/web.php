@@ -47,6 +47,13 @@ Route::prefix('courses-forum-pertemuan-description')->middleware('auth')->group(
     Route::post('/{id}/store', 'DeskripsiController@store')->name('store.deskripsi');
 });
 
+Route::prefix('courses-forum-pertemuan-kuis-panel')->middleware('auth')->group(function () {
+    Route::get('/{id}', 'KuisPanelController@index')->name('index.kuispanel');
+    Route::get('/{id}/create', 'KuisPanelController@create')->name('create.kuispanel');
+    Route::post('/{id}/store', 'KuisPanelController@store')->name('store.kuispanel');
+    Route::delete('/{id}/destroy', 'KuisPanelController@destroy')->name('destroy.kuispanel');
+});
+
 Route::prefix('courses-forum-pertemuan-diskusi')->middleware('auth')->group(function () {
     Route::get('/{id}/create', 'ForumDiskusiController@create')->name('create.diskusi');
     Route::post('/{id}/store', 'ForumDiskusiController@store')->name('store.diskusi');
