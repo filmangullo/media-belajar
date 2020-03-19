@@ -7,7 +7,7 @@
     </div>
 
     <div class="modal-body">
-      <form action="{{ route('store.kuispanel', $forum->id )}}" method="post" enctype="multipart/form-data">
+      <form action="{{ route('store_soal.kuispanel', $forum->id )}}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="col-md-12">
           <label for="w3mission">Soal : </label>

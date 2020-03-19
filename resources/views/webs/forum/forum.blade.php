@@ -9,15 +9,16 @@ menu-active
 @section('header')
 
 <h1 class="text-white">
-    Courses
+    Kelas Online
 </h1>
-<p>In the history of modern astronomy, there is probably no one greater leap forward than the building and launch of
-    the space telescope.</p>
+<p>Selamat datang, Silahkan mengikuti forum atau pertuam secara Online, jangan Ketinggalan dalam diskusi.</p>
 <div class="link-nav">
     <span class="box">
         <a href="/">Home </a>
         <i class="lnr lnr-arrow-right"></i>
-        <a href="courses.html">Courses</a>
+        <a href="{{ route('index.courses') }}">Courses</a>
+        <i class="lnr lnr-arrow-right"></i>
+        <a href="{{ route('show.courses', $kelas->id )}}">{{ $kelas->nama }}</a>
     </span>
 </div>
 @endsection

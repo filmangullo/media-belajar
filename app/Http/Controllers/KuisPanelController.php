@@ -5,10 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Forum;
 use App\ForumKuis;
+use App\ForumKuisPanel;
 use Auth;
 
 class KuisPanelController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,9 +31,13 @@ class KuisPanelController extends Controller
                       ->first();
         $kuis = ForumKuis::where('forum_id', $id)
                       ->get();
+
+        $panel = ForumKuisPanel::where('forum_id', $forum->id)
+                      ->first();
         return view('webs.kuis.kuis_panel',[
-            'forum' => $forum,
-            'kuis'    => $kuis
+            'forum'   => $forum,
+            'kuis'    => $kuis,
+            'panel'   => $panel
         ]);
     }
 
@@ -31,11 +46,11 @@ class KuisPanelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create_soal($id)
     {
         $forum = Forum::where('id', $id)
                       ->first();
-        return view('webs.kuis.kuis_create',[
+        return view('webs.kuis.kuis_create_soal',[
             'forum' => $forum
         ]);
     }
@@ -46,7 +61,7 @@ class KuisPanelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store_soal(Request $request, $id)
     {
         $query = new ForumKuis();
 
@@ -105,7 +120,7 @@ class KuisPanelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy_soal($id)
     {
       $query = ForumKuis::findorFail($id);
       $forum_id = $query->forum_id;
@@ -113,5 +128,25 @@ class KuisPanelController extends Controller
 
       return redirect()->route('index.kuispanel', $forum_id)
                        ->with('success','Anda telah berhasil menghapus Data');
+    }
+
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update_panel(Request $request, $id)
+    {
+        $query = ForumKuisPanel::findorFail($id);
+        $query->open_kuis = $request->open_kuis == "true" ? true : false;
+        $query->open_soal = $request->open_soal;
+        $query->save();
+
+        return redirect()->route('index.kuispanel', $query->forum_id)
+                         ->with('success','Panel berhasil di Update');
     }
 }

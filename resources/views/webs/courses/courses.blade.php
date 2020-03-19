@@ -17,7 +17,7 @@ menu-active
     <span class="box">
         <a href="/">Home </a>
         <i class="lnr lnr-arrow-right"></i>
-        <a href="courses.html">Courses</a>
+        <a href="{{ route('index.courses') }}">Courses</a>
     </span>
 </div>
 @endsection
@@ -51,8 +51,6 @@ menu-active
                         @method('delete')
                         @csrf
                     </form>
-                  @else
-                    <a href="#" class="genric-btn disable float-right" >Delete</a>
                   @endif
 
 

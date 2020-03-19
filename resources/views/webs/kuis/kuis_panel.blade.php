@@ -30,9 +30,28 @@ menu-active
             @if (auth::user()->role == 'pengajar')
             <div class="row mb-10">
                 <div class="col-md-12 text-center">
-                    <a href="javascript:void(0);" data-href="{{ route('create.kuispanel', $forum->id) }}"
+                    <a href="javascript:void(0);" data-href="{{ route('create_soal.kuispanel', $forum->id) }}"
                         class="primary-btn text-center openPopup">Buat Soal Kuis</a>
                 </div>
+
+                <div class="col-md-4 text-center">
+                  <form action="{{ route('update_panel.kuispanel', $panel->id ) }}" method="post" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+                  <label for="cars">Status Kuis :</label>
+                    <select id="open_kuis" name="open_kuis" class="form-control">
+                      <option value="true" {{ $panel->open_kuis == true ? "selected" : ""}}>Open</option>
+                      <option value="false" {{ $panel->open_kuis == false ? "selected" : ""}}>Close</option>
+                    </select>
+                </div>
+                <div class="col-md-4 text-center">
+                  <label for="cars">Jumlah Soal Yg akan di Kerjakan:</label>
+                    <input type="number" id="open_soal" name="open_soal" value="{{$panel->open_soal}}" class="form-control">
+                </div>
+                <div class="col-md-4 text-center">
+                  <label for="cars">Save Setelah Melakukan Perubahan..!</label>
+                    <button type="submit" class="genric-btn primary btn-block medium radius form-control ">Save</button>
+                </div>
+                </form>
             </div>
 
             @endif
@@ -46,7 +65,7 @@ menu-active
                       <a href="#" class="genric-btn info btn-block text-center">Edit</a>
                   </div>
                   <div class="col-md-2">
-                      <form action="{{ route('destroy.kuispanel', $value->id )}}" method="post">
+                      <form action="{{ route('destroy_soal.kuispanel', $value->id )}}" method="post">
                           <input class="genric-btn danger btn-block text-center" type="submit" value="Delete"
                               onclick="return confirm('Are you sure you want to delete this item?');" />
                           @method('delete')
@@ -63,6 +82,7 @@ menu-active
                   <li>d. {{ $value->pilihan_d }}</li>
                   <li>e. {{ $value->pilihan_e }}</li>
                 </ol>
+                <strong>Jawaban : {{ $value->jawaban }}</strong>
               </blockquote>
             </div>
             @endforeach

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Forum;
 use App\Participant;
 use App\KelasMataPelajaran;
+use App\ForumKuisPanel;
+use Auth;
 
 class ForumController extends Controller
 {
@@ -68,7 +70,16 @@ class ForumController extends Controller
         $store->kelas_mata_pelajarans_id = $id;
         $store->nama = $request->nama;
         if($store->save()) {
-            return redirect()->route('show.courses',  $id );
+            $panel = new ForumKuisPanel;
+
+            $panel->forum_id = $store->id;
+            $panel->user_id = Auth::user()->id;
+            $panel->open_kuis = false;
+            $panel->open_soal = 10;
+
+            if($panel->save()) {
+              return redirect()->route('show.courses',  $id );
+            }
         }
     }
 

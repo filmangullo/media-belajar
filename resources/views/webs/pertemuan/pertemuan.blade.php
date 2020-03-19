@@ -71,6 +71,17 @@ menu-active
                     <p id="detik"></p>
                 </div>
             </div>
+            <!-- <object width="400" height="400" data="{{URL::asset('398847530-Laravel-Framework-pptx.pptx')}}"> -->
+</object>
+            <!-- <iframe src="{{URL::asset('398847530-Laravel-Framework-pptx.pptx')}}" width="800px" heigt="600px"></iframe> -->
+            <!-- <iframe src='https://view.officeapps.live.com/op/embed.aspx?src=[{{URL::asset('398847530-Laravel-Framework-pptx.pptx')}}]' width='100%' height='600px' frameborder='0'> -->
+            <!-- <iframe src='https://view.officeapps.live.com/op/embed.aspx?src={{URL::asset('398847530-Laravel-Framework-pptx.pptx')}}' width='962px' height='565px' frameborder='0'></iframe> -->
+            <!-- <iframe src="https://docs.google.com/gview?url={{URL::asset('398847530-Laravel-Framework-pptx.pptx')}}&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe> -->
+            <!-- <iframe src="http://docs.google.com/gview?url={{URL::asset('Sample_12.ppt')}}&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe> -->
+            <!-- <iframe src='https://view.officeapps.live.com/op/embed.aspx?src={{URL::asset('Sample_12.ppt')}}' width='962px' height='565px' frameborder='0'></iframe> -->
+            <!-- <iframe src='https://view.officeapps.live.com/op/embed.aspx?src={{URL::asset('398847530-Laravel-Framework-pptx.pptx')}}' width='80%' height='565px' frameborder='0'> </iframe> -->
+            <!-- <iframe src="https://docs.google.com/gview?url={{URL::asset('Sample_12.ppt')}}"></iframe> -->
+            <!-- <iframe src="https://view.officeapps.live.com/op/view.aspx?src=" frameborder="0" style="width:100%;min-height:640px;"></iframe> -->
             @if (auth::user()->role == 'pengajar')
             <div class="row mb-20">
                 <div class="col-md-4">
@@ -126,10 +137,10 @@ menu-active
                                     </div>
                                 </div>
                                 <div class="reply-btn">
-									@if (Auth::user()->id == $value->user_id)
-										<a href="javascript:void(0);" data-href="{{ route('edit.diskusi', $value->id) }}"
-										class="genric-btn warning-border radius float-right openPopup">Edit</a>
-									@endif
+                  									@if (Auth::user()->id == $value->user_id)
+                  										<a href="javascript:void(0);" data-href="{{ route('edit.diskusi', $value->id) }}"
+                  										class="genric-btn warning-border radius float-right openPopup">Edit</a>
+                  									@endif
                                     <a href="javascript:void(0);"
                                         data-href="{{ route('create.diskusicomment', $value->id) }}"
                                         class="genric-btn primary-border radius float-right openPopup">Comment</a>
@@ -168,6 +179,10 @@ menu-active
 				   <!-- End Diskusi Form -->
                 </div>
                 <div class="col-lg-3 col-md-4 mt-sm-30">
+                  <div class="single-element-widget mt-30 ">
+                    <p>Kuis Telah dibuka,..!</p>
+                    <a href="{{ route('index.kuis', $forum->id) }}" class="genric-btn btn-block success circle arrow text-center">Mulai Kuis<span class="lnr lnr-arrow-right"></span></a>
+                  </div>
                     <div class="single-element-widget mt-30 ">
                         <h3 class="mb-30 ">Participant</h3>
                         @foreach ($participant as $key => $value)
