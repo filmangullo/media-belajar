@@ -15,4 +15,9 @@ class ForumKuisPanel extends Model
      */
     protected $table = 'forum_kuis_panels';
     protected $dates =['deleted_at'];
+
+    public function forums()
+    {
+        return $this->belongsTo('App\Forum', 'forum_id', 'id');
+    }
 }

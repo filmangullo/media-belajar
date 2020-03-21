@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Forum;
 use App\ForumKuis;
 use App\ForumKuisPanel;
+use App\ForumKuisNilai;
 use Auth;
 
 class KuisController extends Controller
@@ -67,6 +68,21 @@ class KuisController extends Controller
           }
 
         }
-        dd(  $totalNilai);
+
+
+        $cek = ForumKuisNilai::where('user_id', Auth::user()->id)
+                             ->where('forum_id', $id)
+                             ->count();
+        if (!$cek) {
+          $query = new ForumKuisNilai;
+
+          $query->forum_id    = $id;
+          $query->user_id     = Auth::user()->id;
+          $query->nilai       = $totalNilai;
+          $query->save();
+          echo "belum test kuis";
+        } else {
+          echo 'sudah test kuis';
+        }
     }
 }

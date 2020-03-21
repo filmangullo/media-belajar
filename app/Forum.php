@@ -31,8 +31,18 @@ class Forum extends Model
         return $this->hasMany('App\DiskusiComment', 'forum_id', 'id');
     }
 
+    public function forumKuisPanels()
+    {
+        return $this->hasMany('App\ForumKuisPanel', 'forum_id', 'id');
+    }
+
     public function kuiss()
     {
         return $this->hasMany('App\ForumKuis', 'forum_id', 'id');
+    }
+
+    public function forumKuisNilais()
+    {
+        return $this->hasMany('App\ForumKuisNilai', 'forum_id', 'id');
     }
 }
