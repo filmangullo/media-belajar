@@ -35,16 +35,21 @@ Route::prefix('courses-forum')->middleware('auth')->group(function () {
     Route::get('/{id}', 'ForumController@index')->name('showForum.courses');
     Route::get('/{id}/create', 'ForumController@create')->name('createForum.courses');
     Route::post('/{id}/store', 'ForumController@store')->name('storeForum.courses');
+    Route::get('/{id}/edit', 'ForumController@edit')->name('editForum.courses');
+    Route::post('/{id}/update', 'ForumController@update')->name('updateForum.courses');
     Route::delete('/{id}/destroy', 'ForumController@destroy')->name('destroyForum.courses');
 });
 
 Route::prefix('courses-forum-pertemuan')->middleware('auth')->group(function () {
     Route::get('/{id}', 'PertemuanController@index')->name('index.pertemuan');
+    
 });
 
 Route::prefix('courses-forum-pertemuan-description')->middleware('auth')->group(function () {
     Route::get('/{id}/create', 'DeskripsiController@create')->name('create.deskripsi');
     Route::post('/{id}/store', 'DeskripsiController@store')->name('store.deskripsi');
+    Route::get('/{id}/edit', 'DeskripsiController@edit')->name('edit.deskripsi');
+    Route::post('/{id}/update', 'DeskripsiController@update')->name('update.deskripsi');
 });
 
 Route::prefix('courses-forum-pertemuan-kuis-panel')->middleware('auth')->group(function () {

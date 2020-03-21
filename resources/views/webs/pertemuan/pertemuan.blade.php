@@ -88,14 +88,18 @@ menu-active
                     <a href="javascript:void(0);" data-href="{{ route('create.deskripsi', $forum->id) }}"
                         class="primary-btn btn-block text-center openPopup">Tambah Deskripsi</a>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <a href="{{ route('index.kuispanel', $forum->id) }}"
                         class="primary-btn btn-block text-center ">Kuis Panel</a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#"
+                        class="primary-btn btn-block text-center ">Kuis Nilai</a>
                 </div>
             </div>
             <div class="row mb-20">
                 <div class="col-md-2 offset-md-8">
-                    <a href="#" class="genric-btn info btn-block text-center">Edit</a>
+                    <a href="javascript:void(0)" data-href="{{ route('editForum.courses', $forum->id ) }}" class="genric-btn info btn-block text-center openPopup">Edit</a>
                 </div>
                 <div class="col-md-2">
                     <form action="{{ route('destroyForum.courses', $forum->id )}}" method="post">
@@ -113,7 +117,11 @@ menu-active
                     <h4 class="mb-10">Deskripsi / Quotes</h4>
                     <div class="wow fadeIn" data-wow-duration="1s">
                         @foreach ($deskripsi as $key => $value)
-                        <p>{{ $value->deskripsi }}</p>
+                        <p>{{ $value->deskripsi }}. &nbsp;
+                            @if (auth::user()->role == 'pengajar')
+                                <a href="javascript:void(0)" data-href="{{route('edit.deskripsi', $value->id) }}" class="openPopup" ><i class="lnr lnr-pencil"></i></a>
+                            @endif
+                        </p>
                         @endforeach
                     </div>
                     <div class="comments-area">
@@ -137,10 +145,10 @@ menu-active
                                     </div>
                                 </div>
                                 <div class="reply-btn">
-                  									@if (Auth::user()->id == $value->user_id)
-                  										<a href="javascript:void(0);" data-href="{{ route('edit.diskusi', $value->id) }}"
-                  										class="genric-btn warning-border radius float-right openPopup">Edit</a>
-                  									@endif
+                                    @if (Auth::user()->id == $value->user_id)
+                                        <a href="javascript:void(0);" data-href="{{ route('edit.diskusi', $value->id) }}"
+                                        class="genric-btn warning-border radius float-right openPopup">Edit</a>
+                                    @endif
                                     <a href="javascript:void(0);"
                                         data-href="{{ route('create.diskusicomment', $value->id) }}"
                                         class="genric-btn primary-border radius float-right openPopup">Comment</a>
@@ -180,8 +188,14 @@ menu-active
                 </div>
                 <div class="col-lg-3 col-md-4 mt-sm-30">
                   <div class="single-element-widget mt-30 ">
-                    <p>Kuis Telah dibuka,..!</p>
-                    <a href="{{ route('index.kuis', $forum->id) }}" class="genric-btn btn-block success circle arrow text-center">Mulai Kuis<span class="lnr lnr-arrow-right"></span></a>
+                      @if ($panel->open_kuis == true || auth::user()->role == 'pengajar')
+                        @if ($panel->open_kuis == true)
+                            <p>Kuis Telah dibuka,..?</p>
+                        @elseif($panel->open_kuis == false)
+                            <p>Kuis Belum Telah dibuka,..!</p>
+                        @endif
+                        <a href="{{ route('index.kuis', $forum->id) }}" class="genric-btn btn-block success circle arrow text-center">Mulai Kuis<span class="lnr lnr-arrow-right"></span></a>
+                      @endif
                   </div>
                     <div class="single-element-widget mt-30 ">
                         <h3 class="mb-30 ">Participant</h3>

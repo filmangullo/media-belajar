@@ -61,7 +61,7 @@ menu-active
                         <h4><a href="{{ route('show.courses', $item->id) }}">{{ $item->nama }}</a></h4>
                         <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay=".1s">
                             <p>
-                                {{ $item->keterangan }}.
+                                {{ substr($item->keterangan,0,60).'...' }}
                             </p>
                         </div>
                     </div>

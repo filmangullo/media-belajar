@@ -46,4 +46,37 @@ class DeskripsiController extends Controller
         return redirect()->route('index.pertemuan', $id);
       }
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $query = ForumDeskripsi::findOrFail($id);
+        return view('webs.pertemuan.deskripsi_edit', [ 
+          'query' => $query
+        ])->render();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $query = ForumDeskripsi::findOrFail($id);
+
+        $query->deskripsi = $request->deskripsi;
+        
+        if($query->save()) {
+          return redirect()->route('index.pertemuan', $query->forum_id);
+        }
+
+    }
 }

@@ -102,7 +102,10 @@ class ForumController extends Controller
      */
     public function edit($id)
     {
-        //
+        $query = Forum::findorFail($id);
+        return view('webs.forum.forum_edit', [
+            'query' => $query
+        ])->render();
     }
 
     /**
@@ -114,7 +117,11 @@ class ForumController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $query = Forum::findorFail($id);
+        $query->nama = $request->nama;
+        if($query->save()) {
+            return redirect()->route('index.pertemuan', $query->id );
+        }
     }
 
     /**

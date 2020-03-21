@@ -8,6 +8,7 @@ use App\Forum;
 use App\ForumDeskripsi;
 use App\ForumDiskusi;
 use App\DiskusiComment;
+use App\ForumKuisPanel;
 
 
 class PertemuanController extends Controller
@@ -44,12 +45,16 @@ class PertemuanController extends Controller
 
         $comments = DiskusiComment::where('forum_id', $id)
                       ->get();
+        
+        $panel = ForumKuisPanel::where('forum_id', $forum->id)
+                      ->first();
         return view('webs.pertemuan.pertemuan', [
             'participant' => $participant,
             'forum'       => $forum,
             'deskripsi'   => $deskripsi,
             'diskusi'     => $diskusi,
-            'comments'    => $comments
+            'comments'    => $comments,
+            'panel'       => $panel
         ]);
     }
 
