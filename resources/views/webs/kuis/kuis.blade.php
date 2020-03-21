@@ -35,20 +35,20 @@ menu-active
               <blockquote class="generic-blockquote">
                 <input type="number" id="id_soal" name="soal_ke_[{{$key}}]" value="{{ $soal->id }}" hidden>
                 <p> {!! $soal->soal !!}</p>
-                 <input type="radio" id="pilihan_a" name="jawaban_ke_[{{$key}}]" value="a">
-                 <label for="pilihan_a">{!! $soal->pilihan_a !!}</label><br>
+                 <input type="radio" id="pilihan_a[{{$key}}" name="jawaban_ke_[{{$key}}]" value="a">
+                 <label for="pilihan_a[{{$key}}">{!! $soal->pilihan_a !!}</label><br>
 
-                 <input type="radio" id="pilihan_b" name="jawaban_ke_[{{$key}}]" value="b">
-                 <label for="pilihan_b">{!! $soal->pilihan_b !!}</label><br>
+                 <input type="radio" id="pilihan_b[{{$key}}" name="jawaban_ke_[{{$key}}]" value="b">
+                 <label for="pilihan_b[{{$key}}">{!! $soal->pilihan_b !!}</label><br>
 
-                 <input type="radio" id="pilihan_c" name="jawaban_ke_[{{$key}}]" value="c">
-                 <label for="pilihan_c">{!! $soal->pilihan_c !!}</label><br>
+                 <input type="radio" id="pilihan_c[{{$key}}" name="jawaban_ke_[{{$key}}]" value="c">
+                 <label for="pilihan_c[{{$key}}">{!! $soal->pilihan_c !!}</label><br>
 
-                 <input type="radio" id="pilihan_d" name="jawaban_ke_[{{$key}}]" value="d">
-                 <label for="pilihan_d">{!! $soal->pilihan_d !!}</label><br>
+                 <input type="radio" id="pilihan_d[{{$key}}" name="jawaban_ke_[{{$key}}]" value="d">
+                 <label for="pilihan_d[{{$key}}">{!! $soal->pilihan_d !!}</label><br>
 
-                 <input type="radio" id="pilihan_e" name="jawaban_ke_[{{$key}}]" value="e">
-                 <label for="pilihan_e">{!! $soal->pilihan_e !!}</label><br>
+                 <input type="radio" id="pilihan_e[{{$key}}" name="jawaban_ke_[{{$key}}]" value="e">
+                 <label for="pilihan_e[{{$key}}">{!! $soal->pilihan_e !!}</label></input><br>
                  <!-- Terpilih otomatis jika tidak di jawab -->
                  <input type="radio" id="pilihan_a" name="jawaban_ke_[{{$key}}]" select hidden value="null">
               </blockquote>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Forum;
 use App\ForumKuis;
+use App\ForumKuisPanel;
 use Auth;
 
 class KuisController extends Controller
@@ -29,8 +30,14 @@ class KuisController extends Controller
         $forum = Forum::where('id', $id)
                       ->first();
 
+        $panel = ForumKuisPanel::where('forum_id', $forum->id)
+                               ->first();
+
         $kuis = ForumKuis::where('forum_id', $id)
+                      ->inRandomOrder()
+                      ->take($panel->open_soal)
                       ->get();
+
         return view('webs.kuis.kuis', [
             'forum'   => $forum,
             'kuis'    => $kuis
