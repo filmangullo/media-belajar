@@ -57,6 +57,11 @@ class User extends Authenticatable
 
     public function diskusiComments()
     {
-        return $this->hasMany('App\DiskusiComments', 'user_id', 'id');
+        return $this->hasMany('App\DiskusiComment', 'user_id', 'id');
+    }
+
+    public function kuisNilais()
+    {
+        return $this->hasMany('App\ForumKuisNilai', 'user_id', 'id');
     }
 }

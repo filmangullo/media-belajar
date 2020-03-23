@@ -42,7 +42,7 @@ Route::prefix('courses-forum')->middleware('auth')->group(function () {
 
 Route::prefix('courses-forum-pertemuan')->middleware('auth')->group(function () {
     Route::get('/{id}', 'PertemuanController@index')->name('index.pertemuan');
-    
+
 });
 
 Route::prefix('courses-forum-pertemuan-description')->middleware('auth')->group(function () {
@@ -58,6 +58,10 @@ Route::prefix('courses-forum-pertemuan-kuis-panel')->middleware('auth')->group(f
     Route::get('/{id}/create_soal', 'KuisPanelController@create_soal')->name('create_soal.kuispanel');
     Route::post('/{id}/store_soal', 'KuisPanelController@store_soal')->name('store_soal.kuispanel');
     Route::delete('/{id}/destroy_soal', 'KuisPanelController@destroy_soal')->name('destroy_soal.kuispanel');
+});
+
+Route::prefix('courses-forum-pertemuan-kuis-nilai')->middleware('auth')->group(function () {
+    Route::get('/{id}', 'KuisNilaiController@index')->name('index.kuisnilai');
 });
 
 Route::prefix('courses-forum-pertemuan-kuis-telah-dimulai')->middleware('auth')->group(function () {

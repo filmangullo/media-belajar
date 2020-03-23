@@ -21,6 +21,11 @@ class KelasMataPelajaran extends Model
         return $this->belongsTo('App\Instansi', 'instansi_id', 'id');
     }
 
+    public function participants()
+    {
+        return $this->hasMany('App\Participant', 'kelas_mata_pelajarans_id', 'id');
+    }
+
     public function users()
     {
         return $this->belongsTo('App\User', 'user_id', 'id');

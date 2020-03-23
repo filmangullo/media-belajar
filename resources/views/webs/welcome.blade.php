@@ -129,48 +129,21 @@
 	<!-- End Banner Area -->
 
 
-	<!-- Start About Area -->
-	<section class="about-area section-gap">
-		<div class="container">
-			<div class="row align-items-center justify-content-center">
-				<div class="col-lg-5 col-md-6 about-left">
-					<img class="img-fluid" src="{{ URL::asset('webs/img/about.jpg') }}" alt="">
-				</div>
-				<div class="offset-lg-1 col-lg-6 offset-md-0 col-md-12 about-right">
-					<h1>
-						Over 2500 Courses <br> from 5 Platform
-					</h1>
-					<div class="wow fadeIn" data-wow-duration="1s">
-						<p>
-							There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s exciting to think
-							about setting up your own viewing station. In the life of any aspiring astronomer that it is time to buy that first
-							telescope. It’s exciting to think about setting up your own viewing station.
-						</p>
-					</div>
-					<a href="courses.html" class="primary-btn">Explore Courses</a>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End About Area -->
-
-
 	<!-- Start Courses Area -->
 	<section class="courses-area section-gap">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-5 about-right">
 					<h1>
-						This is Why <br> We have Solid Idea
+						Ini sebabnya <br> Kami memiliki Ide yang Solid
 					</h1>
 					<div class="wow fadeIn" data-wow-duration="1s">
 						<p>
-							There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s exciting to think
-							about setting up your own viewing station. In the life of any aspiring astronomer that it is time to buy that first
-							telescope. It’s exciting to think about setting up your own viewing station.
+							Ada saat dalam  setiap pembelajaran yang bercita-cita tinggi bahwa inilah saatnya untuk menambah ilmu yang masih kurang di pahami. Sangat menarik untuk berpikir
+tentang apa yang ingin di ketahui dalam proses pembelajaran Anda sendiri.
 						</p>
 					</div>
-					<a href="courses.html" class="primary-btn white">Explore Courses</a>
+					<a href="{{ route('index.courses') }}" class="primary-btn white">Explore Courses</a>
 				</div>
 				<div class="offset-lg-1 col-lg-6">
 					<div class="courses-right">

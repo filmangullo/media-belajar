@@ -93,7 +93,7 @@ menu-active
                         class="primary-btn btn-block text-center ">Kuis Panel</a>
                 </div>
                 <div class="col-md-2">
-                    <a href="#"
+                    <a href="{{ route('index.kuisnilai', $forum->id)}}"
                         class="primary-btn btn-block text-center ">Kuis Nilai</a>
                 </div>
             </div>

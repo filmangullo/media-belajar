@@ -17,4 +17,9 @@ class Participant extends Model
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
+
+    public function kelasMataPelajarans()
+    {
+        return $this->belongsTo('App\KelasMataPelajaran', 'kelas_mata_pelajarans_id', 'id');
+    }
 }
