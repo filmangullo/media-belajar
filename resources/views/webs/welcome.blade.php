@@ -103,21 +103,12 @@
 							<button type="submit" class="btn search-btn">Search</button>
 						</form>
 					</div>
-					<h4 class="text-white">Top courses</h4>
+					<h4 class="text-white">New courses</h4>
 
 					<div class="courses pt-20">
-						<a href="#" data-wow-duration="1s" data-wow-delay=".3s" class="primary-btn transparent mr-10 mb-10 wow fadeInDown">Ruby
-							on Rails</a>
-						<a href="#" data-wow-duration="1s" data-wow-delay=".6s" class="primary-btn transparent mr-10 mb-10 wow fadeInDown">Python</a>
-						<a href="#" data-wow-duration="1s" data-wow-delay=".9s" class="primary-btn transparent mr-10 mb-10 wow fadeInDown">Marketing</a>
-						<a href="#" data-wow-duration="1s" data-wow-delay="1.2s" class="primary-btn transparent mr-10 mb-10 wow fadeInDown">UI/UX
-							Design
-						</a>
-						<a href="#" data-wow-duration="1s" data-wow-delay="1.5s" class="primary-btn transparent mr-10 mb-10 wow fadeInDown">Android</a>
-						<a href="#" data-wow-duration="1s" data-wow-delay="1.8s" class="primary-btn transparent mr-10 mb-10 wow fadeInDown">Data
-							Science
-						</a>
-						<a href="#" data-wow-duration="1s" data-wow-delay="2.1s" class="primary-btn transparent mr-10 mb-10 wow fadeInDown">Cryptocurrency</a>
+						@foreach ($newKelas as $key => $item)
+						<a href="{{ route('show.courses', $item->id) }}" data-wow-duration="{{$key}}s" data-wow-delay=".{{$key}}s" class="primary-btn transparent mr-10 mb-10 wow fadeInDown">{{ $item->nama }}</a>
+						@endforeach
 					</div>
 				</div>
 			</div>
@@ -148,82 +139,15 @@ tentang apa yang ingin di ketahui dalam proses pembelajaran Anda sendiri.
 				<div class="offset-lg-1 col-lg-6">
 					<div class="courses-right">
 						<div class="row">
-							<div class="col-lg-6 col-md-6 col-sm-12">
+							<div class=" col-md-12">
 								<ul class="courses-list">
-									<li>
-										<a class="wow fadeInLeft" href="courses.html" data-wow-duration="1s" data-wow-delay=".1s">
-											<i class="fa fa-book"></i> Development
-										</a>
-									</li>
-									<li>
-										<a class="wow fadeInLeft" href="courses.html" data-wow-duration="1s" data-wow-delay=".3s">
-											<i class="fa fa-book"></i> IT & Software
-										</a>
-									</li>
-									<li>
-										<a class="wow fadeInLeft" href="courses.html" data-wow-duration="1s" data-wow-delay=".5s">
-											<i class="fa fa-book"></i> Photography
-										</a>
-									</li>
-									<li>
-										<a class="wow fadeInLeft" href="courses.html" data-wow-duration="1s" data-wow-delay=".7s">
-											<i class="fa fa-book"></i> Language
-										</a>
-									</li>
-									<li>
-										<a class="wow fadeInLeft" href="courses.html" data-wow-duration="1s" data-wow-delay=".9s">
-											<i class="fa fa-book"></i> Life Science
-										</a>
-									</li>
-									<li>
-										<a class="wow fadeInLeft" href="courses.html" data-wow-duration="1s" data-wow-delay="1.1s">
-											<i class="fa fa-book"></i> Business
-										</a>
-									</li>
-									<li>
-										<a class="wow fadeInLeft" href="courses.html" data-wow-duration="1s" data-wow-delay="1.3s">
-											<i class="fa fa-book"></i> Socoal Science
-										</a>
-									</li>
-								</ul>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-12">
-								<ul class="courses-list">
-									<li>
-										<a class="wow fadeInRight" href="courses.html" data-wow-duration="1s" data-wow-delay="1.3s">
-											<i class="fa fa-book"></i> Data Science
-										</a>
-									</li>
-									<li>
-										<a class="wow fadeInRight" href="courses.html" data-wow-duration="1s" data-wow-delay="1.1s">
-											<i class="fa fa-book"></i> Design
-										</a>
-									</li>
-									<li>
-										<a class="wow fadeInRight" href="courses.html" data-wow-duration="1s" data-wow-delay=".9s">
-											<i class="fa fa-book"></i> Training
-										</a>
-									</li>
-									<li>
-										<a class="wow fadeInRight" href="courses.html" data-wow-duration="1s" data-wow-delay=".7s">
-											<i class="fa fa-book"></i> Humanities
-										</a>
-									</li>
-									<li>
-										<a class="wow fadeInRight" href="courses.html" data-wow-duration="1s" data-wow-delay=".5s">
-											<i class="fa fa-book"></i> Marketing
-										</a>
-									</li>
-									<li>
-										<a class="wow fadeInRight" href="courses.html" data-wow-duration="1s" data-wow-delay=".3s">
-											<i class="fa fa-book"></i> Economics
-										</a>
-									</li>
-									<li>
-										<a class="wow fadeInRight" href="courses.html" data-wow-duration="1s" data-wow-delay=".1s">
-											<i class="fa fa-book"></i> Personal Dev
-										</a>
-									</li>
+									@foreach ($kelas as $item)
+										<li>
+											<a class="wow fadeInLeft" href="{{ route('show.courses', $item->id) }}" data-wow-duration="1s" data-wow-delay=".1s">
+												<i class="fa fa-book"></i>{{ $item->nama }}
+											</a>
+										</li>
+									@endforeach
 								</ul>
 							</div>
 						</div>

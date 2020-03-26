@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\KelasMataPelajaran;
 
 class WelcomeController extends Controller
 {
@@ -13,7 +14,12 @@ class WelcomeController extends Controller
    */
   public function index()
   {
-      return view('webs.welcome');
+      $query = KelasMataPelajaran::limit(8)->get();
+      $newquery = KelasMataPelajaran::orderBy('id', 'desc')->limit(8)->get();
+      return view('webs.welcome', [
+        'kelas' => $query,
+        'newKelas'  => $newquery
+      ]);
   }
 
 }

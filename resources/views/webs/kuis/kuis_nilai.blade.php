@@ -16,7 +16,13 @@ menu-active
     <span class="box">
         <a href="/">Home </a>
         <i class="lnr lnr-arrow-right"></i>
-        <a href="courses.html">Courses</a>
+        <a href="{{ route('index.courses') }}">Courses</a>
+        <i class="lnr lnr-arrow-right"></i>
+        <a href="{{ route('show.courses', $forum->kelasMataPelajarans['id'] )}}">{{ $forum->kelasMataPelajarans['nama'] }}</a>
+        <i class="lnr lnr-arrow-right"></i>
+        <a href="{{ route('index.pertemuan', $forum->id )}}">{{ $forum['nama'] }}</a>
+        <i class="lnr lnr-arrow-right"></i>
+        <a href="{{ route('index.kuisnilai', $forum->id )}}">Kuis Nilai</a>
     </span>
 </div>
 @endsection

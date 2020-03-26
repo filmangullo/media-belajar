@@ -2,9 +2,7 @@
 	    <div class="container">
 	        <div class="footer-bottom row align-items-center col-md-12" style="text-align: center;">
 	            <p style="margin-left: 23%">
-	                Copyright &copy;<script>
-	                    document.write(new Date().getFullYear());
-
+	                Copyright &copy;<script>document.write(new Date().getFullYear());
 	                </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="/" target="_blank">Educature</a></p>
 	        </div>
 	    </div>
