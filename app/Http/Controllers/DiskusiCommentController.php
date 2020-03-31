@@ -50,4 +50,51 @@ class DiskusiCommentController extends Controller
        return redirect()->route('index.pertemuan', ForumDiskusi::findOrFail($id)->forums['id']);
      }
    }
+
+    /**
+   * Show the form for editing the specified resource.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function edit($id)
+  {
+    $query = DiskusiComment::findOrFail($id);
+
+    return view('webs.pertemuan.comment_edit',[
+      'query'  => $query
+    ]);
+  }
+
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function update(Request $request, $id)
+  {
+      $query = DiskusiComment::findOrFail($id);
+      $query->comment = $request->comment;
+      if($query->save()) {
+        return redirect()->route('index.pertemuan', $query->forum_id);
+      }
+  }
+
+  /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+      $query = DiskusiComment::findorFail($id);
+      $forum_id = $query->forum_id;
+      $query->delete();
+
+      return redirect()->route('index.pertemuan', $forum_id)
+                       ->with('delete','Anda telah berhasil menghapus Data');
+    }
 }

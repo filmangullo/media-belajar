@@ -45,4 +45,9 @@ class Forum extends Model
     {
         return $this->hasMany('App\ForumKuisNilai', 'forum_id', 'id');
     }
+
+    public function forumTugasPanels()
+    {
+        return $this->hasMany('App\ForumTugasPanel', 'forum_id', 'id');
+    }
 }

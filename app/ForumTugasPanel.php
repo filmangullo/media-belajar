@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ForumKuisPanel extends Model
+class ForumTugasPanel extends Model
 {
     use SoftDeletes;
     /**
@@ -13,7 +13,7 @@ class ForumKuisPanel extends Model
      *
      * @var string
      */
-    protected $table = 'forum_kuis_panels';
+    protected $table = 'forum_tugas_panels';
     protected $dates =['deleted_at'];
 
     public function forums()

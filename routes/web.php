@@ -21,6 +21,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::get('/courses', 'CoursesController@index')->name('home');
 
+Route::prefix('my-courses')->middleware('auth')->group(function () {
+    Route::get('/', 'MyCoursesController@index')->name('index.my_courses');
+});
+
 Route::prefix('courses')->middleware('auth')->group(function () {
     Route::get('/', 'CoursesController@index')->name('index.courses');
     Route::get('/create', 'CoursesController@create')->name('create.courses');
@@ -53,11 +57,18 @@ Route::prefix('courses-forum-pertemuan-description')->middleware('auth')->group(
 });
 
 Route::prefix('courses-forum-pertemuan-kuis-panel')->middleware('auth')->group(function () {
-    Route::get('/{id}', 'KuisPanelController@index')->name('index.kuispanel');
+    Route::get('/{id}', 'KuisPanelController@index_panel')->name('index.kuispanel');
     Route::post('/{id}/update_panel', 'KuisPanelController@update_panel')->name('update_panel.kuispanel');
     Route::get('/{id}/create_soal', 'KuisPanelController@create_soal')->name('create_soal.kuispanel');
     Route::post('/{id}/store_soal', 'KuisPanelController@store_soal')->name('store_soal.kuispanel');
+    Route::get('/{id}/edit_soal', 'KuisPanelController@edit_soal')->name('edit_soal.kuispanel');
+    Route::post('/{id}/update_soal', 'KuisPanelController@update_soal')->name('update_soal.kuispanel');
     Route::delete('/{id}/destroy_soal', 'KuisPanelController@destroy_soal')->name('destroy_soal.kuispanel');
+});
+
+Route::prefix('courses-forum-pertemuan-tugas-panel')->middleware('auth')->group(function () {
+    Route::get('/{id}', 'TugasPanelController@index')->name('index.tugaspanel');
+    Route::post('/{id}/update_panel', 'TugasPanelController@update_panel')->name('update_panel.tugaspanel');
 });
 
 Route::prefix('courses-forum-pertemuan-kuis-nilai')->middleware('auth')->group(function () {
@@ -79,6 +90,9 @@ Route::prefix('courses-forum-pertemuan-diskusi')->middleware('auth')->group(func
 Route::prefix('courses-forum-pertemuan-diskusi-comment')->middleware('auth')->group(function () {
     Route::get('/{id}/create', 'DiskusiCommentController@create')->name('create.diskusicomment');
     Route::post('/{id}/store', 'DiskusiCommentController@store')->name('store.diskusicomment');
+    Route::get('/{id}/edit', 'DiskusiCommentController@edit')->name('edit.diskusicomment');
+    Route::post('/{id}/update', 'DiskusiCommentController@update')->name('update.diskusicomment');
+    Route::delete('/{id}/destroy', 'DiskusiCommentController@destroy')->name('destroy.diskusicomment');
 });
 
 Route::resource('about', 'AboutController')->names([
@@ -86,5 +100,6 @@ Route::resource('about', 'AboutController')->names([
 ]);
 
 Route::resource('contact', 'ContactController')->names([
-    'index' => 'index.contact'
+    'index' => 'index.contact',
+    'store' => 'store.contact'
 ]);

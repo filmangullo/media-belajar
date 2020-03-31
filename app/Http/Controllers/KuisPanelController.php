@@ -25,7 +25,7 @@ class KuisPanelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index_panel($id)
     {
         $forum = Forum::where('id', $id)
                       ->first();
@@ -39,6 +39,24 @@ class KuisPanelController extends Controller
             'kuis'    => $kuis,
             'panel'   => $panel
         ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update_panel(Request $request, $id)
+    {
+        $query = ForumKuisPanel::findorFail($id);
+        $query->open_kuis = $request->open_kuis == "true" ? true : false;
+        $query->open_soal = $request->open_soal;
+        $query->save();
+
+        return redirect()->route('index.kuispanel', $query->forum_id)
+                         ->with('success','Panel berhasil di Update');
     }
 
     /**
@@ -81,25 +99,17 @@ class KuisPanelController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit_soal($id)
     {
-        //
+        $kuis = ForumKuis::findOrFail($id);
+        return view('webs.kuis.kuis_edit_soal',[
+            'kuis' => $kuis
+        ]);
     }
 
     /**
@@ -109,9 +119,22 @@ class KuisPanelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update_soal(Request $request, $id)
     {
-        //
+        $query = ForumKuis::findOrFail($id);
+
+        $query->user_id   = Auth::user()->id;
+        $query->soal      = $request->soal;
+        $query->pilihan_a  = $request->option_a;
+        $query->pilihan_b  = $request->option_b;
+        $query->pilihan_c  = $request->option_c;
+        $query->pilihan_d  = $request->option_d;
+        $query->pilihan_e  = $request->option_e;
+        $query->jawaban   = $request->jawaban;
+
+        if($query->save()) {
+            return redirect()->route('index.kuispanel', $query->forum_id);
+        }
     }
 
     /**
@@ -128,25 +151,5 @@ class KuisPanelController extends Controller
 
       return redirect()->route('index.kuispanel', $forum_id)
                        ->with('success','Anda telah berhasil menghapus Data');
-    }
-
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update_panel(Request $request, $id)
-    {
-        $query = ForumKuisPanel::findorFail($id);
-        $query->open_kuis = $request->open_kuis == "true" ? true : false;
-        $query->open_soal = $request->open_soal;
-        $query->save();
-
-        return redirect()->route('index.kuispanel', $query->forum_id)
-                         ->with('success','Panel berhasil di Update');
     }
 }

@@ -18,14 +18,14 @@ menu-active
 
     .jam-digital-malasngoding {
         overflow: hidden;
-        width: 340px;
+        width: 289px;
         margin: 20px auto;
         border: 5px solid #efefef;
     }
 
     .kotak {
         float: left;
-        width: 110px;
+        width: 93px;
         height: 80px;
         background-color: #189fff;
     }
@@ -65,6 +65,7 @@ menu-active
 <div class="whole-wrap">
     <div class="container">
         <div class="section-top-border">
+            @include('layouts.alert')
             <div class="jam-digital-malasngoding">
                 <div class="kotak">
                     <p id="jam"></p>
@@ -100,6 +101,10 @@ menu-active
                 <div class="col-md-2">
                     <a href="{{ route('index.kuisnilai', $forum->id)}}"
                         class="primary-btn btn-block text-center ">Kuis Nilai</a>
+                </div>
+                <div class="col-md-4">
+                    <a href="{{ route('index.tugaspanel', $forum->id) }}"
+                        class="primary-btn btn-block text-center ">Tugas Panel</a>
                 </div>
             </div>
             <div class="row mb-20">
@@ -178,6 +183,20 @@ menu-active
                                         </p>
                                     </div>
                                 </div>
+                                <div class="reply-btn">
+                                    @if (Auth::user()->id == $comment->user_id)
+                                        <form action="{{ route('destroy.diskusicomment', $comment->id )}}" class="float-right" method="post">
+                                            <input class="genric-btn danger btn-block text-center" type="submit" value="Delete"
+                                                onclick="return confirm('Are you sure you want to delete this item?');" />
+                                            @method('delete')
+                                            @csrf
+                                        </form>
+
+                                        <a href="javascript:void(0);" data-href="{{ route('edit.diskusicomment', $comment->id) }}"
+                                        class="genric-btn warning-border radius float-right openPopup">Edit</a>
+                                    @endif
+                                    
+                                </div>
                             </div>
                         </div>
                         @endif
@@ -197,7 +216,7 @@ menu-active
                         @if ($panel->open_kuis == true)
                             <p>Kuis Telah dibuka,..?</p>
                         @elseif($panel->open_kuis == false)
-                            <p>Kuis Belum Telah dibuka,..!</p>
+                            <p>Kuis Belum dibuka,..!</p>
                         @endif
                         <a href="{{ route('index.kuis', $forum->id) }}" class="genric-btn btn-block success circle arrow text-center">Mulai Kuis<span class="lnr lnr-arrow-right"></span></a>
                       @endif

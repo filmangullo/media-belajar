@@ -68,7 +68,7 @@ menu-active
             <div class="col-lg-12">
               <div class="row mb-10">
                   <div class="col-md-2 offset-md-8">
-                      <a href="#" class="genric-btn info btn-block text-center">Edit</a>
+                      <a href="javascript:void(0);" data-href="{{ route('edit_soal.kuispanel', $value->id) }}" class="genric-btn info btn-block text-center openPopup">Edit</a>
                   </div>
                   <div class="col-md-2">
                       <form action="{{ route('destroy_soal.kuispanel', $value->id )}}" method="post">

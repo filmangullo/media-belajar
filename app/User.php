@@ -64,4 +64,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\ForumKuisNilai', 'user_id', 'id');
     }
+
+    public function forumTugasPanels()
+    {
+        return $this->hasMany('App\ForumTugasPanel', 'user_id', 'id');
+    }
 }

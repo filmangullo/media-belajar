@@ -7,6 +7,7 @@ use App\Forum;
 use App\Participant;
 use App\KelasMataPelajaran;
 use App\ForumKuisPanel;
+use App\ForumTugasPanel;
 use Auth;
 
 class ForumController extends Controller
@@ -70,15 +71,23 @@ class ForumController extends Controller
         $store->kelas_mata_pelajarans_id = $id;
         $store->nama = $request->nama;
         if($store->save()) {
-            $panel = new ForumKuisPanel;
+            $kuisPanel              = new ForumKuisPanel;
 
-            $panel->forum_id = $store->id;
-            $panel->user_id = Auth::user()->id;
-            $panel->open_kuis = false;
-            $panel->open_soal = 10;
+            $kuisPanel->forum_id    = $store->id;
+            $kuisPanel->user_id     = Auth::user()->id;
+            $kuisPanel->open_kuis   = false;
+            $kuisPanel->open_soal   = 10;
 
-            if($panel->save()) {
-              return redirect()->route('show.courses',  $id );
+            if($kuisPanel->save()) {
+                $tugasPanel             = new ForumTugasPanel;
+                $tugasPanel->forum_id   = $store->id;
+                $tugasPanel->user_id    = Auth::user()->id;
+                $tugasPanel->open_tugas = false;
+
+                if($tugasPanel->save()) {
+                    return redirect()->route('show.courses',  $id );
+                }
+              
             }
         }
     }

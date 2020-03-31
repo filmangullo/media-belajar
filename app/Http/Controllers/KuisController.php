@@ -39,9 +39,29 @@ class KuisController extends Controller
                       ->take($panel->open_soal)
                       ->get();
 
+        $nilai_kuis = null;
+        $display_soal = true;
+        $cek = ForumKuisNilai::where('user_id', Auth::user()->id)
+                      ->where('forum_id', $id)
+                      ->count();
+        if (!$cek) {
+          $nilai_kuis = "Anda Belum Melakukan kuis..?";
+          $display_soal = true;
+        } else {
+          $queryNilai = ForumKuisNilai::where('user_id', Auth::user()->id)
+                                      ->where('forum_id', $id)
+                                      ->first();
+          $nilai_kuis = $queryNilai->nilai;
+          $display_soal = false;
+        }
+        
+        
+
         return view('webs.kuis.kuis', [
-            'forum'   => $forum,
-            'kuis'    => $kuis
+            'forum'       => $forum,
+            'kuis'        => $kuis,
+            'nilai_kuis'  => $nilai_kuis,
+            'display_soal'=> $display_soal
         ]);
     }
 
@@ -55,13 +75,14 @@ class KuisController extends Controller
     {
         $totalNilai = 0;
         $jumlahSoal = count($request->soal_ke_);
+        $bobot_nilai = 100/$jumlahSoal;
 
         for ($i = 0; $i < $jumlahSoal; $i++) {
           if($request->soal_ke_[$i] != null ) {
             $kuis = ForumKuis::where('id', $request->soal_ke_[$i])
                               ->first();
             if($kuis->jawaban == $request->jawaban_ke_[$i] && $request->jawaban_ke_[$i] != null ) {
-              $totalNilai += 10;
+              $totalNilai += $bobot_nilai;
             } else {
               $totalNilai += 0;
             }
@@ -79,10 +100,12 @@ class KuisController extends Controller
           $query->forum_id    = $id;
           $query->user_id     = Auth::user()->id;
           $query->nilai       = $totalNilai;
-          $query->save();
-          echo "belum test kuis";
+          if($query->save()) {
+            return redirect()->back()->withInput();
+          }
+          
         } else {
-          echo 'sudah test kuis';
+          return redirect()->back()->withInput()->with('info','Anda telah melakukan kuis, dan tidak boleh melakukan lg.');
         }
     }
 }

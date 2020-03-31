@@ -60,7 +60,8 @@ menu-active
                 </div>
             </div>
             <div class="col-lg-8">
-                <form class="form-area contact-form text-right" id="myForm" action="mail.php" method="post">
+                <form class="form-area contact-form text-right" action="{{ route('store.contact') }}" method="post">
+                    {{ csrf_field() }}
                     <div class="row">
                         <div class="col-lg-6 form-group">
                             <input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''"
@@ -77,13 +78,13 @@ menu-active
                                 required="" type="text">
                         </div>
                         <div class="col-lg-6 form-group">
-                            <textarea class="common-textarea form-control" name="message" placeholder="Enter Messege"
+                            <textarea class="common-textarea form-control" name="message" placeholder="Enter Message"
                                 onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Messege'"
                                 required=""></textarea>
                         </div>
                         <div class="col-lg-12">
                             <div class="alert-msg" style="text-align: left;"></div>
-                            <button class="primary-btn" style="float: right;">Send Message</button>
+                            <button class="primary-btn" style="float: right;" type="submit">Send Message</button>
                         </div>
                     </div>
                 </form>

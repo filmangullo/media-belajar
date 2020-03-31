@@ -37,9 +37,9 @@ menu-active
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nama</th>
+            <th scope="col">Level</th>
             <th scope="col">Nilai</th>
             <th scope="col">Tanggal dan Waktu</th>
-            <th scope="col">Level</th>
           </tr>
         </thead>
         <tbody>
@@ -47,16 +47,17 @@ menu-active
             <tr>
               <th scope="row">{{ $key+1 }}</th>
               <td>{{ $value->users['name'] }}</td>
+              <td>{{ strtoupper( $value->users['role'] ) }}</td>
               @foreach ($forum->forumKuisNilais as $key => $item)
-                  @if ($value->users['id'] ==  $item->user_id)
+                  @if ($value->users['id'] ==  $item->user_id && $item->nilai != null)
                     <td> {{ $item->nilai }} </td>
                     <td>{{ date_format($item->created_at, "F d, Y H:i" ) }}</td>
-                  @else
+                  @elseif($item->nilai == null)
                     <td> 0 </td>
                     <td>-</td>
                   @endif
               @endforeach
-              <td>{{ strtoupper( $value->users['role'] ) }}</td>
+              
             </tr>
           @endforeach
         </tbody>

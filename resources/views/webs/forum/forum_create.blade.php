@@ -34,7 +34,7 @@ menu-active
                     {{ csrf_field() }}
                     <div class="row">
                         <div class="col-lg-12 form-group">
-                            <label for="" style="float:left;">Nama Forum</label>
+                            <label for="" style="float:left;">Nama Forum / Pertemuan</label>
                             <input name="nama" placeholder="Enter Name Forum / Pertemuan"  class="common-input mb-20 form-control"
                                 required="" type="text">
                         </div>

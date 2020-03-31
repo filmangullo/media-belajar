@@ -54,24 +54,19 @@
 												<li class="@yield('about')"><a href="about">About</a></li>
 												<li class="@yield('contact')"><a href="{{ route('index.contact') }}">Contact</a></li>
                     @if (Route::has('login'))
-                        @auth
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                    <span style="color:blue">{{ __('Logout') }}</span>
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+						@auth
+						<li class="menu-has-children"><a href="#"> {{ Auth::user()->name }}</a>
+							<ul>
+								<li><a href="blog-home.html">Profil</a></li>
+								<li><a href="{{ route('index.my_courses') }}">My Courses</a></li>
+								<hr>
+								<li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+									document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
-                            </div>
-                        </li>
+							</ul>
+						</li>
                         @else
                         <li><a href="{{ route('login') }}">Login</a></li>
                             @if (Route::has('register'))
