@@ -56,6 +56,13 @@ Route::prefix('courses-forum-pertemuan-description')->middleware('auth')->group(
     Route::post('/{id}/update', 'DeskripsiController@update')->name('update.deskripsi');
 });
 
+Route::prefix('courses-forum-pertemuan-file')->middleware('auth')->group(function () {
+    Route::get('/{id}/create', 'FileController@create')->name('create.file');
+    Route::post('/{id}/store', 'FileController@store')->name('store.file');
+    Route::get('/{id}/edit', 'FileController@edit')->name('edit.file');
+    Route::post('/{id}/update', 'FileController@update')->name('update.file');
+});
+
 Route::prefix('courses-forum-pertemuan-kuis-panel')->middleware('auth')->group(function () {
     Route::get('/{id}', 'KuisPanelController@index_panel')->name('index.kuispanel');
     Route::post('/{id}/update_panel', 'KuisPanelController@update_panel')->name('update_panel.kuispanel');

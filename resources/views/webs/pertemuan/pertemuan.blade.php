@@ -90,9 +90,13 @@ menu-active
             <!-- <iframe src="https://view.officeapps.live.com/op/view.aspx?src=" frameborder="0" style="width:100%;min-height:640px;"></iframe> -->
             @if (auth::user()->role == 'pengajar')
             <div class="row mb-20">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <a href="javascript:void(0);" data-href="{{ route('create.deskripsi', $forum->id) }}"
-                        class="primary-btn btn-block text-center openPopup">Tambah Deskripsi</a>
+                        class="primary-btn btn-block text-center openPopup">Add Deskripsi</a>
+                </div>
+                <div class="col-md-2">
+                    <a href="javascript:void(0);" data-href="{{ route('create.file', $forum->id) }}"
+                        class="primary-btn btn-block text-center openPopup">Add File</a>
                 </div>
                 <div class="col-md-2">
                     <a href="{{ route('index.kuispanel', $forum->id) }}"
@@ -195,7 +199,7 @@ menu-active
                                         <a href="javascript:void(0);" data-href="{{ route('edit.diskusicomment', $comment->id) }}"
                                         class="genric-btn warning-border radius float-right openPopup">Edit</a>
                                     @endif
-                                    
+
                                 </div>
                             </div>
                         </div>
