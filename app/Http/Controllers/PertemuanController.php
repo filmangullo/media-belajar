@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Participant;
 use App\Forum;
 use App\ForumDeskripsi;
+use App\ForumFile;
 use App\ForumDiskusi;
 use App\DiskusiComment;
 use App\ForumKuisPanel;
@@ -39,19 +40,23 @@ class PertemuanController extends Controller
         $deskripsi = ForumDeskripsi::where('forum_id', $id)
                       ->get();
 
+        $file = ForumFile::where('forum_id', $id)
+                      ->get();
+
         $diskusi = ForumDiskusi::where('forum_id', $id)
                       ->orderBy('id')
                       ->get();
 
         $comments = DiskusiComment::where('forum_id', $id)
                       ->get();
-        
+
         $panel = ForumKuisPanel::where('forum_id', $forum->id)
                       ->first();
         return view('webs.pertemuan.pertemuan', [
             'participant' => $participant,
             'forum'       => $forum,
             'deskripsi'   => $deskripsi,
+            'file'        => $file,
             'diskusi'     => $diskusi,
             'comments'    => $comments,
             'panel'       => $panel

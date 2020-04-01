@@ -50,4 +50,9 @@ class Forum extends Model
     {
         return $this->hasMany('App\ForumTugasPanel', 'forum_id', 'id');
     }
+
+    public function forumFile()
+    {
+        return $this->hasMany('App\ForumFile', 'forum_id', 'id');
+    }
 }

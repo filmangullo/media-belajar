@@ -59,8 +59,8 @@ Route::prefix('courses-forum-pertemuan-description')->middleware('auth')->group(
 Route::prefix('courses-forum-pertemuan-file')->middleware('auth')->group(function () {
     Route::get('/{id}/create', 'FileController@create')->name('create.file');
     Route::post('/{id}/store', 'FileController@store')->name('store.file');
-    Route::get('/{id}/edit', 'FileController@edit')->name('edit.file');
-    Route::post('/{id}/update', 'FileController@update')->name('update.file');
+    Route::get('/{file}', 'FileController@download')->name('download.file');
+    Route::delete('/{id}/delete', 'FileController@destroy')->name('destroy.file');
 });
 
 Route::prefix('courses-forum-pertemuan-kuis-panel')->middleware('auth')->group(function () {

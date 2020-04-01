@@ -138,6 +138,16 @@ menu-active
                         </p>
                         @endforeach
                     </div>
+
+                    <div class="wow fadeIn" data-wow-duration="1s">
+                      @if($file != null)
+                      <h4 class="mb-10">File Materi</h4>
+                      @endif
+                        @foreach ($file as $key => $value)
+                        <p><a href="{{route('download.file', $value->file) }}"  ><i class="lnr lnr-download"></i>&nbsp;Download</a>&nbsp;
+                          {{ $value->name }}. &nbsp;</p>
+                        @endforeach
+                    </div>
                     <div class="comments-area">
                         <h4 class="mb-30">Forum Diskusi</h4>
 
