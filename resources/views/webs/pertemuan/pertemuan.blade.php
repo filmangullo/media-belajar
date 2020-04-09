@@ -88,6 +88,7 @@ menu-active
             <!-- <iframe src='https://view.officeapps.live.com/op/embed.aspx?src={{URL::asset('398847530-Laravel-Framework-pptx.pptx')}}' width='80%' height='565px' frameborder='0'> </iframe> -->
             <!-- <iframe src="https://docs.google.com/gview?url={{URL::asset('Sample_12.ppt')}}"></iframe> -->
             <!-- <iframe src="https://view.officeapps.live.com/op/view.aspx?src=" frameborder="0" style="width:100%;min-height:640px;"></iframe> -->
+<iframe src='https://view.officeapps.live.com/op/embed.aspx?src={urlencode({{URL::asset('398847530-Laravel-Framework-pptx.pptx')}})}' width='962px' height='565px' frameborder='0'></iframe>
             @if (auth::user()->role == 'pengajar')
             <div class="row mb-20">
                 <div class="col-md-2">
@@ -144,7 +145,7 @@ menu-active
                       <h4 class="mb-10">File Materi</h4>
                       @endif
                         @foreach ($file as $key => $value)
-                        <p><a href="{{route('download.file', $value->file) }}"  ><i class="lnr lnr-download"></i>&nbsp;Download</a>&nbsp;
+                        <p><a href="{{route('download.file', $value->id) }}"  ><i class="lnr lnr-download"></i>&nbsp;Download</a>&nbsp;
                           {{ $value->name }}. &nbsp;</p>
                         @endforeach
                     </div>

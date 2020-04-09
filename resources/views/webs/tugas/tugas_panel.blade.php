@@ -35,11 +35,17 @@ menu-active
             @include('layouts.alert')
             @if (auth::user()->role == 'pengajar')
             <div class="row mb-10">
-                <div class="col-md-12 text-center">
-                    <a href="javascript:void(0);" data-href="{{ route('create_soal.kuispanel', $forum->id) }}"
+                <div class="col-md-6 text-center">
+                    <a href="javascript:void(0);" data-href="{{ route('create_tugas.tugaspanel', $forum->id) }}"
                         class="primary-btn text-center openPopup">Buat Tugas Baru</a>
                 </div>
-
+                <div class="col-md-6 text-center">
+                    <a href="javascript:void(0);" data-href="{{ route('open_file.tugaspanel', $forum->id) }}"
+                        class="primary-btn text-center openPopup">Upload Tugas Baru</a>
+                </div>
+                <div class="col-md-12 text-center">
+                    ||||||||||||||||||||||||||||||||||||||||||||||
+                </div>
                 <div class="col-md-6 text-center">
                   <form action="{{ route('update_panel.tugaspanel', $panel->id ) }}" method="post" enctype="multipart/form-data">
                   {{ csrf_field() }}
@@ -58,6 +64,37 @@ menu-active
 
             @endif
 
+            <h3 class="mb-10">Soal Kuis</h3>
+            <div class="row">
+              @foreach ($tugas as $key => $value)
+              <div class="col-lg-12">
+                <div class="row mb-10">
+                    <div class="col-md-2 offset-md-8">
+                        <a href="javascript:void(0);" data-href="" class="genric-btn info btn-block text-center openPopup">Edit</a>
+                    </div>
+                    <div class="col-md-2">
+                        <form action="" method="post">
+                            <input class="genric-btn danger btn-block text-center" type="submit" value="Delete"
+                                onclick="return confirm('Are you sure you want to delete this item?');" />
+                            @method('delete')
+                            @csrf
+                        </form>
+                    </div>
+                </div>
+                @if ($value->tipe == "TXT")
+                  <blockquote class="generic-blockquote">
+                    <p></p>
+                  </blockquote>
+                @elseif($value->tipe == "FLE")
+                  <blockquote class="generic-blockquote">
+                    <p><a href="{{route('download.tugasonpanel', $value->id) }}"  ><i class="lnr lnr-download"></i>&nbsp;Download</a>&nbsp;
+                      {{ $value->nama }}. &nbsp;</p>
+                    <p>{{$value->keterangan}}</p>
+                  </blockquote>
+                @endif
+              </div>
+              @endforeach
+            </div>
     </div>
 </div>
 <!-- End Align Area -->

@@ -7,7 +7,7 @@ use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use App\ForumFile;
 
-class FileController extends Controller
+class ForumFileController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -39,9 +39,8 @@ class FileController extends Controller
      */
     public function store(Request $request, $id)
     {
-        $path = Storage::putFile( $request->file('file'));
+        $path = Storage::putFile('public', $request->file('file'));
         $query = new ForumFile;
-
         $query->forum_id  = $id;
         $query->name      = $request->name;
         $query->file      = $path;
@@ -57,21 +56,11 @@ class FileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function download($file)
+    public function download($id)
     {
-      $file= public_path(). "/download/info.pdf";
+          $query = ForumFile::findOrFail($id);
 
-
-
-$headers = [
-
-          'Content-Type' => 'application/jpeg',
-
-       ];
-
-
-
-return response()->download($file, 'filename.pdf', $headers);
+          return response()->download(storage_path('app/' . $query->file));
     }
 
     /**
