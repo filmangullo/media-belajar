@@ -55,7 +55,8 @@ class TugasPanelController extends Controller
     public function update_panel(Request $request, $id)
     {
         $query = ForumTugasPanel::findorFail($id);
-        $query->open_tugas = $request->open_tugas == "true" ? true : false;
+        $query->open_tugas  = $request->open_tugas == "true" ? true : false;
+        $query->deadline    = $request->deadline;
         $query->save();
 
         return redirect()->route('index.tugaspanel', $query->forum_id)

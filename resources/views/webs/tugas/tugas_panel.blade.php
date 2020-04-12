@@ -46,16 +46,20 @@ menu-active
                 <div class="col-md-12 text-center">
                     ||||||||||||||||||||||||||||||||||||||||||||||
                 </div>
-                <div class="col-md-6 text-center">
+                <div class="col-md-4 text-center">
                   <form action="{{ route('update_panel.tugaspanel', $panel->id ) }}" method="post" enctype="multipart/form-data">
                   {{ csrf_field() }}
-                  <label for="cars">Status Tugas :</label>
+                  <label for="cars">Status Tugas : {{ $panel->open_tugas == true ? "Open" : "Close" }}</label>
                     <select id="open_tugas" name="open_tugas" class="form-control">
                       <option value="true" {{ $panel->open_tugas == true ? "selected" : ""}}>Open</option>
                       <option value="false" {{ $panel->open_tugas == false ? "selected" : ""}}>Close</option>
                     </select>
                 </div>
-                <div class="col-md-6 text-center">
+                <div class="col-md-4 text-center">
+                  <label for="cars">Deadline: {{ $panel->deadline == null ? "Belum set" :  date_format($panel->deadline, "d M yy, H:i" ) }}</label>
+                  <input type="datetime-local" id="open_soal" name="deadline" value="" class="form-control">
+                </div>
+                <div class="col-md-4 text-center">
                   <label for="cars">Save Setelah Melakukan Perubahan..!</label>
                     <button type="submit" class="genric-btn primary btn-block medium radius form-control ">Save</button>
                 </div>
