@@ -10,6 +10,7 @@ use App\ForumFile;
 use App\ForumDiskusi;
 use App\DiskusiComment;
 use App\ForumKuisPanel;
+use App\ForumTugasPanel;
 
 
 class PertemuanController extends Controller
@@ -52,6 +53,10 @@ class PertemuanController extends Controller
 
         $panel = ForumKuisPanel::where('forum_id', $forum->id)
                       ->first();
+
+        $panelTugas = ForumTugasPanel::where('forum_id', $forum->id)
+                                ->first();
+
         return view('webs.pertemuan.pertemuan', [
             'participant' => $participant,
             'forum'       => $forum,
@@ -59,7 +64,8 @@ class PertemuanController extends Controller
             'file'        => $file,
             'diskusi'     => $diskusi,
             'comments'    => $comments,
-            'panel'       => $panel
+            'panel'       => $panel,
+            'panelTugas'  => $panelTugas
         ]);
     }
 }

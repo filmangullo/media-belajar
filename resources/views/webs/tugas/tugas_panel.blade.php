@@ -36,7 +36,7 @@ menu-active
             @if (auth::user()->role == 'pengajar')
             <div class="row mb-10">
                 <div class="col-md-6 text-center">
-                    <a href="javascript:void(0);" data-href="{{ route('create_tugas.tugaspanel', $forum->id) }}"
+                    <a href="{{ route('create_tugas.tugaspanel', $forum->id) }}"
                         class="primary-btn text-center openPopup">Buat Tugas Baru</a>
                 </div>
                 <div class="col-md-6 text-center">
@@ -56,7 +56,7 @@ menu-active
                     </select>
                 </div>
                 <div class="col-md-4 text-center">
-                  <label for="cars">Deadline: {{ $panel->deadline == null ? "Belum set" :  date_format($panel->deadline, "d M yy, H:i" ) }}</label>
+                  <label for="cars">Deadline: {{ $panel->deadline == null ? "Belum set" :  date('d F Y - H:i a',strtotime($panel->deadline)) }}</label>
                   <input type="datetime-local" id="open_soal" name="deadline" value="" class="form-control">
                 </div>
                 <div class="col-md-4 text-center">
@@ -87,7 +87,8 @@ menu-active
                 </div>
                 @if ($value->tipe == "TXT")
                   <blockquote class="generic-blockquote">
-                    <p></p>
+                    <p>{!! $value->tugas !!}</p>
+                    <p>{{$value->keterangan}}</p>
                   </blockquote>
                 @elseif($value->tipe == "FLE")
                   <blockquote class="generic-blockquote">

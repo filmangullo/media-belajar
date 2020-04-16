@@ -73,7 +73,11 @@ class TugasPanelController extends Controller
      */
     public function create_tugas ($id)
     {
-
+      $forum = Forum::where('id', $id)
+                    ->first();
+      return view('webs.tugas.create_tugas',[
+          'forum' => $forum
+      ]);
     }
 
     /**
@@ -85,7 +89,17 @@ class TugasPanelController extends Controller
      */
     public function store_tugas (Request $request, $id)
     {
+        $query = new ForumTugas;
+        $query->forum_id    = $id;
+        $query->user_id     = Auth::user()->id;
+        $query->tugas       = $request->tugas;
+        $query->nama        = null;
+        $query->keterangan  = $request->keterangan;
+        $query->tipe        = Controller::INPUT_TEXT ;
 
+        if($query->save()) {
+          return redirect()->route('index.tugaspanel', $id);
+        }
     }
 
     /**

@@ -88,7 +88,7 @@ menu-active
             <!-- <iframe src='https://view.officeapps.live.com/op/embed.aspx?src={{URL::asset('398847530-Laravel-Framework-pptx.pptx')}}' width='80%' height='565px' frameborder='0'> </iframe> -->
             <!-- <iframe src="https://docs.google.com/gview?url={{URL::asset('Sample_12.ppt')}}"></iframe> -->
             <!-- <iframe src="https://view.officeapps.live.com/op/view.aspx?src=" frameborder="0" style="width:100%;min-height:640px;"></iframe> -->
-<iframe src='https://view.officeapps.live.com/op/embed.aspx?src={urlencode({{URL::asset('398847530-Laravel-Framework-pptx.pptx')}})}' width='962px' height='565px' frameborder='0'></iframe>
+<!-- <iframe src='https://view.officeapps.live.com/op/embed.aspx?src={urlencode({{URL::asset('398847530-Laravel-Framework-pptx.pptx')}})}' width='962px' height='565px' frameborder='0'></iframe> -->
             @if (auth::user()->role == 'pengajar')
             <div class="row mb-20">
                 <div class="col-md-2">
@@ -234,6 +234,20 @@ menu-active
                             <p>Kuis Belum dibuka,..!</p>
                         @endif
                         <a href="{{ route('index.kuis', $forum->id) }}" class="genric-btn btn-block success circle arrow text-center">Mulai Kuis<span class="lnr lnr-arrow-right"></span></a>
+                      @endif
+                  </div>
+
+                  <div class="single-element-widget mt-30 ">
+                      @if ($panelTugas->open_tugas == true || auth::user()->role == 'pengajar')
+                        @if ($panelTugas->open_tugas == true )
+                            <p>Tugas Telah dibuka,..?</p>
+                            <p>Deadline :{{date('d M Y - H:i a',strtotime($panelTugas->deadline))}}</p>
+                        @elseif($panelTugas->open_tugas == false)
+                            <p>Tugas Belum dibuka,..!</p>
+                        @endif
+                        @if (strtotime(date('Y/m/d H:i:s')) <=  strtotime($panelTugas->deadline))
+                          <a href="#" class="genric-btn btn-block info circle arrow text-center">Kerjakan Tugas<span class="lnr lnr-arrow-right"></span></a>
+                        @endif
                       @endif
                   </div>
                     <div class="single-element-widget mt-30 ">

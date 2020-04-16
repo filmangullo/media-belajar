@@ -26,6 +26,7 @@
 	<!--
 			CSS
 			============================================= -->
+			@yield('link')
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/themify-icons/0.1.2/css/themify-icons.css">
 	<link rel="stylesheet" href="{{ URL::asset('webs/css/linearicons.css') }}">
 	<link rel="stylesheet" href="{{ URL::asset('webs/css/font-awesome.min.css') }}">
