@@ -22,7 +22,7 @@ menu-active
         <i class="lnr lnr-arrow-right"></i>
         <a href="{{ route('index.pertemuan', $forum->id )}}">{{ $forum['nama'] }}</a>
         <i class="lnr lnr-arrow-right"></i>
-        <a href="{{ route('index.kuis', $forum->id )}}">Kuis</a>
+        <a href="{{ route('index.kuis', $forum->id )}}">Kerjakan Kuis</a>
     </span>
 </div>
 @endsection
@@ -41,7 +41,7 @@ menu-active
                 <img src="{{ URL::asset('webs/img/semangat.gif') }}" alt="">
             </div>
             @endif
-         
+
             <div @if ( $display_soal == true ) style="display:block" @else style="display:none" @endif>
 
                 <h3 class="mb-30">Soal Kuis</h3>

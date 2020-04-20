@@ -14,9 +14,9 @@ class AddFileAndExtensifileOnForumDiskusiTable extends Migration
     public function up()
     {
         Schema::table('forum_diskusis', function (Blueprint $table) {
-            
-            $table->text('file')->nullable()->after('diskusi');
-            $table->string('extension_file')->nullable();
+
+            $table->text('file')->nullable()->after('diskusi')->nullable();
+            $table->string('extension_file')->after('file')->nullable();
         });
     }
 

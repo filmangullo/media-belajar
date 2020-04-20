@@ -19,8 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Route::get('/courses', 'CoursesController@index')->name('home');
-
 Route::prefix('my-courses')->middleware('auth')->group(function () {
     Route::get('/', 'MyCoursesController@index')->name('index.my_courses');
 });
@@ -73,6 +71,15 @@ Route::prefix('courses-forum-pertemuan-kuis-panel')->middleware('auth')->group(f
     Route::delete('/{id}/destroy_soal', 'KuisPanelController@destroy_soal')->name('destroy_soal.kuispanel');
 });
 
+Route::prefix('courses-forum-pertemuan-kuis-nilai')->middleware('auth')->group(function () {
+    Route::get('/{id}', 'KuisNilaiController@index')->name('index.kuisnilai');
+});
+
+Route::prefix('courses-forum-pertemuan-kuis-telah-dimulai')->middleware('auth')->group(function () {
+    Route::get('/{id}', 'KuisController@index')->name('index.kuis');
+    Route::post('/{id}/calculate', 'KuisController@calculate')->name('index.calculateKuis');
+});
+
 Route::prefix('courses-forum-pertemuan-tugas-panel')->middleware('auth')->group(function () {
     Route::get('/{id}', 'TugasPanelController@index')->name('index.tugaspanel');
     Route::post('/{id}/update_panel', 'TugasPanelController@update_panel')->name('update_panel.tugaspanel');
@@ -83,13 +90,9 @@ Route::prefix('courses-forum-pertemuan-tugas-panel')->middleware('auth')->group(
     Route::get('/{id}/download', 'TugasPanelController@download')->name('download.tugasonpanel');
 });
 
-Route::prefix('courses-forum-pertemuan-kuis-nilai')->middleware('auth')->group(function () {
-    Route::get('/{id}', 'KuisNilaiController@index')->name('index.kuisnilai');
-});
-
-Route::prefix('courses-forum-pertemuan-kuis-telah-dimulai')->middleware('auth')->group(function () {
-    Route::get('/{id}', 'KuisController@index')->name('index.kuis');
-    Route::post('/{id}/calculate', 'KuisController@calculate')->name('index.calculateKuis');
+Route::prefix('courses-forum-pertemuan-tugas-telah-dimulai')->middleware('auth')->group(function () {
+    Route::get('/{id}', 'TugasController@index')->name('index.tugas');
+    Route::post('/{id}', 'TugasController@store')->name('store.tugas');
 });
 
 Route::prefix('courses-forum-pertemuan-diskusi')->middleware('auth')->group(function () {

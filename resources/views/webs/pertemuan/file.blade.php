@@ -14,7 +14,7 @@
               <span class="input-group-text">File Upload</span>
             </div>
             <div class="custom-file">
-              <input type="file" class="custom-file-input" id="file" name="file" onchange="myFunctionx()" required>
+              <input type="file" class="custom-file-input" id="file" name="file" onchange="myFunction()" required>
               <label class="custom-file-label" for="file"><span id="nameFile">Choose file</span></label>
             </div>
           </div>
@@ -27,8 +27,8 @@
 </div>
 
 <script type="text/javascript">
-function myFunctionx() {
-  var x = document.getElementById("file").files[0].name;
+    function myFunction() {
+      var x = document.getElementById("file").files[0].name;
       document.getElementById("nameFile").innerHTML = x;
-}
+    }
 </script>

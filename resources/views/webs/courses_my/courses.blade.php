@@ -51,7 +51,7 @@ menu-active
                         @method('delete')
                         @csrf
                     </form>
-                  @endifx
+                  @endif
 
 
                     <div class="feature-item">

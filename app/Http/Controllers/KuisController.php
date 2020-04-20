@@ -54,8 +54,8 @@ class KuisController extends Controller
           $nilai_kuis = $queryNilai->nilai;
           $display_soal = false;
         }
-        
-        
+
+
 
         return view('webs.kuis.kuis', [
             'forum'       => $forum,
@@ -103,7 +103,7 @@ class KuisController extends Controller
           if($query->save()) {
             return redirect()->back()->withInput();
           }
-          
+
         } else {
           return redirect()->back()->withInput()->with('info','Anda telah melakukan kuis, dan tidak boleh melakukan lg.');
         }

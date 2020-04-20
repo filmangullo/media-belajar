@@ -175,11 +175,11 @@ menu-active
                                 <div class="reply-btn">
                                     @if (Auth::user()->id == $value->user_id)
                                         <a href="javascript:void(0);" data-href="{{ route('edit.diskusi', $value->id) }}"
-                                        class="float-right openPopup" style="color:aqua;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit</a> 
+                                        class="float-right openPopup" style="color:aqua;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit</a>
                                     @endif
                                     <a href="javascript:void(0);"
                                         data-href="{{ route('create.diskusicomment', $value->id) }}"
-                                        class="float-right openPopup" style="color:blue;">Comment</a> 
+                                        class="float-right openPopup" style="color:blue;">Comment</a>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +205,7 @@ menu-active
                                     @if (Auth::user()->id == $comment->user_id)
                                         <form action="{{ route('destroy.diskusicomment', $comment->id )}}" class="float-right" method="post">
                                             <input class="text-center" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete"
-                                                onclick="return confirm('Are you sure you want to delete this item?');" style="color:red; border:none;" />
+                                                onclick="return confirm('Are you sure you want to delete this item?');" style="color:red; border:none; background-color: transparent" />
                                             @method('delete')
                                             @csrf
                                         </form>
@@ -249,7 +249,7 @@ menu-active
                             <p>Tugas Belum dibuka,..!</p>
                         @endif
                         @if (strtotime(date('Y/m/d H:i:s')) <=  strtotime($panelTugas->deadline))
-                          <a href="#" class="genric-btn btn-block info circle arrow text-center">Kerjakan Tugas<span class="lnr lnr-arrow-right"></span></a>
+                          <a href="{{ route('index.tugas', $forum->id) }}" class="genric-btn btn-block info circle arrow text-center">Kerjakan Tugas<span class="lnr lnr-arrow-right"></span></a>
                         @endif
                       @endif
                   </div>

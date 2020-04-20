@@ -18,9 +18,8 @@ class CreateForumTugasTableAndAddDeadlineOnForumTugasPanels extends Migration
           $table->unsignedBigInteger('forum_id');
           $table->unsignedBigInteger('user_id');
           $table->text('tugas');
-          $table->text('nama')->nullable();
-          $table->text('keterangan')->nullable();
-          $table->string('tipe')->nullable();
+          $table->text('file')->nullable()->after('tugas')->nullable();
+          $table->string('extension_file')->after('file')->nullable();
           $table->timestamps();
           $table->softDeletes();
 
