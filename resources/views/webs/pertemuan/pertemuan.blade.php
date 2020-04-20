@@ -165,18 +165,21 @@ menu-active
                                         <p class="date">{{ date_format($value->created_at, "F d, Y" ) }} at
                                             {{ date_format($value->created_at, "H:i:s" ) }} </p>
                                         <p class="comment">
-                                            {{ $value->diskusi }}
+                                            {{ $value->diskusi }} <br>
+                                            @if ($value->extension_file != null &&  $value->extension_file == 'png')
+                                                <img src="{{asset('storage/'.$value->file)}}" alt="" width="90%">
+                                            @endif
                                         </p>
                                     </div>
                                 </div>
                                 <div class="reply-btn">
                                     @if (Auth::user()->id == $value->user_id)
                                         <a href="javascript:void(0);" data-href="{{ route('edit.diskusi', $value->id) }}"
-                                        class="genric-btn warning-border radius float-right openPopup">Edit</a>
+                                        class="float-right openPopup" style="color:aqua;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit</a> 
                                     @endif
                                     <a href="javascript:void(0);"
                                         data-href="{{ route('create.diskusicomment', $value->id) }}"
-                                        class="genric-btn primary-border radius float-right openPopup">Comment</a>
+                                        class="float-right openPopup" style="color:blue;">Comment</a> 
                                 </div>
                             </div>
                         </div>
@@ -201,14 +204,14 @@ menu-active
                                 <div class="reply-btn">
                                     @if (Auth::user()->id == $comment->user_id)
                                         <form action="{{ route('destroy.diskusicomment', $comment->id )}}" class="float-right" method="post">
-                                            <input class="genric-btn danger btn-block text-center" type="submit" value="Delete"
-                                                onclick="return confirm('Are you sure you want to delete this item?');" />
+                                            <input class="text-center" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete"
+                                                onclick="return confirm('Are you sure you want to delete this item?');" style="color:red; border:none;" />
                                             @method('delete')
                                             @csrf
                                         </form>
 
                                         <a href="javascript:void(0);" data-href="{{ route('edit.diskusicomment', $comment->id) }}"
-                                        class="genric-btn warning-border radius float-right openPopup">Edit</a>
+                                        class="float-right openPopup" style="color:aqua;">Edit</a>
                                     @endif
 
                                 </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 use App\ForumDiskusi;
 use Auth;
 
@@ -26,11 +28,14 @@ class ForumDiskusiController extends Controller
    */
   public function store(Request $request, $id)
   {
+    $path = Storage::putFile('public', $request->file('file'));
     $query = new ForumDiskusi;
 
-    $query->forum_id = $id;
-    $query->user_id = Auth::user()->id;
-    $query->diskusi = $request->diskusi;
+    $query->forum_id        = $id;
+    $query->user_id         = Auth::user()->id;
+    $query->diskusi         = $request->diskusi;
+    $query->file            = substr($path,7);
+    $query->extension_file  = $request->file('file')->getClientOriginalExtension();
 
     if($query->save()) {
       return redirect()->route('index.pertemuan', $id);
