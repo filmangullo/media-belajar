@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Forum;
 use App\ForumTugas;
+use App\ForumTugasKumpul;
 
 class TugasController extends Controller
 {
