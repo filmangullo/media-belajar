@@ -9,7 +9,7 @@ menu-active
 @section('header')
 
 <h1 class="text-white">
-    Kuis {{ $forum->kelasMataPelajarans['nama'] }}
+    Tugas {{ $forum->kelasMataPelajarans['nama'] }}
 </h1>
 <p>{{ $forum->nama }}</p>
 <div class="link-nav">
@@ -64,7 +64,7 @@ menu-active
                 {{ csrf_field() }}
                 <div class="col-lg-12">
                   <div class="input-group" style="margin: 0 auto;">
-                    <textarea id="summernote" name="tugas" required></textarea>
+                    <textarea id="summernote" name="tugas" required>{!!$tugasKumpul!!}</textarea>
                   </div>
                 </div>
                 <div class="col-lg-12">

@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 use App\Forum;
 use App\ForumTugas;
 use App\ForumTugasKumpul;
+use Auth;
+
 
 class TugasController extends Controller
 {
@@ -26,16 +30,27 @@ class TugasController extends Controller
    */
   public function index($id)
   {
+
       $forum = Forum::where('id', $id)
                     ->first();
 
       $tugas = ForumTugas::where('forum_id', $id)
                          ->orderBy('id', 'ASC')
                          ->get();
+      $tugasKumpul = "";
+
+      $tugasKumpulCek = ForumTugasKumpul::where('forum_id', $forum->id)
+                                        ->where('user_id', Auth::user()->id)
+                                        ->first();
+
+      if(!$tugasKumpulCek != true ) {
+          $tugasKumpul = $tugasKumpulCek->tugas;
+      }
 
       return view('webs.tugas.tugas', [
           'forum'       => $forum,
-          'tugas'       => $tugas
+          'tugas'       => $tugas,
+          'tugasKumpul' => $tugasKumpul
       ]);
   }
 
@@ -47,7 +62,17 @@ class TugasController extends Controller
    */
   public function store(Request $request, $id)
   {
-      dd ($request->all());
+      $path = Storage::putFile('public', $request->file('file'));
+      $query = new ForumTugasKumpul;
 
+      $query->forum_id        = $id;
+      $query->user_id         = Auth::user()->id;
+      $query->tugas           = $request->tugas;
+      $query->file            = substr($path,7);
+      $query->extension_file  = $request->file('file')->getClientOriginalExtension();
+
+      if($query->save()) {
+        return redirect()->route('index.tugas', $id);
+      }
   }
 }
