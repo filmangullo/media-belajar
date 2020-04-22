@@ -61,6 +61,26 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="instansi" class="col-md-4 col-form-label text-md-right">{{ __('Instansi') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="instansi" class="form-control" name="instansi_id">
+                                    @foreach ($instansi as $item)
+                                        <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                    @endforeach
+                                  </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="phone" type="tel" class="form-control" name="phone" required autocomplete="Number Phone" onkeypress="return hanyaAngka(event)">
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -74,4 +94,14 @@
         </div>
     </div>
 </div>
+
+<script>
+    function hanyaAngka(evt) {
+      var charCode = (evt.which) ? evt.which : event.keyCode
+       if (charCode > 31 && (charCode < 48 || charCode > 57))
+
+        return false;
+      return true;
+    }
+</script>
 @endsection

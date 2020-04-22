@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AdminControllers\Auth;
+namespace App\Http\Controllers\AdminControllers\AuthAdmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
