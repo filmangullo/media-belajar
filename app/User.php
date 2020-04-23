@@ -40,6 +40,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function roleOfRequests()
+    {
+        return $this->hasOne('App\RoleOfUserRequest', 'user_id', 'id');
+    }
+
     public function participants()
     {
         return $this->hasMany('App\Participant', 'user_id', 'id');

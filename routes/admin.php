@@ -41,6 +41,7 @@ Route::prefix('user')->group(function () {
     Route::get('/index', 'UserController@index')->name('adm.user.index');
     Route::get('/edit/{id}', 'UserController@edit')->name('adm.user.edit');
     Route::post('/update/{id}', 'UserController@update')->name('adm.user.update');
+    Route::post('/approve_role_request/{id}', 'UserController@approveToRoleOfRequest')->name('adm.user.approve');
 });
 
 // Pengajar Control

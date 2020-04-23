@@ -81,6 +81,17 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="level" class="col-md-4 col-form-label text-md-right">{{ __('Level') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="level" class="form-control" name="role_of_request">
+                                        <option value="pelajar" selected>Pelajar</option>
+                                        <option value="pengajar">Pengajar</option>
+                                  </select>
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
