@@ -61,6 +61,11 @@ Route::prefix('courses-forum-pertemuan-file')->middleware('auth')->group(functio
     Route::delete('/{id}/delete', 'ForumFileController@destroy')->name('destroy.file');
 });
 
+Route::prefix('courses-forum-pertemuan-video-add')->middleware('auth')->group(function () {
+    Route::get('/{id}/create', 'ForumVideoController@create')->name('create.video');
+    Route::post('/{id}/store', 'ForumVideoController@store')->name('store.video');
+});
+
 Route::prefix('courses-forum-pertemuan-kuis-panel')->middleware('auth')->group(function () {
     Route::get('/{id}', 'KuisPanelController@index_panel')->name('index.kuispanel');
     Route::post('/{id}/update_panel', 'KuisPanelController@update_panel')->name('update_panel.kuispanel');

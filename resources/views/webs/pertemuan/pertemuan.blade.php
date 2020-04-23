@@ -77,18 +77,6 @@ menu-active
                     <p id="detik"></p>
                 </div>
             </div>
-            <!-- <object width="400" height="400" data="{{URL::asset('398847530-Laravel-Framework-pptx.pptx')}}"> -->
-</object>
-            <!-- <iframe src="{{URL::asset('398847530-Laravel-Framework-pptx.pptx')}}" width="800px" heigt="600px"></iframe> -->
-            <!-- <iframe src='https://view.officeapps.live.com/op/embed.aspx?src=[{{URL::asset('398847530-Laravel-Framework-pptx.pptx')}}]' width='100%' height='600px' frameborder='0'> -->
-            <!-- <iframe src='https://view.officeapps.live.com/op/embed.aspx?src={{URL::asset('398847530-Laravel-Framework-pptx.pptx')}}' width='962px' height='565px' frameborder='0'></iframe> -->
-            <!-- <iframe src="https://docs.google.com/gview?url={{URL::asset('398847530-Laravel-Framework-pptx.pptx')}}&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe> -->
-            <!-- <iframe src="http://docs.google.com/gview?url={{URL::asset('Sample_12.ppt')}}&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe> -->
-            <!-- <iframe src='https://view.officeapps.live.com/op/embed.aspx?src={{URL::asset('Sample_12.ppt')}}' width='962px' height='565px' frameborder='0'></iframe> -->
-            <!-- <iframe src='https://view.officeapps.live.com/op/embed.aspx?src={{URL::asset('398847530-Laravel-Framework-pptx.pptx')}}' width='80%' height='565px' frameborder='0'> </iframe> -->
-            <!-- <iframe src="https://docs.google.com/gview?url={{URL::asset('Sample_12.ppt')}}"></iframe> -->
-            <!-- <iframe src="https://view.officeapps.live.com/op/view.aspx?src=" frameborder="0" style="width:100%;min-height:640px;"></iframe> -->
-<!-- <iframe src='https://view.officeapps.live.com/op/embed.aspx?src={urlencode({{URL::asset('398847530-Laravel-Framework-pptx.pptx')}})}' width='962px' height='565px' frameborder='0'></iframe> -->
             @if (auth::user()->role == 'pengajar')
             <div class="row mb-20">
                 <div class="col-md-2">
@@ -100,6 +88,10 @@ menu-active
                         class="primary-btn btn-block text-center openPopup">Add File</a>
                 </div>
                 <div class="col-md-2">
+                    <a href="javascript:void(0);" data-href="{{ route('create.video', $forum->id) }}"
+                        class="primary-btn btn-block text-center openPopup">Add Video</a>
+                </div>
+                <div class="col-md-2">
                     <a href="{{ route('index.kuispanel', $forum->id) }}"
                         class="primary-btn btn-block text-center ">Kuis Panel</a>
                 </div>
@@ -107,7 +99,7 @@ menu-active
                     <a href="{{ route('index.kuisnilai', $forum->id)}}"
                         class="primary-btn btn-block text-center ">Kuis Nilai</a>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <a href="{{ route('index.tugaspanel', $forum->id) }}"
                         class="primary-btn btn-block text-center ">Tugas Panel</a>
                 </div>
@@ -128,7 +120,13 @@ menu-active
             @endif
 
             <div class="row">
+                
+
                 <div class="col-lg-8 col-md-8">
+                    {{-- video --}}
+                    <iframe width="710" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                    </iframe>
+                    {{-- End video --}}
                     <h4 class="mb-10">Deskripsi / Quotes</h4>
                     <div class="wow fadeIn" data-wow-duration="1s">
                         @foreach ($deskripsi as $key => $value)
@@ -258,10 +256,14 @@ menu-active
                         @foreach ($participant as $key => $value)
                         <div class="switch-wrap d-flex justify-content-between ">
                             <p>{{$key+1}}. {{ $value->users['name'] }}</p>
+                            @if(Cache::has('user-is-online-' . $value->users['id']))
                             <div class="primary-checkbox ">
-                                {!! $value->users['role'] == 'pengajar' ? '<span class="lnr lnr-briefcase"></span>' :
-                                '<span class="lnr lnr-graduation-hat"></span>' !!}
-
+                                {!! $value->users['role'] == 'pengajar' ? '<span class="lnr lnr-briefcase text-success"></span>' :
+                                '<span class="lnr lnr-graduation-hat text-success"></span>' !!}
+                            @else
+                                {!! $value->users['role'] == 'pengajar' ? '<span class="lnr lnr-briefcase text-secondary"></span>' :
+                                '<span class="lnr lnr-graduation-hat text-secondary"></span>' !!}
+                            @endif
                             </div>
                         </div>
                         @endforeach

@@ -11,6 +11,8 @@ use App\ForumDiskusi;
 use App\DiskusiComment;
 use App\ForumKuisPanel;
 use App\ForumTugasPanel;
+use Cache;
+use DB;
 
 
 class PertemuanController extends Controller
@@ -57,8 +59,11 @@ class PertemuanController extends Controller
         $panelTugas = ForumTugasPanel::where('forum_id', $forum->id)
                                 ->first();
 
+        $users = DB::table('users')->get();
+
         return view('webs.pertemuan.pertemuan', [
             'participant' => $participant,
+            'users'        => $users,  
             'forum'       => $forum,
             'deskripsi'   => $deskripsi,
             'file'        => $file,
