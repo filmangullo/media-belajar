@@ -14,8 +14,8 @@
               <span class="input-group-text">File Upload</span>
             </div>
             <div class="custom-file">
-              <input type="file" class="custom-file-input" id="file" name="file" onchange="myFunction()" required>
-              <label class="custom-file-label" for="file"><span id="nameFile">Choose file</span></label>
+              <input type="file" class="custom-file-input" id="fileX" name="file" onchange="myFile()" required>
+              <label class="custom-file-label" for="file"><span id="nameFileX">Choose file</span></label>
             </div>
           </div>
           <div class="modal-footer">
@@ -26,9 +26,10 @@
       </form>
 </div>
 
-<script type="text/javascript">
-    function myFunction() {
-      var x = document.getElementById("file").files[0].name;
-      document.getElementById("nameFile").innerHTML = x;
+<script>
+    function myFile() {
+      var xfile = document.getElementById("fileX").files[0].name;
+      document.getElementById("nameFileX").innerHTML = xfile;
     }
+
 </script>

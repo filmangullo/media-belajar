@@ -120,12 +120,14 @@ menu-active
             @endif
 
             <div class="row">
-                
+
 
                 <div class="col-lg-8 col-md-8">
                     {{-- video --}}
-                    <iframe width="710" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-                    </iframe>
+                    @foreach ($video as $key => $value)
+                    <iframe width="710" height="345" src="{{asset('storage/'.$value->video)}}" controls="controls"></iframe>
+                    @endforeach
+
                     {{-- End video --}}
                     <h4 class="mb-10">Deskripsi / Quotes</h4>
                     <div class="wow fadeIn" data-wow-duration="1s">
@@ -147,7 +149,7 @@ menu-active
                           {{ $value->name }}. &nbsp;</p>
                         @endforeach
                     </div>
-                    <div class="comments-area">
+                    <div class="comments-area" id="diskusiShow">
                         <h4 class="mb-30">Forum Diskusi</h4>
 
                         <!--List Diskusi -->
@@ -222,9 +224,11 @@ menu-active
                         <!-- End List Diskusi -->
 
                     </div>
-				   <!-- Diskusi Form -->
-				   @include('webs.pertemuan.diskusi')
-				   <!-- End Diskusi Form -->
+
+      				  <!-- Diskusi Form -->
+      				  @include('webs.pertemuan.diskusi')
+      				  <!-- End Diskusi Form -->
+
                 </div>
                 <div class="col-lg-3 col-md-4 mt-sm-30">
                   <div class="single-element-widget mt-30 ">
@@ -289,7 +293,13 @@ menu-active
         document.getElementById("detik").innerHTML = waktu.getSeconds();
     }
 
+    // Fungsi untuk menampilkan Nama File jika di Upload pada AddFile
+    function myFile() {
+      var xfile = document.getElementById("fileX").files[0].name;
+      document.getElementById("nameFileX").innerHTML = xfile;
+    }
 </script>
+
 <script>
     $(document).ready(function () {
         $('.openPopup').on('click', function () {

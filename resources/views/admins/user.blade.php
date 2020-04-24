@@ -48,7 +48,7 @@
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>
-                                  <button href="" onclick="document.getElementById('approve').submit();">Approve to {{$item->roleOfRequests['role_of_request']}}</button></li>
+                                  <button href="" onclick="document.getElementById('approve').submit();" class="btn btn-primary">Approve</button> to {{$item->roleOfRequests['role_of_request']}}
                                   <form id="approve" action="{{ route('adm.user.approve', $item->id ) }}" method="POST" style="display: none;">
                                       @csrf
                                   </form>

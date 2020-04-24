@@ -11,6 +11,7 @@ use App\ForumDiskusi;
 use App\DiskusiComment;
 use App\ForumKuisPanel;
 use App\ForumTugasPanel;
+use App\ForumVideo;
 use Cache;
 use DB;
 
@@ -46,6 +47,9 @@ class PertemuanController extends Controller
         $file = ForumFile::where('forum_id', $id)
                       ->get();
 
+        $video = ForumVideo::where('forum_id', $id)
+                      ->get();
+
         $diskusi = ForumDiskusi::where('forum_id', $id)
                       ->orderBy('id')
                       ->get();
@@ -63,10 +67,11 @@ class PertemuanController extends Controller
 
         return view('webs.pertemuan.pertemuan', [
             'participant' => $participant,
-            'users'        => $users,  
+            'users'       => $users,
             'forum'       => $forum,
             'deskripsi'   => $deskripsi,
             'file'        => $file,
+            'video'       => $video,
             'diskusi'     => $diskusi,
             'comments'    => $comments,
             'panel'       => $panel,

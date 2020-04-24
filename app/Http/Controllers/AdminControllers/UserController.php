@@ -40,7 +40,13 @@ class UserController extends Controller
      */
     public function approveToRoleOfRequest($id)
     {
+        $user = User::findOrFail($id);
 
+        $user->role = $user->roleOfRequests['role_of_request'];
+
+        if ($user->save()) {
+            return redirect()->back();
+        }
     }
 
     /**

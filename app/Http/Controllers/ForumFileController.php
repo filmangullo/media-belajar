@@ -42,7 +42,7 @@ class ForumFileController extends Controller
         $path = Storage::putFile('public', $request->file('file'));
         $query = new ForumFile;
         $query->forum_id  = $id;
-        $query->name      = $request->name;
+        $query->name      =  $request->file('file')->getClientOriginalName();
         $query->file      = $path;
 
         if($query->save()) {

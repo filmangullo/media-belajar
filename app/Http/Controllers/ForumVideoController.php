@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
+use App\ForumVideo;
 
 class ForumVideoController extends Controller
 {
@@ -36,7 +39,15 @@ class ForumVideoController extends Controller
      */
     public function store(Request $request, $id)
     {
-        
+        $path = Storage::putFile('public', $request->file('video'));
+        $query = new ForumVideo;
+        $query->forum_id    = $id;
+        $query->title       = $request->title;
+        $query->video       = substr($path,7);
+
+        if($query->save()) {
+          return redirect()->route('index.pertemuan', $id);
+        }
     }
 
     /**
