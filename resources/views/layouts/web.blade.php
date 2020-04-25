@@ -49,33 +49,32 @@
 					<a href="/"><img src="{{ URL::asset('webs/img/logo.png') }}" alt="" title="" /></a>
 				</div>
 				<nav id="nav-menu-container">
-					<ul class="nav-menu">
-                        <li><a href="/">Beranda</a></li>
-                        <li class="@yield('courses')"><a href="{{ route('index.courses') }}">Pelajaran</a></li>
-												<li class="@yield('about')"><a href="about">About</a></li>
-												<li class="@yield('contact')"><a href="{{ route('index.contact') }}">Contact</a></li>
-                    @if (Route::has('login'))
-						@auth
-						<li class="menu-has-children"><a href="#"> {{ Auth::user()->name }}</a>
-							<ul>
-								<li><a href="blog-home.html">Profil</a></li>
-								<li><a href="{{ route('index.my_courses') }}">Pelajaran ku</a></li>
-								<hr>
-								<li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-									document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
-								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-							</ul>
-						</li>
-                        @else
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                            @if (Route::has('register'))
-                                <li><a href="{{ route('register') }}">Register</a></li>
-                            @endif
-                        @endauth
+						<ul class="nav-menu">
+	              <li><a href="/">Beranda</a></li>
+	              <li class="@yield('courses')"><a href="{{ route('index.courses') }}">Pelajaran</a></li>
+								<li class="@yield('contact')"><a href="{{ route('index.contact') }}">Contact</a></li>
+                @if (Route::has('login'))
+									@auth
+										<li class="menu-has-children"><a href="#"> {{ Auth::user()->name }}</a>
+										<ul>
+											<li><a href="blog-home.html">Profil</a></li>
+											<li><a href="{{ route('index.my_courses') }}">Pelajaran ku</a></li>
+											<hr>
+											<li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+												document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
+												<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                        </form>
+											</ul>
+										</li>
+              	@else
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    @if (Route::has('register'))
+                        <li><a href="{{ route('register') }}">Register</a></li>
                     @endif
-					</ul>
+                  @endauth
+                @endif
+						</ul>
 				</nav><!-- #nav-menu-container -->
 			</div>
 		</div>
@@ -98,7 +97,7 @@
 	</section>
 	<!-- End Banner Area -->
 
-    <!-- Start Content Area -->
+  <!-- Start Content Area -->
         @yield('content')
 	<!-- End Content Area -->
 

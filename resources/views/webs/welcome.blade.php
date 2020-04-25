@@ -48,31 +48,30 @@
 				</div>
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
-                        <li class="menu-active"><a href="/">Beranda</a></li>
-                        <li><a href="{{ route('index.courses') }}">Pelajaran</a></li>
-						<li><a href="about">About</a></li>
-						<li><a href="{{ route('index.contact') }}">Contact</a></li>
-                    @if (Route::has('login'))
-                        @auth
-                        <li class="menu-has-children"><a href="#"> {{ Auth::user()->name }}</a>
-							<ul>
-								<li><a href="blog-home.html">Profil</a></li>
-								<li><a href="{{ route('index.my_courses') }}">Pelajaran ku</a></li>
-								<hr>
-								<li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-									document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
-								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-							</ul>
-						</li>
-                        @else
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                            @if (Route::has('register'))
-                                <li><a href="{{ route('register') }}">Register</a></li>
-                            @endif
-                        @endauth
+              <li class="menu-active"><a href="/">Beranda</a></li>
+              <li><a href="{{ route('index.courses') }}">Pelajaran</a></li>
+							<li><a href="{{ route('index.contact') }}">Contact</a></li>
+              @if (Route::has('login'))
+                  @auth
+              <li class="menu-has-children"><a href="#"> {{ Auth::user()->name }}</a>
+										<ul>
+													<li><a href="blog-home.html">Profil</a></li>
+													<li><a href="{{ route('index.my_courses') }}">Pelajaran ku</a></li>
+													<hr>
+													<li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+															document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
+													<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      		@csrf
+                        	</form>
+										</ul>
+							</li>
+              @else
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    @if (Route::has('register'))
+                        <li><a href="{{ route('register') }}">Register</a></li>
                     @endif
+          				@endauth
+              @endif
 					</ul>
 				</nav><!-- #nav-menu-container -->
 			</div>
@@ -86,16 +85,15 @@
 		<div class="container">
 			<div class="row fullscreen d-flex align-items-center justify-content-center">
 				<div class="banner-content col-lg-8 col-md-12">
-					<h1 class="wow fadeIn" data-wow-duration="4s">We Rank the Best Courses <br> on the Web</h1>
+					<h1 class="wow fadeIn" data-wow-duration="4s">Mengajarkan Yang Terbaik <br> pada situs Web</h1>
 					<p class="text-white">
-						In the history of modern astronomy, there is probably no one greater leap forward than the building and launch of the space
-						telescope.
+						Dalam pengajaran modern, mungkin tidak ada satu pun lompatan ke depan selain pembangunan dan memberikan cara yang inovasi.
 					</p>
 
 					<div class="input-wrap">
-						<form action="" class="form-box d-flex justify-content-between">
-							<input type="text" placeholder="Search Courses" class="form-control" name="username">
-							<button type="submit" class="btn search-btn">Search</button>
+						<form action="{{route('index.search')}}" class="form-box d-flex justify-content-between" method="get" enctype="multipart/form-data">
+							<input type="text" placeholder="Cari Kelas" class="form-control" name="search">
+							<button type="submit" class="btn search-btn">Cari</button>
 						</form>
 					</div>
 					<h4 class="text-white">New courses</h4>

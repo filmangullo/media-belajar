@@ -13,6 +13,7 @@
 
 Route::prefix('/')->group(function () {
     Route::get('', 'WelcomeController@index')->name('index.welcome');
+    Route::get('/cari', 'WelcomeController@search')->name('index.search');
 });
 
 Auth::routes();
@@ -95,6 +96,10 @@ Route::prefix('courses-forum-pertemuan-tugas-panel')->middleware('auth')->group(
     Route::get('/{id}/download', 'TugasPanelController@download')->name('download.tugasonpanel');
 });
 
+Route::prefix('courses-forum-pertemuan-tugas-yang-telah-di-kumpulkan')->middleware('auth')->group(function () {
+    Route::get('/{id}', 'TugasPelajarController@index')->name('index.tugaspelajar');
+});
+
 Route::prefix('courses-forum-pertemuan-tugas-telah-dimulai-dikumpul')->middleware('auth')->group(function () {
     Route::get('/{id}', 'TugasController@index')->name('index.tugas');
     Route::post('/{id}', 'TugasController@store')->name('store.tugas');
@@ -114,10 +119,6 @@ Route::prefix('courses-forum-pertemuan-diskusi-comment')->middleware('auth')->gr
     Route::post('/{id}/update', 'DiskusiCommentController@update')->name('update.diskusicomment');
     Route::delete('/{id}/destroy', 'DiskusiCommentController@destroy')->name('destroy.diskusicomment');
 });
-
-Route::resource('about', 'AboutController')->names([
-    'index' => 'index.about'
-]);
 
 Route::resource('contact', 'ContactController')->names([
     'index' => 'index.contact',

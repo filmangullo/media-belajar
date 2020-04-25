@@ -22,4 +22,30 @@ class WelcomeController extends Controller
       ]);
   }
 
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function search(Request $request)
+  {
+      // menangkap data pencarian
+  		$cari = $request->search;
+
+      		// mengambil data dari table pegawai sesuai pencarian data
+  		$query = KelasMataPelajaran::where('nama','like',"%".$cari."%")
+  		->paginate();
+      // dd(!$query->count());
+      $alert = "";
+      if (!$query->count()) {
+          $alert = '<div class="alert alert-warning mt-10" role="alert">
+              Kelas tidak ditemukan !, Silahkan coba dengan kata lain..?
+          </div>';
+      }
+      return view('webs.beranda.search', [
+        'query' => $query,
+        'alert' => $alert
+      ]);
+  }
+
 }

@@ -91,17 +91,24 @@ menu-active
                     <a href="javascript:void(0);" data-href="{{ route('create.video', $forum->id) }}"
                         class="primary-btn btn-block text-center openPopup">Add Video</a>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <a href="{{ route('index.kuispanel', $forum->id) }}"
                         class="primary-btn btn-block text-center ">Kuis Panel</a>
                 </div>
-                <div class="col-md-2">
-                    <a href="{{ route('index.kuisnilai', $forum->id)}}"
-                        class="primary-btn btn-block text-center ">Kuis Nilai</a>
-                </div>
-                <div class="col-md-2">
+
+                <div class="col-md-3">
                     <a href="{{ route('index.tugaspanel', $forum->id) }}"
                         class="primary-btn btn-block text-center ">Tugas Panel</a>
+                </div>
+            </div>
+            <div class="row mb-20">
+                <div class="col-md-2 offset-md-8">
+                    <a href="{{ route('index.kuisnilai', $forum->id)}}"
+                        class="primary-btn btn-block text-center ">Kuis Pelajar</a>
+                </div>
+                <div class="col-md-2">
+                    <a href="{{ route('index.tugaspelajar', $forum->id)}}"
+                        class="primary-btn btn-block text-center ">Tugas Pelajar</a>
                 </div>
             </div>
             <div class="row mb-20">
@@ -125,7 +132,7 @@ menu-active
                 <div class="col-lg-8 col-md-8">
                     {{-- video --}}
                     @foreach ($video as $key => $value)
-                    <iframe width="710" height="345" src="{{asset('storage/'.$value->video)}}" controls="controls"></iframe>
+                    <iframe width="100%" height="345" src="{{asset('storage/'.$value->video)}}" controls="controls"></iframe>
                     @endforeach
 
                     {{-- End video --}}
