@@ -1,2 +1,5 @@
 Kelas Forum -> ada batasan siswa
             -> batasan bisa di update.
+
+next buat upload tugas File,
+kuis buat upload gmbar.
