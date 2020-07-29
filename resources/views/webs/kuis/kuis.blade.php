@@ -7,7 +7,6 @@ menu-active
 @endsection
 
 @section('header')
-
 <h1 class="text-white">
     Kuis {{ $forum->kelasMataPelajarans['nama'] }}
 </h1>
