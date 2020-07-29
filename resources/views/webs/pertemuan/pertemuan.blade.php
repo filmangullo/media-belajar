@@ -104,11 +104,11 @@ menu-active
             <div class="row mb-20">
                 <div class="col-md-2 offset-md-8">
                     <a href="{{ route('index.kuisnilai', $forum->id)}}"
-                        class="primary-btn btn-block text-center ">Kuis Pelajar</a>
+                        class="primary-btn btn-block text-center ">Nilai Kuis</a>
                 </div>
                 <div class="col-md-2">
                     <a href="{{ route('index.tugaspelajar', $forum->id)}}"
-                        class="primary-btn btn-block text-center ">Tugas Pelajar</a>
+                        class="primary-btn btn-block text-center ">Nilai Tugas</a>
                 </div>
             </div>
             <div class="row mb-20">

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 use App\Forum;
 use App\ForumKuis;
 use App\ForumKuisPanel;
+use App\ForumKuisImg;
 use Auth;
 
 class KuisPanelController extends Controller
@@ -83,20 +86,39 @@ class KuisPanelController extends Controller
     {
         $query = new ForumKuis();
 
-        $query->forum_id  = $id;
-        $query->user_id   = Auth::user()->id;
-        $query->soal      = $request->soal;
-        $query->pilihan_a  = $request->option_a;
-        $query->pilihan_b  = $request->option_b;
-        $query->pilihan_c  = $request->option_c;
-        $query->pilihan_d  = $request->option_d;
-        $query->pilihan_e  = $request->option_e;
-        $query->jawaban   = $request->jawaban;
+        $query->forum_id    = $id;
+        $query->user_id     = Auth::user()->id;
+        $query->soal        = $request->soal;
+        $query->pilihan_a   = $request->option_a;
+        $query->pilihan_b   = $request->option_b;
+        $query->pilihan_c   = $request->option_c;
+        $query->pilihan_d   = $request->option_d;
+        $query->pilihan_e   = $request->option_e;
+        $query->jawaban     = $request->jawaban;
+
 
         if($query->save()) {
-            return redirect()->route('index.kuispanel', $id);
+
+            if ($request->file('img') == null) {
+
+                return redirect()->route('index.kuispanel', $id);
+
+            } else {
+
+                $path   = Storage::putFile('public', $request->file('img'));
+                $img    = new ForumKuisImg();
+
+                $img->forum_kuis_id   = $query->id;
+                $img->img             = substr($path,7);
+                $img->extension_img  = $request->file('img')->getClientOriginalExtension();
+
+                if($img->save()) {
+                      return redirect()->route('index.kuispanel', $id);
+                }
+            }
         }
     }
+
 
     /**
      * Show the form for editing the specified resource.

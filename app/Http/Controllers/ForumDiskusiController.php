@@ -28,20 +28,31 @@ class ForumDiskusiController extends Controller
    */
   public function store(Request $request, $id)
   {
-    $path = Storage::putFile('public', $request->file('file'));
-    $query = new ForumDiskusi;
+    if ($request->file('file') == null) {
+      $query = new ForumDiskusi;
 
-    $query->forum_id        = $id;
-    $query->user_id         = Auth::user()->id;
-    $query->diskusi         = $request->diskusi;
-    $query->file            = substr($path,7);
-    $query->extension_file  = $request->file('file')->getClientOriginalExtension();
+      $query->forum_id        = $id;
+      $query->user_id         = Auth::user()->id;
+      $query->diskusi         = $request->diskusi;
+    } else {
+
+      $path = Storage::putFile('public', $request->file('file'));
+      $query = new ForumDiskusi;
+
+      $query->forum_id        = $id;
+      $query->user_id         = Auth::user()->id;
+      $query->diskusi         = $request->diskusi;
+      $query->file            = substr($path,7);
+      $query->extension_file  = $request->file('file')->getClientOriginalExtension();
+
+    }
+
 
     if($query->save()) {
       return redirect()->route('index.pertemuan', $id);
     }
   }
-  
+
   /**
    * Show the form for editing the specified resource.
    *

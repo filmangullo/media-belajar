@@ -57,7 +57,7 @@ menu-active
                 </div>
                 <div class="col-md-4 text-center">
                   <label for="cars">Deadline: {{ $panel->deadline == null ? "Belum set" :  date('d F Y - H:i a',strtotime($panel->deadline)) }}</label>
-                  <input type="datetime-local" id="open_soal" name="deadline" value="" class="form-control">
+                  <input type="datetime-local" id="open_soal" name="deadline" value="{{ $panel->deadline }}" class="form-control">
                 </div>
                 <div class="col-md-4 text-center">
                   <label for="cars">Save Setelah Melakukan Perubahan..!</label>

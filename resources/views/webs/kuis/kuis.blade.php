@@ -53,6 +53,10 @@ menu-active
                                 <input type="number" id="id_soal" name="soal_ke_[{{$key}}]" value="{{ $soal->id }}"
                                     hidden>
                                 <p> {!! $soal->soal !!}</p>
+                                <?php foreach ($soal->forumKuisImgs as $key => $img): ?>
+                                      <img src="{{asset('storage/'.$img->img)}}" alt="Girl in a jacket" width="50%">
+                                <?php endforeach; ?>
+                                <br />
                                 <input type="radio" id="pilihan_a[{{$key}}" name="jawaban_ke_[{{$key}}]" value="a">
                                 <label for="pilihan_a[{{$key}}">{!! $soal->pilihan_a !!}</label><br>
 

@@ -25,4 +25,9 @@ class ForumKuis extends Model
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
+
+    public function forumKuisImgs()
+    {
+        return $this->hasMany('App\ForumKuisImg', 'forum_kuis_id', 'id');
+    }
 }

@@ -81,6 +81,9 @@ menu-active
               </div>
               <blockquote class="generic-blockquote">
                 <p>{{ $key + 1 }}. {{ $value->soal }}</p>
+                <?php foreach ($value->forumKuisImgs as $key => $img): ?>
+                      <img src="{{asset('storage/'.$img->img)}}" alt="Girl in a jacket" width="50%">
+                <?php endforeach; ?>
                 <ol>
                   <li>a. {{ $value->pilihan_a }}</li>
                   <li>b. {{ $value->pilihan_b }}</li>
