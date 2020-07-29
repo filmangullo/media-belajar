@@ -4,7 +4,7 @@
 /* Mobile Layout: 320px */
 /* Wide Mobile Layout: 480px */
 /* =================================== */
-/*  Basic Style 
+/*  Basic Style
 /* =================================== */
 ::-moz-selection {
   /* Code for Firefox */
@@ -649,7 +649,7 @@ td, th {
   #back-top a {
     background: url(../img/rocket.png) no-repeat;
     background-size: 95% 80%;
-    width: 50px;
+    width: 70px;
     height: 116px;
     display: block; }
     @media (max-width: 768px) {
