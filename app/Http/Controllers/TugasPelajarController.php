@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Forum;
+use App\ForumTugasKumpul;
 
 class TugasPelajarController extends Controller
 {
@@ -27,9 +28,13 @@ class TugasPelajarController extends Controller
       $forum = Forum::where('id', $id)
                     ->first();
 
+      $tugasKumpul = ForumTugasKumpul::where('forum_id', $id)
+                                     ->get();
+
       return view('webs.tugas.tugas_pelajar', [
-          'forum'   => $forum
+          'forum'           => $forum,
+          'tugasKumpul'     => $tugasKumpul
       ]);
   }
-  
+
 }

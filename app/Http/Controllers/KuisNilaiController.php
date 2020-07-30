@@ -28,7 +28,6 @@ class KuisNilaiController extends Controller
                       ->first();
         return view('webs.kuis.kuis_nilai',[
             'forum'   => $forum,
-
         ]);
     }
 }

@@ -56,37 +56,41 @@ menu-active
             </div>
 
             <div class="row">
-              <div class="col-lg-12 text-center">
-                <h3 class="mb-30">Kerjakan Tugas</h3>
-              </div>
+              <?php if ($tugasKumpul == null): ?>
+                <div class="col-lg-12 text-center">
+                  <h3 class="mb-30">Kerjakan Tugas</h3>
+                </div>
 
-              <form action="{{route('store.tugas', $forum->id)}}" method="post" enctype="multipart/form-data">
-                {{ csrf_field() }}
-                <div class="col-lg-12">
-                  <div class="input-group" style="margin: 0 auto;">
-                    <textarea id="summernote" name="tugas" required>{!!$tugasKumpul!!}</textarea>
-                  </div>
-                </div>
-                {{ $tugasKumpul}}
-                {{-- @if ()
-                    
-                @endif --}}
-                <div class="col-lg-12">
-                  <div class="input-group mt-20">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Lampirkan File</span>
-                    </div>
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="file" name="file" onchange="myFunction()" required>
-                      <label class="custom-file-label" for="file"><span id="nameFile">Pilih File</span></label>
+                <form action="{{route('store.tugas', $forum->id)}}" method="post" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+                  <div class="col-lg-12">
+                    <div class="input-group" style="margin: 0 auto;">
+                      <textarea id="summernote" name="tugas" required>{!!$tugasKumpul!!}</textarea>
                     </div>
                   </div>
+
+                  <div class="col-lg-12">
+                    <div class="input-group mt-20">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Lampirkan File</span>
+                      </div>
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="file" name="file" onchange="myFunction()" required>
+                        <label class="custom-file-label" for="file"><span id="nameFile">Pilih File</span></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 text-center mt-20">
+                    <button type="submit" class="genric-btn primary circle arrow">Submite<span
+                            class="lnr lnr-location"></span></button>
+                  </div>
+                </form>
+              <?php else: ?>
+                <div class="col-lg-12 text-center">
+                  <h3 class="mb-30">Tugas berhasil di Upload..??</h3>
                 </div>
-                <div class="col-lg-12 text-center mt-20">
-                  <button type="submit" class="genric-btn primary circle arrow">Submite<span
-                          class="lnr lnr-location"></span></button>
-                </div>
-              </form>
+              <?php endif; ?>
+
             </div>
         </div>
     </div>

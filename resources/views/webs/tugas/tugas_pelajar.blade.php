@@ -25,3 +25,31 @@ menu-active
     </span>
 </div>
 @endsection
+
+@section('content')
+<!-- Start Align Area -->
+<div class="whole-wrap">
+  <div class="container">
+    <div class="section-top-border">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Level</th>
+            <th scope="col">Nilai</th>
+            <th scope="col">Tanggal dan Waktu</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach ($tugasKumpul as $key => $item)
+            <tr>
+                <th scope="row">{{ $key+1 }}</th>
+              </tr>
+            @endforeach
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+@endsection
