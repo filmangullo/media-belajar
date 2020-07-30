@@ -67,13 +67,17 @@ menu-active
                     <textarea id="summernote" name="tugas" required>{!!$tugasKumpul!!}</textarea>
                   </div>
                 </div>
+                {{ $tugasKumpul}}
+                {{-- @if ()
+                    
+                @endif --}}
                 <div class="col-lg-12">
                   <div class="input-group mt-20">
                     <div class="input-group-prepend">
                       <span class="input-group-text">Lampirkan File</span>
                     </div>
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="file" name="file" onchange="myFunction()">
+                      <input type="file" class="custom-file-input" id="file" name="file" onchange="myFunction()" required>
                       <label class="custom-file-label" for="file"><span id="nameFile">Pilih File</span></label>
                     </div>
                   </div>

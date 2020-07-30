@@ -61,16 +61,20 @@ class TugasController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function store(Request $request, $id)
-  {
-      $path = Storage::putFile('public', $request->file('file'));
-      $query = new ForumTugasKumpul;
-
-      $query->forum_id        = $id;
-      $query->user_id         = Auth::user()->id;
-      $query->tugas           = $request->tugas;
-      $query->file            = substr($path,7);
-      $query->extension_file  = $request->file('file')->getClientOriginalExtension();
-
+  {  
+    $query = new ForumTugasKumpul;
+    if ($request->file('file') == null ) {
+        $query->forum_id        = $id;
+        $query->user_id         = Auth::user()->id;
+        $query->tugas           = $request->tugas;
+    } else {
+        $path = Storage::putFile('public', $request->file('file'));
+        $query->forum_id        = $id;
+        $query->user_id         = Auth::user()->id;
+        $query->tugas           = $request->tugas;
+        $query->file            = substr($path,7);
+        $query->extension_file  = $request->file('file')->getClientOriginalExtension();
+    }
       if($query->save()) {
         return redirect()->route('index.tugas', $id);
       }
