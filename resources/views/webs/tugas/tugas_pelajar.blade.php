@@ -8,7 +8,7 @@ menu-active
 
 @section('header')
 <h1 class="text-white">
-    Daftra Tugas {{ $forum->kelasMataPelajarans['nama'] }}
+    Daftar Tugas {{ $forum->kelasMataPelajarans['nama'] }}
 </h1>
 <p>{{ $forum->nama }}</p>
 <div class="link-nav">
@@ -37,14 +37,18 @@ menu-active
             <th scope="col">#</th>
             <th scope="col">Nama</th>
             <th scope="col">Level</th>
-            <th scope="col">Nilai</th>
             <th scope="col">Tanggal dan Waktu</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
             @foreach ($tugasKumpul as $key => $item)
             <tr>
                 <th scope="row">{{ $key+1 }}</th>
+                <th>{{ $item->users['name'] }}</th>
+                <th>{{ $item->users['role'] }}</th>
+                <th>{{ date_format($item->created_at, "F d, Y H:i" ) }}</th>
+                <th><a href="{{ route('show.tugaspelajar', $item->id )}}" class="btn btn-info">Show</a></th>
               </tr>
             @endforeach
         </tbody>
