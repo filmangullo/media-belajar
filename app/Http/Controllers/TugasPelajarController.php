@@ -39,12 +39,19 @@ class TugasPelajarController extends Controller
 
   public function show($id) {
         $tugasKumpul = ForumTugasKumpul::findOrFail($id);
-        
+
         $forum = Forum::where('id', $tugasKumpul->forum_id)
                     ->first();
         return view('webs.tugas.tugas_pelajar_show', [
             'forum'           => $forum,
             'tugasKumpul'     => $tugasKumpul
         ]);
+  }
+
+  public function download($id)
+  {
+        $query = ForumTugasKumpul::findOrFail($id);
+
+        return response()->download(storage_path('app/' . $query->file));
   }
 }

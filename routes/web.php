@@ -99,6 +99,7 @@ Route::prefix('courses-forum-pertemuan-tugas-panel')->middleware('auth')->group(
 Route::prefix('courses-forum-pertemuan-tugas-yang-telah-di-kumpulkan')->middleware('auth')->group(function () {
     Route::get('/{id}', 'TugasPelajarController@index')->name('index.tugaspelajar');
     Route::get('/{id}/show', 'TugasPelajarController@show')->name('show.tugaspelajar');
+    Route::get('/{id}/download', 'TugasPelajarController@download')->name('download.tugaspelajar');
 });
 
 Route::prefix('courses-forum-pertemuan-tugas-telah-dimulai-dikumpul')->middleware('auth')->group(function () {

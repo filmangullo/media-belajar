@@ -25,3 +25,20 @@ menu-active
     </span>
 </div>
 @endsection
+
+@section('content')
+<!-- Start Align Area -->
+<div class="whole-wrap">
+    <div class="container">
+        <div class="section-top-border">
+
+          {!! $tugasKumpul->tugas !!}
+        </div>
+        <div class="section-top-border">
+          <p><a href="{{route('download.tugaspelajar', $tugasKumpul->id) }}"  ><i class="lnr lnr-download"></i>&nbsp;Download</a>&nbsp;
+            Tugas : {{ $tugasKumpul->users['name']}} &nbsp;</p>
+        </div>
+    </div>
+</div>
+<!-- End Align Area -->
+@endsection
