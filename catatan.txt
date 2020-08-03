@@ -1,5 +1,46 @@
-Kelas Forum -> ada batasan siswa
-            -> batasan bisa di update.
+# Jika ada yg baru ditambahkan jalankan di folder 
+c: /xampp/htdocs/media-belajar/
 
-next buat upload tugas File,
-kuis buat upload gmbar.
+git pull origin master
+
+# untuk menjalan aplikasi
+# pastikan internet jalan atau terkoneksi
+
+1. Buka Aplikasi "XAMPP Control Panel"
+
+2. Start "Apache"
+
+3. Start "MySQL"
+
+4. buka folder dengan CMD "c: /xampp/htdocs/media-belajar/"
+
+5. jalankan di CMD "php artisan serve --host 0.0.0.0
+
+6. silahkan buka browser anda dan buka link : http://localhost:8000
+
+maka web sudah bisa di jalankan dengan baik.
+
+# untuk membuka website diHP
+
+1. Actifkan "Mobile Hostpot" pada windows
+
+2. buka CMD baru
+
+3. ketikan di CMD "ipconfig"
+
+4. pada tampilan CMD
+
+   Wireless LAN adapter Wi-Fi :
+   .............. :
+   .............. :
+   IPV4 address . : 192.168.???.??? (ini ip address ingat)
+   .............. :
+   .............. :
+
+5. berikan ip address IPV4 address tersebut dengan clien/user/hp yang mau dibuka
+   supaya dijalankannya di web browser misal : Firefox , google chrome.
+
+   dengan link : 192.168.???.???:8000 
+   ip tersebut berasal dari point 4 sebelumnya.
+
+Selesai.
