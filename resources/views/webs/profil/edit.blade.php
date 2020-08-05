@@ -17,3 +17,8 @@
 </div>
 
 @endsection
+
+@section('content')
+<!-- Start contact-page Area -->
+
+@endsection
