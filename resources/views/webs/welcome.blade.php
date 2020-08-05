@@ -55,7 +55,12 @@
                   @auth
               <li class="menu-has-children"><a href="#"> {{ Auth::user()->name }}</a>
 										<ul>
-													<li><a href="blog-home.html">Profil</a></li>
+													<li><a href="{{ route('index.profil') }}" onclick="event.preventDefault();
+															document.getElementById('profil-form').submit();">Profil</a></li>
+													<form id="profil-form" action="{{ route('index.profil') }}" method="POST" style="display: none;">
+													@csrf
+													<input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+													</form>
 													<li><a href="{{ route('index.my_courses') }}">Pelajaran ku</a></li>
 													<hr>
 													<li><a href="{{ route('logout') }}" onclick="event.preventDefault();
