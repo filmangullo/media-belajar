@@ -26,7 +26,7 @@ Route::prefix('my-courses')->middleware('auth')->group(function () {
 
 Route::prefix('profil')->middleware('auth')->group(function () {
     Route::post('/', 'ProfilController@index')->name('index.profil');
-    Route::post('/{id}/edit', 'ProfilController@edit')->name('index.profil');
+    Route::get('/{id}/edit', 'ProfilController@edit')->name('edit.profil');
 });
 
 Route::prefix('courses')->middleware('auth')->group(function () {

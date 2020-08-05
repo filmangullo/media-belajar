@@ -266,7 +266,16 @@ menu-active
                         <h3 class="mb-30 ">Participant</h3>
                         @foreach ($participant as $key => $value)
                         <div class="switch-wrap d-flex justify-content-between ">
-                            <p>{{$key+1}}. {{ $value->users['name'] }}</p>
+                            <p>{{$key+1}}. <a href="{{ route('index.profil') }}" onclick="event.preventDefault();
+                                document.getElementById('profil-form_{{ $value->users->id }}').submit();">{{ $value->users['name'] }}</a></p>
+                                <form id="profil-form_{{ $value->users->id }}" action="{{ route('index.profil') }}" method="POST" style="display: none;">
+                                    @csrf
+                                    <input type="hidden" name="user_id" value="{{ $value->users->id }}">
+                                </form>
+
+
+                    
+                        
                             @if(Cache::has('user-is-online-' . $value->users['id']))
                             <div class="primary-checkbox ">
                                 {!! $value->users['role'] == 'pengajar' ? '<span class="lnr lnr-briefcase text-success"></span>' :

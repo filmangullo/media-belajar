@@ -8,6 +8,7 @@ use App\User;
 class ProfilController extends Controller
 {
     public function index(Request $request) {
+        
         $user = User::findOrFail($request->user_id);
         return view('webs.profil.index', [
             'user'  => $user
@@ -22,7 +23,7 @@ class ProfilController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('webs.profil.edit');
     }
 
     /**

@@ -44,3 +44,11 @@ maka web sudah bisa di jalankan dengan baik.
    ip tersebut berasal dari point 4 sebelumnya.
 
 Selesai.
+
+Profil :
+- nama
+- email
+- role
+- nip
+- jurusan
+nohp
