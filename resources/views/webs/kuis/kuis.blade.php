@@ -47,30 +47,31 @@ menu-active
                 <form action="{{ route('index.calculateKuis', $forum->id )}}" method="post">
                     {{ csrf_field() }}
                     <div class="row">
+                        <?php $num = 0; ?>
                         <?php foreach ($kuis as $key => $soal): ?>
                         <div class="col-lg-12">
                             <blockquote class="generic-blockquote">
                                 <input type="number" id="id_soal" name="soal_ke_[{{$key}}]" value="{{ $soal->id }}"
                                     hidden>
-                                <p> {!! $soal->soal !!}</p>
+                                <p> {{++$num}}. {!! $soal->soal !!}</p>
                                 <?php foreach ($soal->forumKuisImgs as $key => $img): ?>
                                       <img src="{{asset('storage/'.$img->img)}}" alt="Girl in a jacket" width="50%">
                                 <?php endforeach; ?>
                                 <br />
-                                <input type="radio" id="pilihan_a[{{$key}}" name="jawaban_ke_[{{$key}}]" value="a">
-                                <label for="pilihan_a[{{$key}}">{!! $soal->pilihan_a !!}</label><br>
+                                <input type="radio" id="pilihan_a[{{$key}}]" name="jawaban_ke_[{{$key}}]" value="a">
+                                <label for="pilihan_a[{{$key}}]">{!! $soal->pilihan_a !!}</label><br>
 
-                                <input type="radio" id="pilihan_b[{{$key}}" name="jawaban_ke_[{{$key}}]" value="b">
-                                <label for="pilihan_b[{{$key}}">{!! $soal->pilihan_b !!}</label><br>
+                                <input type="radio" id="pilihan_b[{{$key}}]" name="jawaban_ke_[{{$key}}]" value="b">
+                                <label for="pilihan_b[{{$key}}]">{!! $soal->pilihan_b !!}</label><br>
 
-                                <input type="radio" id="pilihan_c[{{$key}}" name="jawaban_ke_[{{$key}}]" value="c">
-                                <label for="pilihan_c[{{$key}}">{!! $soal->pilihan_c !!}</label><br>
+                                <input type="radio" id="pilihan_c[{{$key}}]" name="jawaban_ke_[{{$key}}]" value="c">
+                                <label for="pilihan_c[{{$key}}]">{!! $soal->pilihan_c !!}</label><br>
 
-                                <input type="radio" id="pilihan_d[{{$key}}" name="jawaban_ke_[{{$key}}]" value="d">
-                                <label for="pilihan_d[{{$key}}">{!! $soal->pilihan_d !!}</label><br>
+                                <input type="radio" id="pilihan_d[{{$key}}]" name="jawaban_ke_[{{$key}}]" value="d">
+                                <label for="pilihan_d[{{$key}}]">{!! $soal->pilihan_d !!}</label><br>
 
-                                <input type="radio" id="pilihan_e[{{$key}}" name="jawaban_ke_[{{$key}}]" value="e">
-                                <label for="pilihan_e[{{$key}}">{!! $soal->pilihan_e !!}</label><br>
+                                <input type="radio" id="pilihan_e[{{$key}}]" name="jawaban_ke_[{{$key}}]" value="e">
+                                <label for="pilihan_e[{{$key}}]">{!! $soal->pilihan_e !!}</label><br>
                                 <!-- Terpilih otomatis jika tidak di jawab -->
                                 <input type="radio" id="pilihan_a" name="jawaban_ke_[{{$key}}]" select hidden
                                     value="null">

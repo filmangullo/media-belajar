@@ -78,14 +78,21 @@ class KuisController extends Controller
         $bobot_nilai = 100/$jumlahSoal;
 
         for ($i = 0; $i < $jumlahSoal; $i++) {
+          $request->soal_ke_[$i];
           if($request->soal_ke_[$i] != null ) {
             $kuis = ForumKuis::where('id', $request->soal_ke_[$i])
                               ->first();
-            if($kuis->jawaban == $request->jawaban_ke_[$i] && $request->jawaban_ke_[$i] != null ) {
-              $totalNilai += $bobot_nilai;
+
+            if(!empty($request->jawaban_ke_[$i])) {
+              if($kuis->jawaban == $request->jawaban_ke_[$i] && $request->jawaban_ke_[$i] != null ) {
+                $totalNilai += $bobot_nilai;
+              } else {
+                $totalNilai += 0;
+              }
             } else {
               $totalNilai += 0;
             }
+
           }
 
         }
