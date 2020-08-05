@@ -85,9 +85,9 @@
 		<div class="container">
 			<div class="row fullscreen d-flex align-items-center justify-content-center">
 				<div class="banner-content col-lg-8 col-md-12">
-					<h1 class="wow fadeIn" data-wow-duration="4s">Mengajarkan Yang Terbaik <br> pada situs Web</h1>
+					<h1 class="wow fadeIn" data-wow-duration="4s">SMK NEGERI 14 MEDAN </h1>
 					<p class="text-white">
-						Dalam pengajaran modern, mungkin tidak ada satu pun lompatan ke depan selain pembangunan dan memberikan cara yang inovasi.
+						Jl. Karya Dalam No.26 Kel. Karang Berombak Kec. Medan Barat Sumatera Utara.
 					</p>
 
 					<div class="input-wrap">
