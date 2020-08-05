@@ -197,7 +197,12 @@ menu-active
                             <div class="single-comment justify-content-between d-flex">
                                 <div class="user justify-content-between d-flex">
                                     <div class="thumb">
-                                        <img src="{{asset($comment->users['role'].'.png')}}" alt="" width="40">
+                                        @if ($comment->users['avatar']  != null )
+                                            
+                                        @else
+                                            <img src="{{asset($comment->users['role'].'.png')}}" alt="" width="40">    
+                                        @endif
+                                        
                                     </div>
                                     <div class="desc">
                                         <h5><a href="#">{{ $comment->users['name'] }}</a></h5>

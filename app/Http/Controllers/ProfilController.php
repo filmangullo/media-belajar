@@ -23,7 +23,9 @@ class ProfilController extends Controller
      */
     public function edit($id)
     {
-        return view('webs.profil.edit');
+        return view('webs.profil.edit', [
+            'user' => User::findOrFail($id)
+        ]);
     }
 
     /**
