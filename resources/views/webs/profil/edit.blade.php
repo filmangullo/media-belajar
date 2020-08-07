@@ -38,7 +38,8 @@ padding:10px;
             <div class="row">
                 <div class="col-lg-10 col-md-10 offset-1">
                     <h3 class="mb-30">Edit Profil</h3>
-                    <form action="#" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('update.profil', $user->id) }}" method="post" enctype="multipart/form-data">
+                      {{ csrf_field() }}
                         <div class="col-md-12 row">
                           <div class="col-md-4">
                               <img id="blah" src="{{ URL::asset('webs/img/180.png') }}" alt="your image" />
@@ -71,7 +72,7 @@ padding:10px;
                             </div>
 
                             <div class="col-md-8">
-                                <input type="tel" id="nip" name="nip" placeholder="@if ($user->role == 'pengajar')Nomor Induk Pegawai..? @elseif($user->role == 'pelajar')Nomor Induk Siswa..? @endif" value="{{ $user->phone }}" required class="single-input">
+                                <input type="tel" id="nip" name="nip" placeholder="@if ($user->role == 'pengajar')Nomor Induk Pegawai..? @elseif($user->role == 'pelajar')Nomor Induk Siswa..? @endif" value="{{ $user->nip }}" required class="single-input">
                             </div>
                         </div>
                         <br>
@@ -93,7 +94,7 @@ padding:10px;
                             </div>
 
                             <div class="col-md-8">
-                                <input type="text" id="jurusan" name="jurusan" placeholder="Jurusan..?" value="{{ $user->phone }}" required class="single-input">
+                                <input type="text" id="jurusan" name="Jurusan" placeholder="Jurusan..?" value="{{ $user->Jurusan }}" required class="single-input">
                             </div>
                         </div>
                         <br>
@@ -115,8 +116,22 @@ padding:10px;
                             </div>
 
                             <div class="col-md-8">
-                                <input type="password" id="password" name="password" placeholder="Isi dengan password Baru..?" value="" required class="single-input">
+                                <input type="password" id="password" name="password" placeholder="Isi dengan password Baru..?" value="" class="single-input">
                             </div>
+                        </div>
+                        <br>
+                        <div class="col-md-12 row">
+                          <div class="col-md-6">
+                              <a class="genric-btn success" href="{{ route('index.profil') }}" onclick="event.preventDefault();
+    															document.getElementById('profil-form').submit();">Kembali</a>
+    													<form id="profil-form" action="{{ route('index.profil') }}" method="POST" style="display: none;">
+    													@csrf
+    													<input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+    													</form>
+                          </div>
+                          <div class="col-md-4">
+                              <button type="submit" class="genric-btn success" style="margin-left:100%;">Simpan</button>
+                          </div>
                         </div>
 
                     </form>
