@@ -42,10 +42,14 @@ padding:10px;
                       {{ csrf_field() }}
                         <div class="col-md-12 row">
                           <div class="col-md-4">
-                              <img id="blah" src="{{ URL::asset('webs/img/180.png') }}" alt="your image" />
+                              @if($user->avatar != null) 
+                                  <img id="blah" src="{{ URL::asset('storage/'.$user->avatar) }}" alt="your image" />
+                              @else
+                                  <img id="blah" src="{{ URL::asset('webs/img/180.png') }}" alt="your image" />
+                              @endif
                           </div>
                           <div class="col-md-8">
-                              <input type='file' onchange="readURL(this);" />
+                              <input type='file' name="avatar" onchange="readURL(this);" />
                           </div>
                         </div>
                         <br>
@@ -56,7 +60,7 @@ padding:10px;
                             </div>
 
                             <div class="col-md-8">
-                                <input type="text" id="nama" name="first_name" placeholder="Nama Lengkap..?" value="{{ $user->name }}" required class="single-input">
+                                <input type="text" id="nama" name="name" placeholder="Nama Lengkap..?" value="{{ $user->name }}" required class="single-input">
                             </div>
                         </div>
                         <br>

@@ -165,7 +165,11 @@ menu-active
                             <div class="single-comment justify-content-between d-flex">
                                 <div class="user justify-content-between d-flex">
                                     <div class="thumb">
+                                      @if ($value->users['avatar']  != null )
+                                          <img src="{{ URL::asset('storage/'.$value->users['avatar']) }}" alt="" width="40" style="border-radius: 50%;">
+                                      @else
                                         <img src="{{asset($value->users['role'].'.png')}}" alt="" width="40">
+                                        @endif
                                     </div>
                                     <div class="desc">
                                         <h5><a href="#">{{ $value->users['name'] }}</a></h5>
@@ -198,11 +202,11 @@ menu-active
                                 <div class="user justify-content-between d-flex">
                                     <div class="thumb">
                                         @if ($comment->users['avatar']  != null )
-                                            
+                                            <img src="{{ URL::asset('storage/'.$comment->users['avatar']) }}" alt="" width="40" style="border-radius: 50%;">
                                         @else
-                                            <img src="{{asset($comment->users['role'].'.png')}}" alt="" width="40">    
+                                            <img src="{{asset($comment->users['role'].'.png')}}" alt="" width="40">
                                         @endif
-                                        
+
                                     </div>
                                     <div class="desc">
                                         <h5><a href="#">{{ $comment->users['name'] }}</a></h5>
@@ -279,8 +283,8 @@ menu-active
                                 </form>
 
 
-                    
-                        
+
+
                             @if(Cache::has('user-is-online-' . $value->users['id']))
                             <div class="primary-checkbox ">
                                 {!! $value->users['role'] == 'pengajar' ? '<span class="lnr lnr-briefcase text-success"></span>' :

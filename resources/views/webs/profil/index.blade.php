@@ -12,7 +12,7 @@
         height: 200px;
         border-radius: 50%;
         margin: auto;
-        
+
       }
     </style>
 @endsection
@@ -40,11 +40,11 @@
     <div class="container">
       <div class="div-avatar">
         @if ($user->avatar == null)
-          <img src="{{asset($user['role'].'.png')}}" alt="Avatar" class="avatar">     
+          <img src="{{asset($user['role'].'.png')}}" alt="Avatar" class="avatar">
         @else
-            
+            <img src="{{ URL::asset('storage/'.$user->avatar) }}" alt="Avatar" class="avatar"> 
         @endif
-        
+
       </div>
       <div class="section-top-border">
         <div class="progress-table-wrap">
@@ -60,7 +60,7 @@
               <div class="visit">:</div>
               <div class="percentage">{{ $user->email }}</div>
             </div>
-            
+
             <div class="table-row">
               <div class="country">Telp/Hp</div>
               <div class="visit">:</div>
