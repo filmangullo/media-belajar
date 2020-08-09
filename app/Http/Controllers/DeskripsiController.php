@@ -79,4 +79,14 @@ class DeskripsiController extends Controller
         }
 
     }
+
+    public function destroy ($id)
+    {
+      $query = ForumDeskripsi::findOrFail($id);
+      $forum_id = $query->forum_id;
+
+      if($query->delete()) {
+        return redirect()->route('index.pertemuan', $forum_id);
+      }
+    }
 }

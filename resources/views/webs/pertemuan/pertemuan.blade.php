@@ -52,7 +52,8 @@ menu-active
         <i class="lnr lnr-arrow-right"></i>
         <a href="{{ route('index.courses') }}">Courses</a>
         <i class="lnr lnr-arrow-right"></i>
-        <a href="{{ route('show.courses', $forum->kelasMataPelajarans['id'] )}}">{{ $forum->kelasMataPelajarans['nama'] }}</a>
+        <a
+            href="{{ route('show.courses', $forum->kelasMataPelajarans['id'] )}}">{{ $forum->kelasMataPelajarans['nama'] }}</a>
         <i class="lnr lnr-arrow-right"></i>
         <a href="{{ route('index.pertemuan', $forum->id )}}">{{ $forum['nama'] }}</a>
 
@@ -92,8 +93,8 @@ menu-active
                         class="primary-btn btn-block text-center openPopup">Add Video</a>
                 </div>
                 <div class="col-md-3">
-                    <a href="{{ route('index.kuispanel', $forum->id) }}"
-                        class="primary-btn btn-block text-center ">Kuis Panel</a>
+                    <a href="{{ route('index.kuispanel', $forum->id) }}" class="primary-btn btn-block text-center ">Kuis
+                        Panel</a>
                 </div>
 
                 <div class="col-md-3">
@@ -103,8 +104,8 @@ menu-active
             </div>
             <div class="row mb-20">
                 <div class="col-md-2 offset-md-8">
-                    <a href="{{ route('index.kuisnilai', $forum->id)}}"
-                        class="primary-btn btn-block text-center ">Nilai Kuis</a>
+                    <a href="{{ route('index.kuisnilai', $forum->id)}}" class="primary-btn btn-block text-center ">Nilai
+                        Kuis</a>
                 </div>
                 <div class="col-md-2">
                     <a href="{{ route('index.tugaspelajar', $forum->id)}}"
@@ -113,7 +114,8 @@ menu-active
             </div>
             <div class="row mb-20">
                 <div class="col-md-2 offset-md-8">
-                    <a href="javascript:void(0)" data-href="{{ route('editForum.courses', $forum->id ) }}" class="genric-btn info btn-block text-center openPopup">Edit</a>
+                    <a href="javascript:void(0)" data-href="{{ route('editForum.courses', $forum->id ) }}"
+                        class="genric-btn info btn-block text-center openPopup">Edit</a>
                 </div>
                 <div class="col-md-2">
                     <form action="{{ route('destroyForum.courses', $forum->id )}}" method="post">
@@ -132,7 +134,8 @@ menu-active
                 <div class="col-lg-8 col-md-8">
                     {{-- video --}}
                     @foreach ($video as $key => $value)
-                    <iframe width="100%" height="345" src="{{asset('storage/'.$value->video)}}" controls="controls"></iframe>
+                    <iframe width="100%" height="345" src="{{asset('storage/'.$value->video)}}"
+                        controls="controls"></iframe>
                     @endforeach
 
                     {{-- End video --}}
@@ -141,19 +144,29 @@ menu-active
                         @foreach ($deskripsi as $key => $value)
                         <p>{{ $value->deskripsi }}. &nbsp;
                             @if (auth::user()->role == 'pengajar')
-                                <a href="javascript:void(0)" data-href="{{route('edit.deskripsi', $value->id) }}" class="openPopup" ><i class="lnr lnr-pencil"></i></a>
+                                <a href="javascript:void(0)" data-href="{{ route('edit.deskripsi', $value->id) }}"
+                                class="openPopup"><i class="lnr lnr-pencil"></i></a>
+                                
+                                <a href="{{route('destroy.deskripsi', $value->id) }}" onclick="return confirm('Are you sure you want to delete this item?');"
+                                    class="openPopup"><i class="lnr lnr-trash" style="color: red"></i></a>
                             @endif
                         </p>
                         @endforeach
                     </div>
 
                     <div class="wow fadeIn" data-wow-duration="1s">
-                      @if($file != null)
-                      <h4 class="mb-10">File Materi</h4>
-                      @endif
+                        @if($file != null)
+                            <h4 class="mb-10">File Materi</h4>
+                        @endif
                         @foreach ($file as $key => $value)
-                        <p><a href="{{route('download.file', $value->id) }}"  ><i class="lnr lnr-download"></i>&nbsp;Download</a>&nbsp;
-                          {{ $value->name }}. &nbsp;</p>
+                        <p><a href="{{route('download.file', $value->id) }}"><i
+                                    class="lnr lnr-download"></i>&nbsp;Download</a>&nbsp;
+                            {{ $value->name }}. &nbsp;
+                            @if (auth::user()->role == 'pengajar')
+                            <a href="{{ route('destroy.file', $value->id) }}" rel="noopener noreferrer"><i
+                                    class="lnr lnr-trash"></i></a>
+                            @endif
+                        </p>
                         @endforeach
                     </div>
                     <div class="comments-area" id="diskusiShow">
@@ -165,9 +178,10 @@ menu-active
                             <div class="single-comment justify-content-between d-flex">
                                 <div class="user justify-content-between d-flex">
                                     <div class="thumb">
-                                      @if ($value->users['avatar']  != null )
-                                          <img src="{{ URL::asset('storage/'.$value->users['avatar']) }}" alt="" width="40" style="border-radius: 50%;">
-                                      @else
+                                        @if ($value->users['avatar'] != null )
+                                        <img src="{{ URL::asset('storage/'.$value->users['avatar']) }}" alt=""
+                                            width="40" style="border-radius: 50%;">
+                                        @else
                                         <img src="{{asset($value->users['role'].'.png')}}" alt="" width="40">
                                         @endif
                                     </div>
@@ -177,16 +191,17 @@ menu-active
                                             {{ date_format($value->created_at, "H:i:s" ) }} </p>
                                         <p class="comment">
                                             {{ $value->diskusi }} <br>
-                                            @if ($value->extension_file != null &&  $value->extension_file == 'png')
-                                                <img src="{{asset('storage/'.$value->file)}}" alt="" width="90%">
+                                            @if ($value->extension_file != null && $value->extension_file == 'png')
+                                            <img src="{{asset('storage/'.$value->file)}}" alt="" width="90%">
                                             @endif
                                         </p>
                                     </div>
                                 </div>
                                 <div class="reply-btn">
                                     @if (Auth::user()->id == $value->user_id)
-                                        <a href="javascript:void(0);" data-href="{{ route('edit.diskusi', $value->id) }}"
-                                        class="float-right openPopup" style="color:aqua;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit</a>
+                                    <a href="javascript:void(0);" data-href="{{ route('edit.diskusi', $value->id) }}"
+                                        class="float-right openPopup"
+                                        style="color:aqua;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit</a>
                                     @endif
                                     <a href="javascript:void(0);"
                                         data-href="{{ route('create.diskusicomment', $value->id) }}"
@@ -201,10 +216,11 @@ menu-active
                             <div class="single-comment justify-content-between d-flex">
                                 <div class="user justify-content-between d-flex">
                                     <div class="thumb">
-                                        @if ($comment->users['avatar']  != null )
-                                            <img src="{{ URL::asset('storage/'.$comment->users['avatar']) }}" alt="" width="40" style="border-radius: 50%;">
+                                        @if ($comment->users['avatar'] != null )
+                                        <img src="{{ URL::asset('storage/'.$comment->users['avatar']) }}" alt=""
+                                            width="40" style="border-radius: 50%;">
                                         @else
-                                            <img src="{{asset($comment->users['role'].'.png')}}" alt="" width="40">
+                                        <img src="{{asset($comment->users['role'].'.png')}}" alt="" width="40">
                                         @endif
 
                                     </div>
@@ -219,14 +235,18 @@ menu-active
                                 </div>
                                 <div class="reply-btn">
                                     @if (Auth::user()->id == $comment->user_id)
-                                        <form action="{{ route('destroy.diskusicomment', $comment->id )}}" class="float-right" method="post">
-                                            <input class="text-center" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete"
-                                                onclick="return confirm('Are you sure you want to delete this item?');" style="color:red; border:none; background-color: transparent" />
-                                            @method('delete')
-                                            @csrf
-                                        </form>
+                                    <form action="{{ route('destroy.diskusicomment', $comment->id )}}"
+                                        class="float-right" method="post">
+                                        <input class="text-center" type="submit"
+                                            value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete"
+                                            onclick="return confirm('Are you sure you want to delete this item?');"
+                                            style="color:red; border:none; background-color: transparent" />
+                                        @method('delete')
+                                        @csrf
+                                    </form>
 
-                                        <a href="javascript:void(0);" data-href="{{ route('edit.diskusicomment', $comment->id) }}"
+                                    <a href="javascript:void(0);"
+                                        data-href="{{ route('edit.diskusicomment', $comment->id) }}"
                                         class="float-right openPopup" style="color:aqua;">Edit</a>
                                     @endif
 
@@ -241,58 +261,66 @@ menu-active
 
                     </div>
 
-      				  <!-- Diskusi Form -->
-      				  @include('webs.pertemuan.diskusi')
-      				  <!-- End Diskusi Form -->
+                    <!-- Diskusi Form -->
+                    @include('webs.pertemuan.diskusi')
+                    <!-- End Diskusi Form -->
 
                 </div>
                 <div class="col-lg-3 col-md-4 mt-sm-30">
-                  <div class="single-element-widget mt-30 ">
-                      @if ($panel->open_kuis == true || auth::user()->role == 'pengajar')
+                    <div class="single-element-widget mt-30 ">
+                        @if ($panel->open_kuis == true || auth::user()->role == 'pengajar')
                         @if ($panel->open_kuis == true)
-                            <p>Kuis Telah dibuka,..?</p>
+                        <p>Kuis Telah dibuka,..?</p>
                         @elseif($panel->open_kuis == false)
-                            <p>Kuis Belum dibuka,..!</p>
+                        <p>Kuis Belum dibuka,..!</p>
                         @endif
-                        <a href="{{ route('index.kuis', $forum->id) }}" class="genric-btn btn-block success circle arrow text-center">Mulai Kuis<span class="lnr lnr-arrow-right"></span></a>
-                      @endif
-                  </div>
+                        <a href="{{ route('index.kuis', $forum->id) }}"
+                            class="genric-btn btn-block success circle arrow text-center">Mulai Kuis<span
+                                class="lnr lnr-arrow-right"></span></a>
+                        @endif
+                    </div>
 
-                  <div class="single-element-widget mt-30 ">
-                      @if ($panelTugas->open_tugas == true || auth::user()->role == 'pengajar')
+                    <div class="single-element-widget mt-30 ">
+                        @if ($panelTugas->open_tugas == true || auth::user()->role == 'pengajar')
                         @if ($panelTugas->open_tugas == true )
-                            <p>Tugas Telah dibuka,..?</p>
-                            <p>Deadline :{{date('d M Y - H:i a',strtotime($panelTugas->deadline))}}</p>
+                        <p>Tugas Telah dibuka,..?</p>
+                        <p>Deadline :{{date('d M Y - H:i a',strtotime($panelTugas->deadline))}}</p>
                         @elseif($panelTugas->open_tugas == false)
-                            <p>Tugas Belum dibuka,..!</p>
+                        <p>Tugas Belum dibuka,..!</p>
                         @endif
-                        @if (strtotime(date('Y/m/d H:i:s')) <=  strtotime($panelTugas->deadline))
-                          <a href="{{ route('index.tugas', $forum->id) }}" class="genric-btn btn-block info circle arrow text-center">Kerjakan Tugas<span class="lnr lnr-arrow-right"></span></a>
-                        @endif
-                      @endif
-                  </div>
+                        @if (strtotime(date('Y/m/d H:i:s')) <= strtotime($panelTugas->deadline))
+                            <a href="{{ route('index.tugas', $forum->id) }}"
+                                class="genric-btn btn-block info circle arrow text-center">Kerjakan Tugas<span
+                                    class="lnr lnr-arrow-right"></span></a>
+                            @endif
+                            @endif
+                    </div>
                     <div class="single-element-widget mt-30 ">
                         <h3 class="mb-30 ">Participant</h3>
                         @foreach ($participant as $key => $value)
                         <div class="switch-wrap d-flex justify-content-between ">
-                            <p>{{$key+1}}. <a href="{{ route('index.profil') }}" onclick="event.preventDefault();
+                            <p>{{$key+1}}. <a href="{{ route('index.profil') }}"
+                                    onclick="event.preventDefault();
                                 document.getElementById('profil-form_{{ $value->users->id }}').submit();">{{ $value->users['name'] }}</a></p>
-                                <form id="profil-form_{{ $value->users->id }}" action="{{ route('index.profil') }}" method="POST" style="display: none;">
-                                    @csrf
-                                    <input type="hidden" name="user_id" value="{{ $value->users->id }}">
-                                </form>
+                            <form id="profil-form_{{ $value->users->id }}" action="{{ route('index.profil') }}"
+                                method="POST" style="display: none;">
+                                @csrf
+                                <input type="hidden" name="user_id" value="{{ $value->users->id }}">
+                            </form>
 
 
 
 
                             @if(Cache::has('user-is-online-' . $value->users['id']))
                             <div class="primary-checkbox ">
-                                {!! $value->users['role'] == 'pengajar' ? '<span class="lnr lnr-briefcase text-success"></span>' :
+                                {!! $value->users['role'] == 'pengajar' ? '<span
+                                    class="lnr lnr-briefcase text-success"></span>' :
                                 '<span class="lnr lnr-graduation-hat text-success"></span>' !!}
-                            @else
-                                {!! $value->users['role'] == 'pengajar' ? '<span class="lnr lnr-briefcase text-secondary"></span>' :
+                                @else
+                                {!! $value->users['role'] == 'pengajar' ? '<span
+                                    class="lnr lnr-briefcase text-secondary"></span>' :
                                 '<span class="lnr lnr-graduation-hat text-secondary"></span>' !!}
-                            @endif
+                                @endif
                             </div>
                         </div>
                         @endforeach
@@ -320,9 +348,10 @@ menu-active
 
     // Fungsi untuk menampilkan Nama File jika di Upload pada AddFile
     function myFile() {
-      var xfile = document.getElementById("fileX").files[0].name;
-      document.getElementById("nameFileX").innerHTML = xfile;
+        var xfile = document.getElementById("fileX").files[0].name;
+        document.getElementById("nameFileX").innerHTML = xfile;
     }
+
 </script>
 
 <script>
