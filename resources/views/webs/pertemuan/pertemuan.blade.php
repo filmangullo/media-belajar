@@ -146,7 +146,7 @@ menu-active
                             @if (auth::user()->role == 'pengajar')
                                 <a href="javascript:void(0)" data-href="{{ route('edit.deskripsi', $value->id) }}"
                                 class="openPopup"><i class="lnr lnr-pencil"></i></a>
-                                
+
                                 <a href="{{route('destroy.deskripsi', $value->id) }}" onclick="return confirm('Are you sure you want to delete this item?');"
                                     class="openPopup"><i class="lnr lnr-trash" style="color: red"></i></a>
                             @endif
@@ -191,7 +191,7 @@ menu-active
                                             {{ date_format($value->created_at, "H:i:s" ) }} </p>
                                         <p class="comment">
                                             {{ $value->diskusi }} <br>
-                                            @if ($value->extension_file != null && $value->extension_file == 'png')
+                                            @if ($value->extension_file != null &&  $value->extension_file ==  'jpeg' || 'png' || 'jpeg')
                                             <img src="{{asset('storage/'.$value->file)}}" alt="" width="90%">
                                             @endif
                                         </p>
