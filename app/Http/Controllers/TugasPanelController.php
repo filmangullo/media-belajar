@@ -80,13 +80,6 @@ class TugasPanelController extends Controller
       ]);
     }
 
-    /**
-     * Store the Tugas specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function store_tugas (Request $request, $id)
     {
         $query = new ForumTugas;
@@ -100,6 +93,40 @@ class TugasPanelController extends Controller
         if($query->save()) {
           return redirect()->route('index.tugaspanel', $id);
         }
+    }
+
+    public function edit_tugas ($id)
+    {
+        $tugas = ForumTugas::findOrFail($id);
+        
+        $forum = Forum::where('id', $tugas->forum_id)
+                    ->first();
+        return view('webs.tugas.edit_tugas',[
+            'tugas' => $tugas,
+            'forum' => $forum
+        ]);
+    }
+
+    public function update_tugas (Request $request, $id)
+    {
+        $tugas = ForumTugas::findOrFail($id);
+
+        $tugas->tugas = $request->tugas;
+        $tugas->keterangan  = $request->keterangan;
+
+        if($tugas->save()) {
+            return redirect()->route('index.tugaspanel', $tugas->forum_id);
+        }
+    }
+
+    public function destroy_tugas ($id) 
+    {
+        $query = ForumTugas::findorFail($id);
+        $forum_id = $query->forum_id;
+        $query->delete();
+
+        return redirect()->route('index.tugaspanel', $forum_id)
+                        ->with('success','Anda telah berhasil menghapus Data');
     }
 
     /**
@@ -118,39 +145,74 @@ class TugasPanelController extends Controller
         ]);
      }
 
-     /**
-      * Open the File Tugas specified resource in storage.
-      *
-      * @param  \Illuminate\Http\Request  $request
-      * @param  int  $id
-      * @return \Illuminate\Http\Response
-      */
-      public function upload_file (Request $request, $id)
-      {
-          $path = Storage::putFile('public', $request->file('file'));
-          $query = new ForumTugas;
-          $query->forum_id    = $id;
-          $query->user_id     = Auth::user()->id;
-          $query->tugas       = $path;
-          $query->nama        = $request->name;
-          $query->keterangan  = $request->keterangan;
-          $query->tipe        = Controller::INPUT_FILE;
+    public function upload_file (Request $request, $id)
+    {
+        $path = Storage::putFile('public', $request->file('file'));
+        $query = new ForumTugas;
+        $query->forum_id    = $id;
+        $query->user_id     = Auth::user()->id;
+        $query->tugas       = $path;
+        $query->nama        = $request->name;
+        $query->keterangan  = $request->keterangan;
+        $query->tipe        = Controller::INPUT_FILE;
 
 
-          if($query->save()) {
-            return redirect()->route('index.tugaspanel', $id);
-          }
-      }
+        if($query->save()) {
+        return redirect()->route('index.tugaspanel', $id);
+        }
+    }
 
-      /**
-       * Download the specified resource from storage.
-       *
-       * @param  int  $id
-       * @return \Illuminate\Http\Response
-       */
-      public function download($id)
-      {
-            $query = ForumTugas::findOrFail($id);
-            return response()->download(storage_path('app/' . $query->tugas));
-      }
+    public function download($id)
+    {
+        $query = ForumTugas::findOrFail($id);
+        return response()->download(storage_path('app/' . $query->tugas));
+    }
+
+    public function change_file ($id)
+    {
+        $tugas = ForumTugas::findOrFail($id);
+        $forum = Forum::where('id', $tugas->forum_id)
+                    ->first();
+        return view('webs.tugas.change_file',[
+            'tugas' => $tugas,
+            'forum' => $forum
+        ]);
+    }
+
+    public function save_change_file (Request $request,$id)
+    {
+
+        $tugas = ForumTugas::findOrFail($id);
+
+        $tugas->nama        = $request->name;
+        $tugas->keterangan  = $request->keterangan;
+        if ($request->file('file') != null ) {
+            if(Storage::exists($tugas->tugas)){
+                Storage::delete($tugas->tugas);
+            }
+
+            $path = Storage::putFile('public', $request->file('file'));
+            $tugas->tugas       = $path;
+        }
+        if($tugas->save()) {
+            return redirect()->route('index.tugaspanel', $tugas->forum_id);
+        }
+    }
+
+    public function destroy_file ($id) 
+    {
+        
+        $file = ForumTugas::findOrFail($id);
+        $forum_id = $file->forum_id;
+
+        if(Storage::exists($file->tugas)){
+            Storage::delete($file->tugas);
+        }
+
+        if($file->delete()) {
+            return redirect()->route('index.tugaspanel', $forum_id);
+        }
+
+        
+    }
 }

@@ -71,6 +71,15 @@ class ForumFileController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $file = ForumFile::findOrFail($id);
+        $forum_id = $file->forum_id;
+
+        if(Storage::exists($file->file)){
+            Storage::delete($file->file);
+        }
+
+        $file->delete();
+
+        return redirect()->route('index.pertemuan', $forum_id);
     }
 }

@@ -59,13 +59,14 @@ Route::prefix('courses-forum-pertemuan-description')->middleware('auth')->group(
     Route::post('/{id}/store', 'DeskripsiController@store')->name('store.deskripsi');
     Route::get('/{id}/edit', 'DeskripsiController@edit')->name('edit.deskripsi');
     Route::post('/{id}/update', 'DeskripsiController@update')->name('update.deskripsi');
+    Route::get('/{id}/destroy', 'DeskripsiController@destroy')->name('destroy.deskripsi');
 });
 
 Route::prefix('courses-forum-pertemuan-file')->middleware('auth')->group(function () {
     Route::get('/{id}/create', 'ForumFileController@create')->name('create.file');
     Route::post('/{id}/store', 'ForumFileController@store')->name('store.file');
     Route::get('/{id}', 'ForumFileController@download')->name('download.file');
-    Route::delete('/{id}/delete', 'ForumFileController@destroy')->name('destroy.file');
+    Route::get('/{id}/delete', 'ForumFileController@destroy')->name('destroy.file');
 });
 
 Route::prefix('courses-forum-pertemuan-video-add')->middleware('auth')->group(function () {
@@ -97,9 +98,16 @@ Route::prefix('courses-forum-pertemuan-tugas-panel')->middleware('auth')->group(
     Route::post('/{id}/update_panel', 'TugasPanelController@update_panel')->name('update_panel.tugaspanel');
     Route::get('/{id}/create_tugas', 'TugasPanelController@create_tugas')->name('create_tugas.tugaspanel');
     Route::post('/{id}/store_tugas', 'TugasPanelController@store_tugas')->name('store_tugas.tugaspanel');
+    Route::get('/{id}/edit_tugas', 'TugasPanelController@edit_tugas')->name('edit_tugas.tugaspanel');
+    Route::post('/{id}/update_tugas', 'TugasPanelController@update_tugas')->name('update_tugas.tugaspanel');
+    Route::delete('/{id}/destroy_tugas', 'TugasPanelController@destroy_tugas')->name('destroy_tugas.tugaspanel');
+
     Route::get('/{id}/open_file', 'TugasPanelController@open_file')->name('open_file.tugaspanel');
     Route::post('/{id}/upload_file', 'TugasPanelController@upload_file')->name('upload_file.tugaspanel');
     Route::get('/{id}/download', 'TugasPanelController@download')->name('download.tugasonpanel');
+    Route::get('/{id}/change_file', 'TugasPanelController@change_file')->name('change_file.tugaspanel');
+    Route::post('/{id}/save_change_file', 'TugasPanelController@save_change_file')->name('save_change_file.tugaspanel');
+    Route::delete('/{id}/destroy_file', 'TugasPanelController@destroy_file')->name('destroy_file.tugaspanel');
 });
 
 Route::prefix('courses-forum-pertemuan-tugas-yang-telah-di-kumpulkan')->middleware('auth')->group(function () {
