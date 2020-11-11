@@ -51,6 +51,7 @@
               <li class="menu-active"><a href="/">Beranda</a></li>
               <li><a href="{{ route('index.courses') }}">Pelajaran</a></li>
 							<li><a href="{{ route('index.contact') }}">Contact</a></li>
+							<li class="@yield('tentang')"><a href="{{ route('tentang') }}">Tentang Kami</a></li>
               @if (Route::has('login'))
                   @auth
               <li class="menu-has-children"><a href="#"> {{ Auth::user()->name }}</a>

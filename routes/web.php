@@ -140,3 +140,5 @@ Route::resource('contact', 'ContactController')->names([
     'index' => 'index.contact',
     'store' => 'store.contact'
 ]);
+
+Route::get('tentang', 'TentangController@index')->name('tentang');

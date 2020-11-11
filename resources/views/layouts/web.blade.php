@@ -49,10 +49,11 @@
 					<a href="/"><img src="{{ URL::asset('webs/img/logo.png') }}" alt="" title="" /></a>
 				</div>
 				<nav id="nav-menu-container">
-						<ul class="nav-menu">
-	              <li><a href="/">Beranda</a></li>
-	              <li class="@yield('courses')"><a href="{{ route('index.courses') }}">Pelajaran</a></li>
-								<li class="@yield('contact')"><a href="{{ route('index.contact') }}">Contact</a></li>
+					<ul class="nav-menu">
+						<li><a href="/">Beranda</a></li>
+						<li class="@yield('courses')"><a href="{{ route('index.courses') }}">Pelajaran</a></li>
+						<li class="@yield('contact')"><a href="{{ route('index.contact') }}">Contact</a></li>
+						<li class="@yield('tentang')"><a href="{{ route('tentang') }}">Tentang Kami</a></li>
                 @if (Route::has('login'))
 									@auth
 										<li class="menu-has-children"><a href="#"> {{ Auth::user()->name }}</a>

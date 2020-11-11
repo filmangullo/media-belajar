@@ -133,14 +133,20 @@ menu-active
 
                 <div class="col-lg-8 col-md-8">
                     {{-- video --}}
+                    <iframe width="100%" height="400" src="https://prezi.com/view/xABwjkt3XxxjFGZttC3o/" webkitallowfullscreen="1" mozallowfullscreen="1" allowfullscreen="1">
+                    </iframe>
                     @foreach ($video as $key => $value)
-                    <iframe width="100%" height="345" src="{{asset('storage/'.$value->video)}}"
-                        controls="controls"></iframe>
+
+                        <video width="100%" height="345" controls>
+                        <source src="{{asset('storage/'.$value->video)}}" type="video/mp4">
+                        <source src="{{asset('storage/'.$value->video)}}" type="video/ogg">
+                        Your browser does not support the video tag.
+                        </video>
                     @endforeach
 
                     {{-- End video --}}
                     <h4 class="mb-10">Deskripsi / Quotes</h4>
-                    <div class="wow fadeIn" data-wow-duration="1s">
+                    <div class="wow fadeIn" data-wow-duration="1s" style="height:500px;">
                         @foreach ($deskripsi as $key => $value)
                         <p>{{ $value->deskripsi }}. &nbsp;
                             @if (auth::user()->role == 'pengajar')
@@ -323,6 +329,7 @@ menu-active
                                 @endif
                             </div>
                         </div>
+                        
                         @endforeach
                     </div>
                 </div>
