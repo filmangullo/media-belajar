@@ -92,12 +92,16 @@ menu-active
                     <a href="javascript:void(0);" data-href="{{ route('create.video', $forum->id) }}"
                         class="primary-btn btn-block text-center openPopup">Add Video</a>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
+                    <a href="javascript:void(0);" data-href="{{ route('create.link', $forum->id) }}"
+                        class="primary-btn btn-block text-center openPopup">Add Link</a>
+                </div>
+                <div class="col-md-2">
                     <a href="{{ route('index.kuispanel', $forum->id) }}" class="primary-btn btn-block text-center ">Kuis
                         Panel</a>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <a href="{{ route('index.tugaspanel', $forum->id) }}"
                         class="primary-btn btn-block text-center ">Tugas Panel</a>
                 </div>
@@ -133,15 +137,17 @@ menu-active
 
                 <div class="col-lg-8 col-md-8">
                     {{-- video --}}
-                    <iframe width="100%" height="400" src="https://prezi.com/view/xABwjkt3XxxjFGZttC3o/" webkitallowfullscreen="1" mozallowfullscreen="1" allowfullscreen="1">
-                    </iframe>
+                    
                     @foreach ($video as $key => $value)
-
-                        <video width="100%" height="345" controls>
-                        <source src="{{asset('storage/'.$value->video)}}" type="video/mp4">
-                        <source src="{{asset('storage/'.$value->video)}}" type="video/ogg">
-                        Your browser does not support the video tag.
-                        </video>
+                        @if ($value->type == 'link')
+                            <iframe width="100%" height="400" src="{!! $value->video !!} webkitallowfullscreen="1" mozallowfullscreen="1" allowfullscreen="1"></iframe>
+                        @else
+                            <video width="100%" height="345" controls>
+                                <source src="{{asset('storage/'.$value->video)}}" type="video/mp4">
+                                <source src="{{asset('storage/'.$value->video)}}" type="video/ogg">
+                                Your browser does not support the video tag.
+                            </video>
+                        @endif
                     @endforeach
 
                     {{-- End video --}}

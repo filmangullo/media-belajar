@@ -74,6 +74,11 @@ Route::prefix('courses-forum-pertemuan-video-add')->middleware('auth')->group(fu
     Route::post('/{id}/store', 'ForumVideoController@store')->name('store.video');
 });
 
+Route::prefix('courses-forum-pertemuan-link-add')->middleware('auth')->group(function () {
+    Route::get('/{id}/create', 'ForumLinkController@create')->name('create.link');
+    Route::post('/{id}/store', 'ForumLinkController@store')->name('store.link');
+});
+
 Route::prefix('courses-forum-pertemuan-kuis-panel')->middleware('auth')->group(function () {
     Route::get('/{id}', 'KuisPanelController@index_panel')->name('index.kuispanel');
     Route::post('/{id}/update_panel', 'KuisPanelController@update_panel')->name('update_panel.kuispanel');
@@ -114,6 +119,7 @@ Route::prefix('courses-forum-pertemuan-tugas-yang-telah-di-kumpulkan')->middlewa
     Route::get('/{id}', 'TugasPelajarController@index')->name('index.tugaspelajar');
     Route::get('/{id}/show', 'TugasPelajarController@show')->name('show.tugaspelajar');
     Route::get('/{id}/download', 'TugasPelajarController@download')->name('download.tugaspelajar');
+    Route::post('/{id}/store-nilai', 'TugasPelajarController@nilai')->name('nilai.tugaspelajar');
 });
 
 Route::prefix('courses-forum-pertemuan-tugas-telah-dimulai-dikumpul')->middleware('auth')->group(function () {
@@ -126,6 +132,7 @@ Route::prefix('courses-forum-pertemuan-diskusi')->middleware('auth')->group(func
     Route::post('/{id}/store', 'ForumDiskusiController@store')->name('store.diskusi');
     Route::get('/{id}/edit', 'ForumDiskusiController@edit')->name('edit.diskusi');
     Route::post('/{id}/update', 'ForumDiskusiController@update')->name('update.diskusi');
+    Route::delete('/{id}/destroy', 'ForumDiskusiController@destroy')->name('destroy.diskusi');
 });
 
 Route::prefix('courses-forum-pertemuan-diskusi-comment')->middleware('auth')->group(function () {

@@ -9,7 +9,7 @@
       {{ csrf_field() }}
       <div class="modal-body">
           <p>{{ $query->diskusi }}</p>
-          <textarea id="deskripsi" name="comment" rows="4" cols="48" required></textarea>
+          <textarea id="deskripsi" name="comment" rows="4" required style="width:100%" ></textarea>
         </form>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary">Save</button>

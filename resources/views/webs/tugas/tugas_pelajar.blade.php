@@ -38,6 +38,7 @@ menu-active
             <th scope="col">Nama</th>
             <th scope="col">Level</th>
             <th scope="col">Tanggal dan Waktu</th>
+            <th scope="col">Nilai</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -48,6 +49,7 @@ menu-active
                 <th>{{ $item->users['name'] }}</th>
                 <th>{{ $item->users['role'] }}</th>
                 <th>{{ date_format($item->created_at, "F d, Y H:i" ) }}</th>
+                <th>{{ $item->nilai == null ? 'kosong' : $item->nilai }}</th>
                 <th><a href="{{ route('show.tugaspelajar', $item->id )}}" class="btn btn-info">Show</a></th>
               </tr>
             @endforeach

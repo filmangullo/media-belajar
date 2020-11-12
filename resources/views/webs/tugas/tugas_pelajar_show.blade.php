@@ -39,6 +39,31 @@ menu-active
             Tugas : {{ $tugasKumpul->users['name']}} &nbsp;</p>
         </div>
     </div>
+
+    <div class="container">
+    @include('layouts.alert')
+        <form action="{{ route('nilai.tugaspelajar', $tugasKumpul->id) }}" method="post" >
+            {{ csrf_field() }}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Nilai &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                </div>
+                <input type="number" class="form-control" placeholder="Nilai" aria-label="Nilai" name="nilai" aria-describedby="basic-addon1" value="{{ $tugasKumpul->nilai }}" require>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Catatan</span>
+                </div>
+                <textarea name="catatan_pengajar" id="catatan_pengajar" rows="10" class="form-control" placeholder="Catatan"  aria-label="Catatan">{!! $tugasKumpul->catatan_pengajar !!}</textarea>
+            </div>
+
+            <div class="modal-footer">
+                
+                <a href="{{ route('index.tugaspelajar', $tugasKumpul->forum_id ) }}" class="btn btn-secondary">Kembali</a>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+              </div>
+        </form>
+    </div>
 </div>
 <!-- End Align Area -->
 @endsection

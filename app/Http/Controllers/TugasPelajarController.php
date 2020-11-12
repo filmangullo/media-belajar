@@ -54,4 +54,22 @@ class TugasPelajarController extends Controller
 
         return response()->download(storage_path('app/' . $query->file));
   }
+
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @return \Illuminate\Http\Response
+   */
+  public function nilai(Request $request, $id)
+  {  
+    $query = ForumTugasKumpul::findOrFail($id);
+
+    $query->nilai               = $request->nilai;
+    $query->catatan_pengajar    = $request->catatan_pengajar;
+
+    if ($query->save()) {
+        return redirect()->back()->with('success','Berhasi di update');
+    }
+  }
 }

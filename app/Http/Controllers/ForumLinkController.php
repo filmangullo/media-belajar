@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\File;
-use Illuminate\Support\Facades\Storage;
 use App\ForumVideo;
 
-class ForumVideoController extends Controller
+class ForumLinkController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -19,14 +17,14 @@ class ForumVideoController extends Controller
         $this->middleware('auth');
     }
 
-    /**
+     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create($id)
     {
-        return view('webs.pertemuan.video',[
+        return view('webs.pertemuan.link',[
           'forum_id'  => $id
         ]);
     }
@@ -39,26 +37,14 @@ class ForumVideoController extends Controller
      */
     public function store(Request $request, $id)
     {
-        $path = Storage::putFile('public', $request->file('video'));
         $query = new ForumVideo;
         $query->forum_id    = $id;
         $query->title       = $request->title;
-        $query->video       = substr($path,7);
-        $query->type        = 'video';
+        $query->video       = $request->link;
+        $query->type        = 'link';
 
         if($query->save()) {
           return redirect()->route('index.pertemuan', $id);
         }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
