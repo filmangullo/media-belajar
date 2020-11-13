@@ -140,7 +140,7 @@ menu-active
                     
                     @foreach ($video as $key => $value)
                         @if ($value->type == 'link')
-                            <iframe width="100%" height="400" src="{!! $value->video !!} webkitallowfullscreen="1" mozallowfullscreen="1" allowfullscreen="1"></iframe>
+                            <iframe width="100%" height="400" src="{{ $value->video }}" webkitallowfullscreen="1" mozallowfullscreen="1" allowfullscreen="1"></iframe>
                         @else
                             <video width="100%" height="345" controls>
                                 <source src="{{asset('storage/'.$value->video)}}" type="video/mp4">
