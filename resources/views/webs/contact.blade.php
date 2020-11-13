@@ -33,9 +33,9 @@ menu-active
                         <span class="lnr lnr-home"></span>
                     </div>
                     <div class="contact-details">
-                        <h5>Binghamton, New York</h5>
+                        <h5>Medan, Sumatera Utara</h5>
                         <p>
-                            4343 Hinkle Deegan Lake Road
+                            Jl.Karya Dalam No.26
                         </p>
                     </div>
                 </div>
@@ -44,8 +44,8 @@ menu-active
                         <span class="lnr lnr-phone-handset"></span>
                     </div>
                     <div class="contact-details">
-                        <h5>00 (958) 9865 562</h5>
-                        <p>Mon to Fri 9am to 6 pm</p>
+                        <h5>082160082840</h5>
+                        <p>Mon to Fri 24 Hours</p>
                     </div>
                 </div>
                 <div class="single-contact-address d-flex flex-row">
@@ -53,7 +53,7 @@ menu-active
                         <span class="lnr lnr-envelope"></span>
                     </div>
                     <div class="contact-details">
-                        <h5>support@colorlib.com</h5>
+                        <h5>faisalfaturrahman@koranpsms.com</h5>
                         <p>Send us your query anytime!</p>
                     </div>
                 </div>
