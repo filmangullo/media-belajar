@@ -72,6 +72,7 @@ Route::prefix('courses-forum-pertemuan-file')->middleware('auth')->group(functio
 Route::prefix('courses-forum-pertemuan-video-add')->middleware('auth')->group(function () {
     Route::get('/{id}/create', 'ForumVideoController@create')->name('create.video');
     Route::post('/{id}/store', 'ForumVideoController@store')->name('store.video');
+    Route::delete('/{id}/destroy', 'ForumVideoController@destroy')->name('destroy.video');
 });
 
 Route::prefix('courses-forum-pertemuan-link-add')->middleware('auth')->group(function () {
@@ -132,6 +133,7 @@ Route::prefix('courses-forum-pertemuan-diskusi')->middleware('auth')->group(func
     Route::post('/{id}/store', 'ForumDiskusiController@store')->name('store.diskusi');
     Route::get('/{id}/edit', 'ForumDiskusiController@edit')->name('edit.diskusi');
     Route::post('/{id}/update', 'ForumDiskusiController@update')->name('update.diskusi');
+    Route::get('/{id}/delete', 'ForumDiskusiController@delete')->name('delete.diskusi');
     Route::delete('/{id}/destroy', 'ForumDiskusiController@destroy')->name('destroy.diskusi');
 });
 

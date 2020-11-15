@@ -59,6 +59,15 @@ class ForumVideoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $video = ForumVideo::findOrFail($id);
+        $forum_id = $video ->forum_id;
+
+        if(Storage::exists($video->video)){
+            Storage::delete($video->video);
+        }
+
+        $video->delete();
+
+        return redirect()->route('index.pertemuan', $forum_id);
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use App\ForumDiskusi;
+use App\DiskusiComment;
 use Auth;
 
 class ForumDiskusiController extends Controller
@@ -83,4 +84,44 @@ class ForumDiskusiController extends Controller
         return redirect()->route('index.pertemuan', $query->forum_id);
       }
   }
+
+  /**
+   * Show the form for editing the specified resource.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function delete(Request $request, $id)
+  {
+    $query = ForumDiskusi::findOrFail($id);
+
+    return view('webs.pertemuan.diskusi_destroy',[
+      'query'  => $query
+    ]);
+  }
+
+   /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $query = ForumDiskusi::findOrFail($id);
+        $forum_id = $query->forum_id;
+
+        foreach ($query->diskusiComments as $item) {
+          $comment = DiskusiComment::findorFail($item->id);
+          $comment->delete();
+        }
+        if(Storage::exists($query->file)){
+            Storage::delete($query->file);
+        }
+
+        $query->delete();
+
+        return redirect()->route('index.pertemuan', $forum_id);
+    }
 }

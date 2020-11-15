@@ -139,6 +139,15 @@ menu-active
                     {{-- video --}}
                     
                     @foreach ($video as $key => $value)
+                        @if (auth::user()->role == 'pengajar')
+                            <form action="{{ route('destroy.video', $value->id) }}"
+                                class="float-right" method="post">
+                                <button  type="submit" class="genric-btn danger btn-block text-center"
+                                    onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
+                                @method('delete')
+                                @csrf
+                            </form>
+                        @endif
                         @if ($value->type == 'link')
                             <iframe width="100%" height="400" src="{!! $value->video !!} webkitallowfullscreen="1" mozallowfullscreen="1" allowfullscreen="1"></iframe>
                         @else
@@ -148,11 +157,12 @@ menu-active
                                 Your browser does not support the video tag.
                             </video>
                         @endif
+                        
                     @endforeach
 
                     {{-- End video --}}
                     <h4 class="mb-10">Deskripsi / Quotes</h4>
-                    <div class="wow fadeIn" data-wow-duration="1s" style="height:500px;">
+                    <div class="wow fadeIn" data-wow-duration="1s">
                         @foreach ($deskripsi as $key => $value)
                         <p>{{ $value->deskripsi }}. &nbsp;
                             @if (auth::user()->role == 'pengajar')
@@ -186,7 +196,7 @@ menu-active
 
                         <!--List Diskusi -->
                         @foreach ($diskusi as $key => $value)
-                        <div class="comment-list">
+                        <div class="comment-list right-padding">
                             <div class="single-comment justify-content-between d-flex">
                                 <div class="user justify-content-between d-flex">
                                     <div class="thumb">
@@ -201,23 +211,26 @@ menu-active
                                         <h5><a href="#">{{ $value->users['name'] }}</a></h5>
                                         <p class="date">{{ date_format($value->created_at, "F d, Y" ) }} at
                                             {{ date_format($value->created_at, "H:i:s" ) }} </p>
-                                        <p class="comment">
-                                            {{ $value->diskusi }} <br>
+                                        <p class="comment">{{ $value->diskusi }} 
                                             @if ($value->extension_file != null &&  $value->extension_file ==  'jpeg' || 'png' || 'jpeg')
                                             <img src="{{asset('storage/'.$value->file)}}" alt="" width="90%">
                                             @endif
                                         </p>
                                     </div>
                                 </div>
-                                <div class="reply-btn">
+                                <div class="reply-btn" style="position: absolute; margin-left:62%;">
                                     @if (Auth::user()->id == $value->user_id)
+                                    <a href="javascript:void(0);" data-href="{{ route('delete.diskusi', $value->id) }}"
+                                        class="float-right openPopup comment"
+                                        style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete</a>
+
                                     <a href="javascript:void(0);" data-href="{{ route('edit.diskusi', $value->id) }}"
-                                        class="float-right openPopup"
+                                        class="float-right openPopup comment"
                                         style="color:aqua;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit</a>
                                     @endif
                                     <a href="javascript:void(0);"
                                         data-href="{{ route('create.diskusicomment', $value->id) }}"
-                                        class="float-right openPopup" style="color:blue;">Comment</a>
+                                        class="float-right openPopup comment" style="color:blue;">Comment</a>
                                 </div>
                             </div>
                         </div>

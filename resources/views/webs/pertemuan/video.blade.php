@@ -13,7 +13,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Title</span>
             </div>
-            <input type="text" class="form-control" placeholder="Title" aria-label="Title" name="title" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="Title" aria-label="Title" name="title" aria-describedby="basic-addon1" required>
           </div>
 
           <div class="input-group mb-3">

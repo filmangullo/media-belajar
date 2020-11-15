@@ -8,7 +8,7 @@
     <form action="{{ route('update.diskusicomment', $query->id )}}" method="post">
     {{ csrf_field() }}
     <div class="modal-body">
-        <textarea id="comment" name="comment" rows="4" cols="48" required>{{ $query->comment }}</textarea>
+        <textarea id="comment" name="comment" rows="4" style="width:100%" required>{{ $query->comment }}</textarea>
       </form>
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary">Save changes</button>

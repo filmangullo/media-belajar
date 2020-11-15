@@ -9,7 +9,7 @@
       {{ csrf_field() }}
       <div class="modal-body">
           <p>Selamat Membuat deskripsi Pertemuan/Forum anda..?.</p>
-          <textarea id="deskripsi" name="deskripsi" rows="5" cols="48" required style="width: 100%"></textarea>
+          <textarea id="deskripsi" name="deskripsi" rows="5" style="width:100%" required style="width: 100%"></textarea>
         </form>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary">Save</button>

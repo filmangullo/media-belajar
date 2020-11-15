@@ -9,7 +9,7 @@
     {{ csrf_field() }}
     <div class="modal-body">
         <p>Selamat Mengubah deskripsi Pertemuan/Forum anda..?.</p>
-        <textarea id="deskripsi" name="deskripsi" rows="10" cols="48" required>{{ $query->deskripsi }}</textarea>
+        <textarea id="deskripsi" name="deskripsi" rows="10" style="width:100%" required>{{ $query->deskripsi }}</textarea>
       </form>
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary">Save changes</button>

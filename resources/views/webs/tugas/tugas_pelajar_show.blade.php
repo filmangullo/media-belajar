@@ -21,7 +21,7 @@ menu-active
         <i class="lnr lnr-arrow-right"></i>
         <a href="{{ route('index.pertemuan', $forum->id )}}">{{ $forum['nama'] }}</a>
         <i class="lnr lnr-arrow-right"></i>
-        <a href="{{ route('index.kuis', $forum->id )}}">Daftar Tugas</a>
+        <a href="{{ route('index.tugaspelajar', $forum->id )}}">Daftar Tugas</a>
     </span>
 </div>
 @endsection

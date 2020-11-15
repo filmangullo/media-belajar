@@ -13,14 +13,14 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Title</span>
             </div>
-            <input type="text" class="form-control" placeholder="Title" aria-label="Title" name="title" aria-describedby="basic-addon1" require>
+            <input type="text" class="form-control" placeholder="Title" aria-label="Title" name="title" aria-describedby="basic-addon1" required>
           </div>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text">Link</span>
             </div>
-            <input type="text" class="form-control" placeholder="Link" aria-label="Link" name="link" aria-describedby="basic-addon1" require>
+            <input type="text" class="form-control" placeholder="Link" aria-label="Link" name="link" aria-describedby="basic-addon1" required>
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Save</button>
