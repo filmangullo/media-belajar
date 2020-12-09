@@ -57,3 +57,8 @@ Route::prefix('pelajar')->group(function () {
     Route::get('/edit/{id}', 'PelajarController@edit')->name('adm.pelajar.edit');
     Route::post('/update/{id}', 'PelajarController@update')->name('adm.pelajar.update');
 });
+
+// Pelajar Control
+Route::prefix('contact')->group(function () {
+    Route::get('/index', 'ContactController@index')->name('adm.contact.index');
+});

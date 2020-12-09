@@ -6,6 +6,40 @@ menu-active
 
 @endsection
 
+@section('style')
+<style>
+    h1,
+    h2,
+    p,
+    a {
+        font-family: sans-serif;
+        font-weight: normal;
+    }
+
+    .jam-digital-malasngoding {
+        overflow: hidden;
+        width: 289px;
+        margin: 20px auto;
+        border: 5px solid #efefef;
+    }
+
+    .kotak {
+        width: 100%;
+        float: left;
+        height: 80px;
+        background-color: #189fff;
+    }
+
+    .jam-digital-malasngoding p {
+        color: #fff;
+        font-size: 36px;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+</style>
+@endsection
+
 @section('header')
 <h1 class="text-white">
     Kuis {{ $forum->kelasMataPelajarans['nama'] }}
@@ -31,6 +65,14 @@ menu-active
 <div class="whole-wrap">
     <div class="container">
         <div class="section-top-border">
+            @if ($display_soal == true )
+                <div class="jam-digital-malasngoding">
+                    <div class="kotak">
+                        <p id="time">{{count($kuis) * 2.5}}:00</p>
+                    </div>
+                </div>
+            @endif
+            
             @include('layouts.alert')
             <center>
                 <h3>Nilai Kuis : {{ $nilai_kuis }}</h3>
@@ -44,7 +86,7 @@ menu-active
             <div @if ( $display_soal == true ) style="display:block" @else style="display:none" @endif>
 
                 <h3 class="mb-30">Soal Kuis</h3>
-                <form action="{{ route('index.calculateKuis', $forum->id )}}" method="post">
+                <form action="{{ route('index.calculateKuis', $forum->id )}}" method="post" id="myForm">
                     {{ csrf_field() }}
                     <div class="row">
                         <?php $num = 0; ?>
@@ -88,4 +130,38 @@ menu-active
     </div>
 </div>
 <!-- End Align Area -->
+@endsection
+
+@section('script')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script>
+    function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            // timer = duration;
+            if ({{$display_soal}} == true)
+            document.getElementById("myForm").submit();
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var fiveMinutes = 60 * {{count($kuis) * 2.5}}  ,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+
+};
+
+
+</script>
+
 @endsection

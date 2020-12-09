@@ -14,7 +14,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view ('webs.contact');
+        return view ('webs.contact.index');
     }
 
     /**
@@ -25,6 +25,15 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $contact = new Contact;
+
+        $contact->name      = $request->name;
+        $contact->email     = $request->email;
+        $contact->subject   = $request->subject;
+        $contact->message   = $request->message;
+
+        if ($contact->save()) {
+            return redirect()->back()->with('success','Terimaksih, pesan anda akan kami proses, dan akan kami balas melalui email yang tertaut.');
+        }
     }
 }

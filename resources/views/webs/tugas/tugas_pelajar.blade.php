@@ -43,14 +43,14 @@ menu-active
           </tr>
         </thead>
         <tbody>
-            @foreach ($tugasKumpul as $key => $item)
+            @foreach ($results as $key => $item)
             <tr>
                 <th scope="row">{{ $key+1 }}</th>
-                <th>{{ $item->users['name'] }}</th>
-                <th>{{ $item->users['role'] }}</th>
-                <th>{{ date_format($item->created_at, "F d, Y H:i" ) }}</th>
-                <th>{{ $item->nilai == null ? 'kosong' : $item->nilai }}</th>
-                <th><a href="{{ route('show.tugaspelajar', $item->id )}}" class="btn btn-info">Show</a></th>
+                <th>{{ $item['nama'] }}</th>
+                <th>{{ $item['level'] }}</th>
+                <th>{{ $item['tgl_upload'] }}</th>
+                <th>{{ $item['tgs_nilai'] }}</th>
+                <th><a {!! $item['id_tugas'] != null ? 'href="'.route('show.tugaspelajar', $item['id_tugas'] ).'"' : 'disabled' !!} class="btn btn-info">Show</a></th>
               </tr>
             @endforeach
         </tbody>

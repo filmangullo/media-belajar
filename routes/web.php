@@ -151,3 +151,5 @@ Route::resource('contact', 'ContactController')->names([
 ]);
 
 Route::get('tentang', 'TentangController@index')->name('tentang');
+
+Route::get('panduan', 'PanduanController@index')->name('panduan.index');

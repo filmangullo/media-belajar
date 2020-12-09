@@ -291,7 +291,7 @@ menu-active
                     <!-- End Diskusi Form -->
 
                 </div>
-                <div class="col-lg-3 col-md-4 mt-sm-30">
+                <div class="col-lg-3 col-md-4" style="height: 740px;">
                     <div class="single-element-widget mt-30 ">
                         @if ($panel->open_kuis == true || auth::user()->role == 'pengajar')
                         @if ($panel->open_kuis == true)
@@ -307,26 +307,24 @@ menu-active
 
                     <div class="single-element-widget mt-30 ">
                         @if ($panelTugas->open_tugas == true || auth::user()->role == 'pengajar')
-                        @if ($panelTugas->open_tugas == true )
-                        <p>Tugas Telah dibuka,..?</p>
-                        <p>Deadline :{{date('d M Y - H:i a',strtotime($panelTugas->deadline))}}</p>
-                        @elseif($panelTugas->open_tugas == false)
-                        <p>Tugas Belum dibuka,..!</p>
+                            @if ($panelTugas->open_tugas == true )
+                                <p>Tugas Telah dibuka,..?</p>
+                                <p>Deadline :{{date('d M Y - H:i a',strtotime($panelTugas->deadline))}}</p>
+                            @elseif($panelTugas->open_tugas == false)
+                                <p>Tugas Belum dibuka,..!</p>
                         @endif
-                        @if (strtotime(date('Y/m/d H:i:s')) <= strtotime($panelTugas->deadline))
-                            <a href="{{ route('index.tugas', $forum->id) }}"
-                                class="genric-btn btn-block info circle arrow text-center">Kerjakan Tugas<span
-                                    class="lnr lnr-arrow-right"></span></a>
+                            @if (strtotime(date('Y/m/d H:i:s')) <= strtotime($panelTugas->deadline))
+                                <a href="{{ route('index.tugas', $forum->id) }}"
+                                    class="genric-btn btn-block info circle arrow text-center">Kerjakan Tugas<span
+                                        class="lnr lnr-arrow-right"></span></a>
                             @endif
-                            @endif
+                        @endif
                     </div>
                     <div class="single-element-widget mt-30 ">
                         <h3 class="mb-30 ">Participant</h3>
                         @foreach ($participant as $key => $value)
                         <div class="switch-wrap d-flex justify-content-between ">
-                            <p>{{$key+1}}. <a href="{{ route('index.profil') }}"
-                                    onclick="event.preventDefault();
-                                document.getElementById('profil-form_{{ $value->users->id }}').submit();">{{ $value->users['name'] }}</a></p>
+                            <p>{{$key+1}}. <a href="{{ route('index.profil') }}" onclick="event.preventDefault(); document.getElementById('profil-form_{{ $value->users->id }}').submit();">{{ $value->users['name'] }}</a></p>
                             <form id="profil-form_{{ $value->users->id }}" action="{{ route('index.profil') }}"
                                 method="POST" style="display: none;">
                                 @csrf
@@ -335,9 +333,9 @@ menu-active
 
 
 
-
-                            @if(Cache::has('user-is-online-' . $value->users['id']))
                             <div class="primary-checkbox ">
+                            @if(Cache::has('user-is-online-' . $value->users['id']))
+                            
                                 {!! $value->users['role'] == 'pengajar' ? '<span
                                     class="lnr lnr-briefcase text-success"></span>' :
                                 '<span class="lnr lnr-graduation-hat text-success"></span>' !!}
@@ -345,7 +343,8 @@ menu-active
                                 {!! $value->users['role'] == 'pengajar' ? '<span
                                     class="lnr lnr-briefcase text-secondary"></span>' :
                                 '<span class="lnr lnr-graduation-hat text-secondary"></span>' !!}
-                                @endif
+                            
+                            @endif
                             </div>
                         </div>
                         
