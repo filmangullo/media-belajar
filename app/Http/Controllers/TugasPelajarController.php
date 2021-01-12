@@ -79,7 +79,7 @@ class TugasPelajarController extends Controller
   {
         $query = ForumTugasKumpul::findOrFail($id);
 
-        return response()->download(storage_path('app/' . $query->file));
+        return response()->download(storage_path('app/public/' . $query->file));
   }
 
   /**

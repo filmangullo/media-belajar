@@ -3,9 +3,6 @@
         Options -MultiViews -Indexes
     </IfModule>
 
-    <IfModule mod_headers.c>
-        Header always unset X-Frame-Options
-    </IfModule>
     RewriteEngine On
 
     # Handle Authorization Header

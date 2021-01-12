@@ -86,7 +86,7 @@ menu-active
             <div @if ( $display_soal == true ) style="display:block" @else style="display:none" @endif>
 
                 <h3 class="mb-30">Soal Kuis</h3>
-                <form action="{{ route('index.calculateKuis', $forum->id )}}" method="post" id="myForm">
+                <form action="{{ route('index.calculateKuis', $forum->id )}}" method="post" id="myFormKuis">
                     {{ csrf_field() }}
                     <div class="row">
                         <?php $num = 0; ?>
@@ -149,7 +149,7 @@ menu-active
         if (--timer < 0) {
             // timer = duration;
             if ({{$display_soal}} == true)
-            document.getElementById("myForm").submit();
+            document.getElementById("myFormKuis").submit();
         }
     }, 1000);
 }

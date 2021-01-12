@@ -149,7 +149,9 @@ menu-active
                             </form>
                         @endif
                         @if ($value->type == 'link')
-                            <iframe width="100%" height="400" src="{{ $value->video }}" webkitallowfullscreen="1" mozallowfullscreen="1" allowfullscreen="1"></iframe>
+                        <script async src="https://e.prezicdn.net/v1/design.js"></script>
+                        <iframe src="https://prezi.com/p/n32ofyee24yg/embed/" id="iframe_container" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" allow="autoplay; fullscreen" height="315" width="560"></iframe>
+                          <!--   <iframe width="100%" height="400" src="{{ $value->video }}" webkitallowfullscreen="1" mozallowfullscreen="1" allowfullscreen="1"></iframe> -->
                         @else
                             <video width="100%" height="345" controls>
                                 <source src="{{asset('storage/'.$value->video)}}" type="video/mp4">
